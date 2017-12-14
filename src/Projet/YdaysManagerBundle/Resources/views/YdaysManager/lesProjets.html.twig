@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% endblock %}
+</head>
+
+<body>
+
+
+    {% for project in projects %}
+        <div id="project" class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 containerImgProject">
+                    <img class="img-fluid" src="{{ asset('img/image1') }}" alt="">
+                </div>
+                <div id="titleDesc" class="col-xs-6 col-md-6 col-sm-7 col-lg-7">
+                    <p class="fontProject">{{ project.getNomProjet() }}</p>
+                    <p class="fontProject">{{ project.id }}</p>
+                </div>
+                <div class="col-xs-2 col-md-4 col-sm-3 col-lg-3  infoProject">
+                    <p class="fontProject">{{ project.getChefProjet() }}</p>
+                    <p class="fontProject">{{ project.getReferentProjet() }}</p>
+                    <div>
+                        <div id="projetStatutCircle"></div>
+                        <p class="fontProject">Projet en cours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="adminSupprProject"><svg></svg></div>
+    {% endfor %}
+</body>
+
+</html>

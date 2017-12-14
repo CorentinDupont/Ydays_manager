@@ -1,0 +1,52 @@
+<!--
+
+@ Auteur : Maxime Grand <maxime.grand@ynov.com>
+@ Copyright 2017 Maxime Grand
+@ Version 1.0
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Proposition de projet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% endblock %}
+</head>
+
+<body id="mBodyproposerProjet">
+    <div id="topCreateDashboard">
+        <form>
+            <select class="mCategorieproposerProjet" size="1">
+                <option selected="selected">Pro
+                <option>Perso
+            </select>
+            <select class="mAffiliationproposerProjet" size="1">
+                <option selected="selected">Interne
+                <option>Externe
+            </select>
+        </form>
+        <textarea class="mNameProjetproposerProjet" type="text" maxlength="80" onclick="this.value ='';">Nom de votre Projet</textarea>
+    </div>
+    <div id="midCreateDashboard">
+        <input class="mInputfileproposerProjet" type="file">
+    </div>
+    <div id="botCreateDashboard">
+        <textarea class="mMembersproposerProjet" type="text" disabled="disabled">Vos futurs membres s'afficheront ici</textarea>
+        <textarea class="mDescriptionproposerProjet" type="text" maxlength="500" onclick="this.value ='';">Description du projet</textarea>
+    </div>
+    <input class="mButtonproposerProjet" type="submit" value="Proposer mon projet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+
+</html>

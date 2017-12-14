@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Fiche projet n°{{ id }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Div global de la fiche de projet-->
+    <div id="cDashboardContainerProjectDashboard">
+
+        <!-- Partie haute -->
+        <div id="cTopProjectDashboard">
+            <!-- Informations gauche -->
+            <div id="cTopLeftProjectDashboard">
+                <p>Projet Ydays pro. interne</p>
+                <p>Salle : 203</p>
+            </div>
+
+            <!-- Titre projet -->
+            <div id="cTitleProjectBlockProjectDashboard">
+                <h1>Domotique</h1>
+                <!-- Bouton modif -->
+                <div class="cEditRoundButton" id="cTitleEditRoundButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+<g>
+    <g id="create">
+        <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+    </g>
+</g>
+
+</svg>
+                </div>
+            </div>
+
+            <!-- Menu Hamburger -->
+            <div class="dropdown cHamMenuProjectDashboard">
+                <svg data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+    <g>
+        <path d="M501.333,96H10.667C4.779,96,0,100.779,0,106.667s4.779,10.667,10.667,10.667h490.667c5.888,0,10.667-4.779,10.667-10.667    S507.221,96,501.333,96z" fill="#5d5d5d"/>
+    </g>
+</g>
+                    <g>
+                        <g>
+                            <path d="M501.333,245.333H10.667C4.779,245.333,0,250.112,0,256s4.779,10.667,10.667,10.667h490.667    c5.888,0,10.667-4.779,10.667-10.667S507.221,245.333,501.333,245.333z" fill="#5d5d5d"/>
+                        </g>
+                    </g>
+                    <g>
+                        <g>
+                            <path d="M501.333,394.667H10.667C4.779,394.667,0,399.445,0,405.333C0,411.221,4.779,416,10.667,416h490.667    c5.888,0,10.667-4.779,10.667-10.667C512,399.445,507.221,394.667,501.333,394.667z" fill="#5d5d5d"/>
+                        </g>
+                    </g>
+
+</svg>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Comptes rendu</a></li>
+                    <li><a href="#">Checklist</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Conteneur Image projet -->
+        <div id="cImageContainerProjectDashboard">
+            <img id="cImageProjectDashboard" src="{{ asset('img/image1.jpg') }}" alt="">
+        </div>
+
+
+        <!-- Block liste membres et description -->
+        <div id="cMidProjectDashboard">
+            <div id="cMembersProjectDashboard">
+                <p>Chef de projet</p>
+                <p>Andreï Radocea</p>
+                <br>
+                <p>HELPER</p>
+                <p>Kilian Delorme</p>
+                <br>
+                <p>Membres</p>
+                <p>Alexis VIVIER</p>
+                <p>Charles HUET</p>
+                <p>Geoffrey MOREAU</p>
+                <p>Antonin DOUILLARD</p>
+            </div>
+            <div id="cDescProjetDashboard">
+                <p>Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web Réaliser une maison connectée, le tout géré grâce à une interface web </p>
+            </div>
+        </div>
+
+        <!-- Block tous les commentaires -->
+        <div id="cAllCommentsProjectDashboard">
+
+            <!-- Bloc d'un commentaire et ses réponses -->
+            <div class="cBlockOneCommentProjectDashboard">
+                <!-- Un commentaire -->
+                <div class="cOneCommentProjectDashboard">
+                    <img src="{{ asset('img/image3.png') }}" class="cProfilImageProjectDashboard">
+                    <div class="cContainerSquareAndTextCommentProjectDashboard">
+                        <div class="cArrowCommentProjectDashboard"></div>
+                        <p>SOMEK? IZHIU HQIUYHIUFHNJQHIUOFGQHUFHQUOFHQFUNOFIGF8UQFBIJOFGQI7YFHQJ ZNPJQZI H</p>
+                    </div>
+                </div>
+
+                <!-- Bloc de réponse du commentaire -->
+                <div class="cBlockAnswerOneCommentProjectDashboard">
+
+                    <div class="cLeftBarProjectDashboard"></div>
+                    <div class="cAllAnswersToOneCommentProjectDashboard">
+
+                        <!-- une réponse -->
+                        <div class="cOneCommentProjectDashboard">
+                            <img src="{{ asset('img/image3.png') }}" class="cProfilImageProjectDashboard">
+                            <div>
+                                <div class="cArrowCommentProjectDashboard"></div>
+                                <p>SOMEK? IZHIU HQIUYHIUFHNJQHIUOFGQHUFHQUOFHQFUNOFIGF8UQFBIJOFGQI7YFHQJ ZNPJQZI H</p>
+                            </div>
+                        </div>
+
+                        <!-- une réponse -->
+                        <div class="cOneCommentProjectDashboard">
+                            <img src="{{ asset('img/image3.png') }}" class="cProfilImageProjectDashboard">
+                            <div>
+                                <div class="cArrowCommentProjectDashboard"></div>
+                                <p>SOMEK? IZHIU HQIUYHIUFHNJQHIUOFGQHUFHQUOFHQFUNOFIGF8UQFBIJOFGQI7YFHQJ ZNPJQZI H</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

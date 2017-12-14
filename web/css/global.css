@@ -1,0 +1,629 @@
+/*--------------------------------------------------------------------------------*/
+/*------------------           PROJECT DASHBOARD              --------------------*/
+/*--------------------------------------------------------------------------------*/
+
+/*Font family */
+*{
+    font-family: "Century Gothic";
+}
+
+/*Partie englobante*/
+#cDashboardContainerProjectDashboard{
+    background-color:#F6F6F6;
+    padding:3vw;
+    margin-left : 16vw;
+}
+
+/*Partie haute*/
+#cTopProjectDashboard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*Infos haut gauche*/
+#cTopLeftProjectDashboard{
+
+}
+
+/*Titre projet*/
+#cTitleProjectBlockProjectDashboard{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Bouton rond modification*/
+.cEditRoundButton{
+    margin-left:20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#CA4572;
+    width:3vw;
+    height:3vw;
+    border-radius:1.5vw;
+    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+}
+
+.cEditRoundButton svg{
+    width:40%;
+    height:40%;
+}
+
+/*Menu hamburger*/
+.cHamMenuProjectDashboard svg{
+    width:3vw;
+}
+
+/*Conteneur image du projet*/
+#cImageContainerProjectDashboard{
+    width:100%;
+    height:20vw;
+    border-radius:17px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin:3vw 0;
+    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+}
+
+#cImageContainerProjectDashboard img{
+    width:100%;
+    height:auto;
+
+}
+
+/*Block milieu avec description et membres*/
+#cMidProjectDashboard{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Block membres*/
+#cMembersProjectDashboard{
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    width:22vw;
+    background-color:white;
+    border-radius:17px;
+    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+}
+
+/*Description projet*/
+#cDescProjetDashboard{
+    padding:20px;
+    width:52vw;
+    background-color:white;
+    border-radius:17px;
+    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+}
+
+/*Bloc tous les commentaires*/
+#cAllCommentsProjectDashboard{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+}
+
+/*Bloc un commentaire et ses réponses*/
+.cBlockOneCommentProjectDashboard{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+}
+
+/*Un commentaire*/
+.cOneCommentProjectDashboard{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:100%;
+}
+
+/*Image profil commentaire*/
+.cProfilImageProjectDashboard{
+    height:5vw;
+    width:5vw;
+    border-radius:2.5vw;
+    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+}
+
+/*Conteneur fleche et texte*/
+.cContainerSquareAndTextCommentProjectDashboard{
+    width:70%;
+}
+
+/*texte commentaire*/
+.cOneCommentProjectDashboard>div>p{
+    background-color:white;
+    border-radius: 17px;
+    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+    height:100%;
+    width:100%;
+    padding:15px;
+}
+
+/*Fleche*/
+.cArrowCommentProjectDashboard{
+    position:relative;
+    top:2.2vw;
+    left:-0.60vw;
+    background-color:white;
+    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+    width:1.5vw;
+    height:1.5vw;
+    transform: rotate(45deg);
+}
+
+/*Block réponses d'un commentaire*/
+.cBlockAnswerOneCommentProjectDashboard{
+    padding:5vw;
+    display: flex;
+    flex-direction: row;
+}
+
+/*Ligne grise à gauche des réponses*/
+.cLeftBarProjectDashboard{
+    width:2px;
+    background-color: #D1D1D1;
+    height:100%;
+    padding-right:3vw;
+}
+
+
+
+
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------*/
+/*------------------           ALL PROJECT              --------------------*/
+/*--------------------------------------------------------------------------------*/
+#project{
+    width: 80%;
+    border-radius: 17px;
+    border-style: ridge;
+    overflow: hidden;
+    padding: 0;
+}
+.infoProject{
+    padding-right: 30px;
+}
+.containerImgProject{
+    width: 20%;
+    height: 100%;
+}
+.fontProject{
+    font-size: 1vw;
+
+}
+
+
+/*--------------------------------------------------------------------------------*/
+
+/**************************************************
+***************************************************
+***************** PROPOSITION PROJET **************
+***************************************************
+**************************************************/
+
+#mBodyproposerProjet {
+    margin: 0 0 0 200px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #F6F6F6;
+    font-family: "Century Gothic";
+}
+
+#topCreateDashboard {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+#topCreateDashboard form {
+    margin-right: 85px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mCategorieproposerProjet {
+    width: 160px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+}
+
+.mAffiliationproposerProjet {
+    margin-top: 10px;
+    width: 160px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+}
+
+.mNameProjetproposerProjet {
+    margin-top: 10px;
+    display: flex;
+    height: 25px;
+    width: 500px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    outline-style:none;
+}
+
+#midCreateDashboard {
+    display: flex;
+    justify-content: center;
+}
+
+#midCreateDashboard input {
+    margin-top: 25px;
+    height: 300px;
+    width: 1000px;
+    background-color: white;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none !important;
+}
+
+#botCreateDashboard {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.mMembersproposerProjet {
+    margin-right: 25px;
+    height: 120px;
+    width: 275px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 12px;
+}
+
+.mDescriptionproposerProjet {
+    height: 120px;
+    width: 700px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 12px;
+    outline-style:none;
+}
+
+.mButtonproposerProjet {
+    margin-top: 45px;
+    height:40px;
+    width: 200px;
+    background-color: #00b396;
+    border: none;
+    color: white;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 25px;
+    outline-style:none;
+}
+
+.mButtonproposerProjet:hover {
+    height:40px;
+    width: 200px;
+    background-color: #008080;
+    border: none;
+    color: white;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 25px;
+    outline-style:none;
+    transform: translate(1px,1px);
+}
+
+
+/**************************************************
+***************************************************
+***************** REQUESTS ADMIN ******************
+***************************************************
+**************************************************/
+
+/* BODY Requests ADMIN */
+#jRequestsAdmin
+{
+    background-color: #f6f6f6;
+    color: #858585;
+    box-sizing: border-box;
+    margin: 0;
+    margin-left: 200px;
+    padding: 0;
+    font-family: "Century Gothic";
+}
+
+/* FILTRAGE Requests ADMIN */
+#navRequests
+{
+    display: flex;
+    justify-content: center;
+    margin-left: 200px;
+}
+
+#navRequests button
+{
+    width: 200px;
+    border: none;
+    border-radius: 0;
+    box-shadow: 5px 0 8px #ccc;
+    color: #858585;
+    outline-style: none;
+}
+
+#navRequests button:hover { background-color: #ca4572; transition: 0.3s; color: white; }
+
+#navRequests button:first-child { border-bottom-left-radius: 10px; } /* Radius gauche sur le premier bouton */
+#navRequests button:last-child { border-bottom-right-radius: 10px;	} /* Radius droit sur le dernier bouton */
+
+/* BLOC DE SÉLÉCTION DES Requests */
+#flexRequests { margin-top: 80px; }
+
+.blockRequest1, .blockRequest2, .blockRequest3
+{
+    margin: 30px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    height: 80px;
+}
+
+/* Image */
+.blockRequest1 div:first-child, .blockRequest2 div:first-child, .blockRequest3 div:first-child { display: flex; align-items: center; }
+.blockRequest1 div:first-child img, .blockRequest2 div:first-child img, .blockRequest3 div:first-child img
+{
+    margin-right: 30px;
+    border-radius: 50%;
+    box-shadow: 3px 0 8px #ccc;
+    width: 75px;
+    height: 75px;
+}
+
+.blockRequest1 div:nth-child(2), .blockRequest2 div:nth-child(2), .blockRequest3 div:nth-child(2)
+{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 0 8px #ccc;
+    padding: 10px 25px;
+    position: relative;
+    width: 60%;
+}
+
+/* Mise en majuscules sur les noms de famille */
+.blockRequest1 div:nth-child(2) p span, .blockRequest2 div:nth-child(2) p span, .blockRequest3 div:nth-child(2) p span { text-transform: uppercase; }
+
+.blockRequestDate
+{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 10px;
+    left: -20px;
+    padding: 5px;
+    width: 115px;
+    height: 30px;
+    background-color: #00B297;
+    border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+    z-index: -5;
+    box-shadow: 3px 3px 8px #ccc;
+}
+
+.blockRequestDate p { margin: 0; color: white; }
+
+/* 3 SVG sur la droite du bloc */
+.blockResquetSVG3 { display: none; }
+.blockRequest1:hover .blockResquetSVG3, .blockRequest2:hover .blockResquetSVG3, .blockRequest3:hover .blockResquetSVG3 { display: initial; }
+
+.blockResquetSVG1 img
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    bottom: -13px;
+    box-shadow: 3px 0 8px #ccc;
+    background-color: #81e569;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.blockResquetSVG2 img
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 60px;
+    bottom: -13px;
+    box-shadow: 3px 0 8px #ccc;
+    background-color: #ec4747;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.blockResquetSVG3 img
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 110px;
+    bottom: -13px;
+    box-shadow: 3px 0 8px #ccc;
+    background-color: #00b297;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+}
+
+/**************************************************
+***************************************************
+******************** HEADER ***********************
+***************************************************
+**************************************************/
+
+/* Bloc qui contient le header et la nav */
+#mainHeader
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Century Gothic";
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    box-shadow: 3px 0 8px black;
+    background-color: #241e20;
+    color: #858585;
+}
+
+/* Gestion du header */
+#mainHeader header { padding: 10px; height: 80px; display: flex; background-color: #141414; color: #D1D1D1; }
+#mainHeader header img { width: 50px; height: 50px; }
+#mainHeader header h1 { margin: 0; padding-left: 18px; font-size: 23px; }
+#mainHeader header h1 span { position: relative; left: 20px; font-size: 18px; } /* Décalage de "manager" légèrement sur la droite */
+
+/* Gestion de la nav */
+#mainHeader nav { padding-top: 20px; }
+#mainHeader nav ul { list-style-type: none; padding-left: 0; margin: 0; }
+#mainHeader nav ul li { padding: 7px 0 7px 10px; }
+#mainHeader nav ul li a { color: #A8A8A8; font-size: 15px; transition: 0.6s; }
+
+/* Animation du menu (nav) */
+#mainHeader nav ul li
+{
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    transition-duration: 0.6s;
+}
+
+#mainHeader nav ul li:before
+{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #c94672;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out;
+}
+#mainHeader nav ul li a:hover { text-decoration: none; }
+#mainHeader nav ul li:hover a { color: #D1D1D1; transition: 0.6s; }
+#mainHeader nav ul li:hover:before { transform: scaleX(1); }
+
+
+
+/*LOGIN*/
+body, html {
+    height: 100%;
+    background-color: #D1D1D1;
+
+}
+.fontLogin{
+    color: #FFFFFF;
+    font-size: 1.50rem;
+}
+.titleLogin{
+    font-size: 2rem; !important;
+    text-align: center;
+
+}
+.btnLogin {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+.logo {
+    width: 15%;
+    height: auto;
+}
+
+
+.flexImgLogin{
+    width: 100%;
+
+}
+
+#centerImgLogin{
+    margin-left: 8%;!important;
+    margin-bottom: 5%;!important;
+    position: relative;
+    top: -40px;
+}
+
+.backLogin{
+    background-color: #000000;
+    margin-top: 5%;
+    border-radius: 17px;
+}
+
+.formSigninLogin input[type=email],
+.formSigninLogin input[type=password],
+.formSigninLogin input[type=text],
+.formSigninLogin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.btnLogin.btnSigninLogin {
+    background-color: #00B297;
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 10px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btnLogin.btnSigninLogin:hover,
+.btnLogin.btnSigninLogin:active,
+.btnLogin.btnSigninLogin:focus {
+    background-color: #CA4572;
+}
+
+.formLogin{
+    padding-bottom: 10%;!important;
+}

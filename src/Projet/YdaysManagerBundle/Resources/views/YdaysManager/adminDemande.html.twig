@@ -1,0 +1,90 @@
+<!--
+
+@ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
+@ Copyright 2017 Jérémy Nunes
+@ Version : 1.0
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Demande projets</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/cssDemande.css"/>
+	</head>
+
+	<body id="jRequestsAdmin">
+
+        <!-- Filtrage des Requests faites à l'admin -->
+        <div id="navRequests" class="container navbar-fixed-top">
+            <button type="button" class="btn btn-default">Tout</button>
+            <button type="button" class="btn btn-default">Nouveau projet</button>
+            <button type="button" class="btn btn-default">Affectation projet</button>
+            <button type="button" class="btn btn-default">Suppression projet</button>
+        </div>
+
+        <div id="flexRequests" class="container">
+            <div class="row">
+
+                <!-- Bloc 1 -->
+                <div class="blockRequest1 col-sm-12">
+                    <div>
+                        <img src="images/image3.png" alt="User name"/>
+                    </div>
+                    <div>
+                        <p> Charles <span> Huet </span> </p>
+                        <p> Demande de nouveau projet </p>
+                        <div class="blockRequestDate">
+                            <p> 07/04/2017 </p>
+                        </div>
+                        <div class="blockResquetSVG1"><img src="svg/check1.svg" alt=""/></div>
+                        <div class="blockResquetSVG2"><img src="svg/check2.svg" alt=""/></div>
+                        <div class="blockResquetSVG3"><img src="svg/eye.svg" alt=""/></div>
+                    </div>
+                </div>
+            
+                <!-- Bloc 2 -->
+                <div class="blockRequest2 col-sm-12">
+                    <div>
+                        <img src="images/image4.jpg" alt="User name"/>
+                    </div>
+                    <div>
+                        <p> Corentin <span> Dupont </span> </p>
+                        <p> Demande de suppression du projet Maison sous l'eau </p>
+                        <div class="blockRequestDate">
+                            <p> 07/04/2017 </p>
+                        </div>
+                        <div class="blockResquetSVG1"><img src="svg/check1.svg" alt=""/></div>
+                        <div class="blockResquetSVG2"><img src="svg/check2.svg" alt=""/></div>
+                        <div class="blockResquetSVG3"><img src="svg/eye.svg" alt=""/></div>
+                    </div>
+                </div>
+                
+                <!-- Bloc 3 -->
+                <div class="blockRequest3 col-sm-12">
+                    <div>
+                        <img src="images/image5.png" alt="User name"/>
+                    </div>
+                    <div>
+                        <p> Maxime <span> Grand </span> </p>
+                        <p> Demande d'affectation au projet domotique </p>
+                        <div class="blockRequestDate">
+                            <p> 07/04/2017 </p>
+                        </div>
+                        <div class="blockResquetSVG1"><img src="svg/check1.svg" alt=""/></div>
+                        <div class="blockResquetSVG2"><img src="svg/check2.svg" alt=""/></div>
+                        <div class="blockResquetSVG3"><img src="svg/eye.svg" alt=""/></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+</html>
