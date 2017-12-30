@@ -1,4 +1,88 @@
 /*--------------------------------------------------------------------------------*/
+/*------------------             AUTRE (Corentin)             --------------------*/
+/*--------------------------------------------------------------------------------*/
+/*------------------Global-----------------------*/
+.cShadowed{
+    box-shadow: 0px 3px 6px 0px #D8D8D8;
+}
+
+.cRounded{
+    border-radius:17px;
+}
+/*-----------------------Couleurs----------------*/
+.cYnovGreen{
+    background-color:#00B297;
+}
+
+.cYnovGreen:hover{
+    background-color:#00DDBC;
+}
+
+.cYnovPurple{
+    background-color:#CA4572;
+}
+
+.cYnovPurple:hover{
+    background-color:#DD86A5;
+}
+
+.cTomatoRed{
+    background-color:#EC4747;
+}
+
+.cTomatoRed:hover{
+    background-color:#F17C7C;
+}
+
+/*--------------------Bouton--------------------*/
+.cButton{
+    padding:0.5vw 1vw;
+    color:white;
+    font-size: 1.1vw;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+}
+
+.cButtonRowContainer{
+    position:absolute;
+    display: flex;
+    flex-direction: row;
+    bottom:-1.5vw;
+    right:0;
+    padding:0 0.35vw;
+}
+
+.cButtonRowContainer>*{
+    margin:0 0.35vw;
+}
+
+/*------------------Bouton rond------------------*/
+.cRoundButton{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3vw;
+    height:3vw;
+    border-radius:1.5vw;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+}
+
+.cRoundButton:hover{
+    cursor: pointer;
+}
+
+.cRoundButton svg{
+    width:30%;
+    height:30%;
+}
+
+.cRoundButtonTopRight{
+    position:absolute;
+    top:-1.5vw;
+    right:-1.5vw;
+}
+/*--------------------------------------------------------------------------------*/
 /*------------------           PROJECT DASHBOARD              --------------------*/
 /*--------------------------------------------------------------------------------*/
 
@@ -12,6 +96,14 @@
     background-color:#F6F6F6;
     padding:3vw;
     margin-left : 16vw;
+}
+
+#cDashboardContainerProjectDashboard p{
+    font-size: 1.1vw;
+}
+
+#cDashboardContainerProjectDashboard button{
+    border:none;
 }
 
 /*Partie haute*/
@@ -35,72 +127,89 @@
     justify-content: center;
 }
 
-/*Bouton rond modification*/
-.cEditRoundButton{
-    margin-left:20px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    background-color:#CA4572;
-    width:3vw;
-    height:3vw;
-    border-radius:1.5vw;
-    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
-}
 
-.cEditRoundButton svg{
-    width:40%;
-    height:40%;
-}
 
 /*Menu hamburger*/
 .cHamMenuProjectDashboard svg{
     width:3vw;
+}
+/*Bloc image et ses composant du projet*/
+#cBlockImageProjectDashboard{
+    position:relative;
 }
 
 /*Conteneur image du projet*/
 #cImageContainerProjectDashboard{
     width:100%;
     height:20vw;
-    border-radius:17px;
     display:flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     margin:3vw 0;
-    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
 }
 
 #cImageContainerProjectDashboard img{
     width:100%;
     height:auto;
+}
 
+#cImageInputProjectDashboard{
+    opacity: 0;
+    position:absolute;
+    z-index:-1;
 }
 
 /*Block milieu avec description et membres*/
 #cMidProjectDashboard{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 /*Block membres*/
 #cMembersProjectDashboard{
+    position:relative;
     display:flex;
     flex-direction: column;
     padding:20px;
     width:22vw;
     background-color:white;
-    border-radius:17px;
-    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+}
+
+/*Une partie dans la liste de membres*/
+.cOnePartListMemberProjectDashboard{
+    margin-bottom:1vw;
+}
+
+.cOnePartListMemberProjectDashboard>p{
+    margin:0;
+}
+
+.cOnePartListMemberProjectDashboard>p:not(:first-child){
+    color:#A8A8A8;
 }
 
 /*Description projet*/
 #cDescProjetDashboard{
+    position:relative;
     padding:20px;
     width:52vw;
     background-color:white;
-    border-radius:17px;
-    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+}
+
+/*Block titre partie commentaire*/
+#cCommentTitleBlockProjectDashboard{
+    margin-top:100px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#cCommentTitleBlockProjectDashboard>h2{
+    margin:0 50px 0 0;
+    display:inline;
+    color:#95989A;
 }
 
 /*Bloc tous les commentaires*/
@@ -108,54 +217,77 @@
     display:flex;
     flex-direction: column;
     width:100%;
+    margin-top: 40px;
 }
+
+
 
 /*Bloc un commentaire et ses réponses*/
 .cBlockOneCommentProjectDashboard{
     display:flex;
     flex-direction: column;
     width:100%;
+    height:auto;
 }
 
 /*Un commentaire*/
 .cOneCommentProjectDashboard{
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-start;
     width:100%;
+    margin:1vw 0;
+}
+
+/*Block Input caché ajout commentaire*/
+.cBlockHiddenInputCommentProjectDashboard{
+    display:none;
+}
+
+/*Conteneur input caché ajout commentaire*/
+.cInputAddCommentProjectDashboard{
+    padding:1vw 1vw 1vw 4vw;
+}
+
+/*TextArea caché ajout commentaire*/
+.cTextAreaAddCommentProjectDashboard{
+    width:100%;
+    height:6vw;
+    border:none;
+    font-size:1.1vw;
+    resize:vertical;
 }
 
 /*Image profil commentaire*/
 .cProfilImageProjectDashboard{
+    z-index: 2;
     height:5vw;
     width:5vw;
     border-radius:2.5vw;
-    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+    margin-right: -2.7vw;
 }
 
 /*Conteneur fleche et texte*/
 .cContainerSquareAndTextCommentProjectDashboard{
-    width:70%;
+    position:relative;
+    z-index: 1;
+    width:100%;
+    background-color:white;
 }
 
 /*texte commentaire*/
-.cOneCommentProjectDashboard>div>p{
-    background-color:white;
-    border-radius: 17px;
-    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
-    height:100%;
-    width:100%;
+.cContainerSquareAndTextCommentProjectDashboard>p{
     padding:15px;
+    margin-left:4vw;
 }
 
 /*Fleche*/
 .cArrowCommentProjectDashboard{
-    position:relative;
-    top:2.2vw;
+    position:absolute;
+    top:1vw;
     left:-0.60vw;
     background-color:white;
-    box-shadow: 0px 6px 15px 0px rgba(143,143,143,1);
+    box-shadow: -4px 4px 15px 0px rgba(143,143,143,1);
     width:1.5vw;
     height:1.5vw;
     transform: rotate(45deg);
@@ -163,17 +295,28 @@
 
 /*Block réponses d'un commentaire*/
 .cBlockAnswerOneCommentProjectDashboard{
-    padding:5vw;
-    display: flex;
+    display : flex;
     flex-direction: row;
+    height:100%;
 }
 
-/*Ligne grise à gauche des réponses*/
+/*Ligne grise à gauche des réponses (Compléter par du JS)*/
 .cLeftBarProjectDashboard{
-    width:2px;
+    width:5px;
     background-color: #D1D1D1;
-    height:100%;
-    padding-right:3vw;
+    margin:0 3vw 0 2.5vw;
+}
+
+/*Block toutes les réponses d'un commentaire*/
+.cAllAnswersToOneCommentProjectDashboard{
+    display : flex;
+    flex-direction: column;
+    width:100%;
+}
+
+/*Une réponse*/
+.cOneAnswerProjectDashboard>p{
+
 }
 
 

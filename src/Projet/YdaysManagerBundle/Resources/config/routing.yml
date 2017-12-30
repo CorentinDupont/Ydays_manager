@@ -33,3 +33,10 @@ projet_ydays_manager_proposer_projet:
   path:      /proposerProjet
   defaults:
       _controller: ProjetYdaysManagerBundle:YdaysManager:proposerProjet
+
+projet_ydays_manager_fiche_projet:
+   path:     /ficheProjet/{id}
+   defaults:
+       _controller: ProjetYdaysManagerBundle:YdaysManager:ficheProjet
+   requirements:
+       id: \d+
