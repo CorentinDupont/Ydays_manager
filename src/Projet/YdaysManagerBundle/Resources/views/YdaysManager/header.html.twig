@@ -1,36 +1,39 @@
 <!--
 
-@ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
-@ Copyright 2017 Jérémy Nunes
-@ Version : 1.0
+  @ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
+  @ Copyright 2017 Jérémy Nunes
+  @ Level : Ingésup B2
+  @ Version : 1.0
 
 -->
 
-	{% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-    {% endblock %}
-
-	<body>
-
-            <main id="mainHeader">
-                <header>
-                    <img src="images/logo_ydays_manager.png" alt="logo Ydays Manager"/>
-                    <h1>YDAYS <span>manager</span></h1>
-                </header>
-                <nav>
-                    <ul>
-                        <li><a href="#">Mes projets</a></li>
-                        <li><a href="#">Tous les projets</a></li>
-                        <li><a href="#">Proposer un projet</a></li>
-                        <li><a href="#">Les étudiants</a></li>
-                        <li><a href="#">Les entreprises</a></li>
-                        <li><a href="#">Projets supervisés</a></li>
-                        <li><a href="#">Helpers</a></li>
-                        <li><a href="#">Demandes</a></li>
-                    </ul>
-                </nav>
-            </main>
-
-	</body>
+<header id="menu">
+    <!-- Logo et Nom -->
+    <a href="#" class="jLogoContainerHeader" title="Retour à l'accueil">
+        <div class="jLogoHeader">
+            <img src="{{ asset('img/logo.png') }}" alt="logo Ydays Manager"/>
+            <h1>YDAYS<span>manager</span></h1>
+        </div>
+    </a>
+    <!-- Navbar (choix) -->
+    <nav>
+        <ul class="jListHeader">
+            <li><a href="#">Mes projets</a></li>
+            <li><a href="#">Tous les projets</a></li>
+            <li><a href="#">Proposer un projet</a></li>
+            <li><a href="#">Les étudiants</a></li>
+            <li><a href="#">Les entreprises</a></li>
+            <li><a href="#">Projets supervisés</a></li>
+            <li><a href="#">Helpers</a></li>
+            <li><a href="#">Demandes</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- Menu hamburger -->
+<div id="main" class="jMainResponsiveHeader">
+    <div id="menubar">
+        <div id="menu-icon">
+            <span class="jFirstStepHeader"></span><span class="jSecondStepHeader"></span><span class="jThirdStepHeader"></span>
+        </div>
+    </div>
+</div> 
