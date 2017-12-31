@@ -82,6 +82,20 @@
     top:-1.5vw;
     right:-1.5vw;
 }
+
+@media all and (max-width: 768px){
+    .cRoundButton{
+        width:6vw;
+        height:6vw;
+        border-radius:3vw;
+    }
+
+    .cButton{
+        font-size: 2vw;
+        padding:1vw 2vw;
+    }
+}
+
 /*--------------------------------------------------------------------------------*/
 /*------------------           PROJECT DASHBOARD              --------------------*/
 /*--------------------------------------------------------------------------------*/
@@ -95,7 +109,15 @@
 #cDashboardContainerProjectDashboard{
     background-color:#F6F6F6;
     padding:3vw;
-    margin-left : 16vw;
+    margin-left : 200px;
+}
+
+#cDashboardContainerProjectDashboard h1{
+    font-size: 2.3vw;
+}
+
+#cDashboardContainerProjectDashboard h2{
+    font-size: 2vw;
 }
 
 #cDashboardContainerProjectDashboard p{
@@ -110,7 +132,7 @@
 #cTopProjectDashboard{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
@@ -125,14 +147,44 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    position:relative;
+}
+
+#cTitleProjectBlockProjectDashboard h1{
+    margin:0;
+    color:#6B6B6B;
 }
 
 
 
 /*Menu hamburger*/
-.cHamMenuProjectDashboard svg{
-    width:3vw;
+.cHamMenuProjectDashboard{
+    position:relative;
+    z-index:100;
 }
+
+.cHamMenuProjectDashboard svg{
+    width:2vw;
+    height:2vw;
+}
+
+/*Menu caché*/
+.cDropdownMenuProjectDashboard{
+    visibility:hidden;
+    position:absolute;
+    top:100%;
+    right:0;
+    width:160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cDropdownMenuProjectDashboard a{
+    text-decoration: none;
+    color:white;
+    padding:10px;
+}
+
 /*Bloc image et ses composant du projet*/
 #cBlockImageProjectDashboard{
     position:relative;
@@ -173,6 +225,7 @@
     display:flex;
     flex-direction: column;
     padding:20px;
+    margin-right:3vw;
     width:22vw;
     background-color:white;
 }
@@ -194,7 +247,7 @@
 #cDescProjetDashboard{
     position:relative;
     padding:20px;
-    width:52vw;
+    width:100%;
     background-color:white;
 }
 
@@ -320,7 +373,50 @@
 }
 
 
+@media all and (max-width: 768px){
+    #cDashboardContainerProjectDashboard{
+        margin-left : 0;
+    }
 
+    #cDashboardContainerProjectDashboard p{
+        font-size: 2vw;
+    }
+
+    #cDashboardContainerProjectDashboard h1{
+        font-size: 4.6vw;
+    }
+
+    #cDashboardContainerProjectDashboard h2{
+        font-size: 4vw;
+    }
+
+    .cHamMenuProjectDashboard>svg {
+        width:4vw;
+        height:4vw;
+    }
+
+    #cImageContainerProjectDashboard{
+        height:35vw;
+    }
+
+    #cMidProjectDashboard{
+        flex-direction: column;
+    }
+
+    #cMembersProjectDashboard{
+        margin-right:0;
+        margin-bottom:3vw;
+        width:100%;
+        flex-direction:row;
+        justify-content: space-evenly;
+    }
+
+    .cProfilImageProjectDashboard{
+        width:10vw;
+        height:10vw;
+        border-radius:5vw;
+    }
+}
 
 /*--------------------------------------------------------------------------------*/
 
@@ -624,7 +720,7 @@
 **************************************************/
 
 /* Bloc qui contient le header et la nav */
-#mainHeader
+/*#mainHeader
 {
     box-sizing: border-box;
     margin: 0;
@@ -640,29 +736,29 @@
     box-shadow: 3px 0 8px black;
     background-color: #241e20;
     color: #858585;
-}
+}*/
 
 /* Gestion du header */
-#mainHeader header { padding: 10px; height: 80px; display: flex; background-color: #141414; color: #D1D1D1; }
+/*#mainHeader header { padding: 10px; height: 80px; display: flex; background-color: #141414; color: #D1D1D1; }
 #mainHeader header img { width: 50px; height: 50px; }
 #mainHeader header h1 { margin: 0; padding-left: 18px; font-size: 23px; }
 #mainHeader header h1 span { position: relative; left: 20px; font-size: 18px; } /* Décalage de "manager" légèrement sur la droite */
 
 /* Gestion de la nav */
-#mainHeader nav { padding-top: 20px; }
+/*#mainHeader nav { padding-top: 20px; }
 #mainHeader nav ul { list-style-type: none; padding-left: 0; margin: 0; }
 #mainHeader nav ul li { padding: 7px 0 7px 10px; }
 #mainHeader nav ul li a { color: #A8A8A8; font-size: 15px; transition: 0.6s; }
 
 /* Animation du menu (nav) */
-#mainHeader nav ul li
+/*#mainHeader nav ul li
 {
     vertical-align: middle;
     transform: perspective(1px) translateZ(0);
     transition-duration: 0.6s;
 }
 
-#mainHeader nav ul li:before
+/*#mainHeader nav ul li:before
 {
     content: "";
     position: absolute;
@@ -682,8 +778,9 @@
 #mainHeader nav ul li:hover:before { transform: scaleX(1); }
 
 
-
-/*LOGIN*/
+/*------------------------------------------------------------------------------------------*/
+/*-----------------------------------------LOGIN--------------------------------------------*/
+/*------------------------------------------------------------------------------------------*/
 body, html {
     height: 100%;
     background-color: #D1D1D1;
@@ -769,4 +866,182 @@ body, html {
 
 .formLogin{
     padding-bottom: 10%;!important;
+}
+
+/**
+  *
+  * @ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
+  * @ Copyright 2017 Jérémy Nunes
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+/**************************************************
+***************************************************
+******************** HEADER ***********************
+***************************************************
+**************************************************/
+
+/*************************************************/
+/*  ANNULATION DU CODE PRÉDÉFINIE PAR BOOTSTRAP  */
+/*************************************************/
+
+.jLogoHeader { height: 80px !important; } /* Remise à niveau de la hauteur du header */
+
+#menu-icon { margin-top: -20px !important; } /* Position du menu hamburger par rapport au haut de la page */
+
+#menu-icon.active { margin-top: -12px !important; } /* Position de la croix du menu lors de la transformation */
+
+/*************************************************/
+/*   	  CODE DE MISE EN FORME DU HEADER        */
+/*************************************************/
+/* Bloc qui contient le header et la nav */
+#menu
+{
+    box-sizing: border-box;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    font-family: "Century Gothic";
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    height: 100%;
+    box-shadow: 3px 0 8px #888888;
+    background-color: #241e20;
+    overflow-x: hidden; /* Désactive la barre de scroll horizontal qui apparaît au dezoom */
+    z-index: 100; /* z-index sur le header */
+}
+
+#menu a { text-decoration: none; } /* Désactive le style des liens de la nav */
+
+#menubar{ display: none; } /* Cache le bouton pour le responsive (Son ordre de disposition est important dans le CSS pour son bon fonctionnement !) */
+
+#menu a .jLogoHeader:hover { color: white; } /*
+
+/* Logo et titre div enfant */
+.jLogoHeader
+{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    height: 60px;
+    background-color: #141414;
+    color: #D1D1D1;
+}
+
+/* Logo */
+.jLogoHeader img { width: 50px; height: 50px; }
+
+/* Titre */
+.jLogoHeader h1
+{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-left: 18px;
+    font-size: 23px;
+    font-weight: normal;
+}
+
+.jLogoHeader h1 span
+{
+    position: relative;
+    left: 20px; /* Décalage de "manager" légèrement sur la droite */
+    font-size: 18px;
+}
+
+/*******************************************************************/
+
+/* Liste des liens qui compose la nav */
+.jListHeader { list-style-type: none; padding-left: 0; padding-top: 20px; margin: 0; }
+.jListHeader li { padding: 7px 0 7px 10px; }
+.jListHeader li a { color: #A8A8A8; font-size: 15px; transition: 0.6s; }
+
+/* Animation du menu (nav) */
+.jListHeader li
+{
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0); transform: perspective(1px) translateZ(0);
+    transition-duration: 0.6s;
+}
+
+.jListHeader li:before
+{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #c94672;
+    -webkit-transform: scaleX(0); transform: scaleX(0);
+    -webkit-transform-origin: 0 50%; transform-origin: 0 50%;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out;
+}
+
+.jListHeader li a:hover { text-decoration: none;  }
+.jListHeader li:hover a { color: white; transition: 0.6s; }
+.jListHeader li:hover:before { -webkit-transform: scaleX(1); transform: scaleX(1); }
+
+/*******************************************************************/
+
+/* Responsive // Menu hamburger */
+@media all and (min-width: 769px)
+{
+    #menu { margin-left: 0!important; }							/* Refait apparaître la nav quand on */
+    .jMainResponsiveHeader { margin-left: 200px!important; }	/* réagrandit la fenêtre du navigateur */
+}
+
+/* Le menu hamburger apparaît */
+@media all and (max-width: 768px)
+{
+    /* Position du menu hamburger */
+    #menu-icon
+    {
+        position:absolute;
+        left:0;
+        top:50%;
+        margin-top: -45px; /* Position du menu hamburger par rapport au haut de la page */
+        padding-left: 20px;
+        cursor:pointer;
+    }
+
+    #menu-icon.active { margin-top: -37px; } /* Position de la croix du menu lors de la transformation */
+
+    /* Gestion de la forme donné au menu hamburger */
+    #menu-icon span
+    {
+        width: 25px;
+        margin-bottom: 4px;
+        border: 2px solid transparent;
+        -moz-border-image: -moz-linear-gradient(top left, #c44973 -10%, #03ad99 150%); /* Border gradient ( ~If~ Compatibilité Mozilla ) */
+        -webkit-border-image: -webkit-linear-gradient(top left, #c44973 -10%, #03ad99 150%); /* Border gradient ( ~If~ Compatibilité Chrome, Safari, Android... ) */
+        -ms-border-image: -moz-linear-gradient(top left, #c44973 -10%, #03ad99 150%); /* Border gradient ( ~If~ Compatibilité Explorer ) */
+        -o-border-image: -moz-linear-gradient(top left, #c44973 -10%, #03ad99 150%); /* Border gradient ( ~If~ Compatibilité Opéra ) */
+        border-image: linear-gradient(to bottom right, #c44973 -10%, #03ad99 150%); /* Border gradient */
+        border-image-slice: 1; /* Pour afficher le menu hamburger correctement avec le gradient */
+        display: block;
+        transition: transform .2s; -webkit-transition: transform .2s;
+    }
+
+    #menu-icon.active .jFirstStepHeader { transform:rotate(45deg); -webkit-transform:rotate(45deg); margin-top:0px; }
+    #menu-icon.active .jSecondStepHeader { transform:rotate(135deg); -webkit-transform:rotate(135deg); position:relative; top:-8px; }
+    #menu-icon.active .jThirdStepHeader { display: none; }
+
+    #menubar
+    {
+        position:fixed;
+        height: 70px;
+        padding-top: 50px;
+        display:block;
+        z-index: 100; /* z-index sur le menu hamburger */
+    }
+
+    #menu { margin-left: -200px; } /* Camoufle la nav avant le clique sur le menu hamburger */
 }

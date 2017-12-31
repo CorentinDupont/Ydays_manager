@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
     <!-- Div global de la fiche de projet-->
     <div id="cDashboardContainerProjectDashboard">
 
@@ -31,7 +32,7 @@
             <div id="cTitleProjectBlockProjectDashboard">
                 <h1>Domotique</h1>
                 <!-- Bouton modif -->
-                <div class="cRoundButton cEditRoundButton cYnovPurple cShadowed" id="cTitleEditRoundButtonProjectDashboard">
+                <div class="cRoundButton cEditRoundButton cYnovPurple cShadowed cRoundButtonTopRight" id="cTitleEditRoundButtonProjectDashboard">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
 <g>
     <g id="create">
@@ -43,30 +44,18 @@
                 </div>
             </div>
 
-            <!-- Menu Hamburger -->
-            <div class="dropdown cHamMenuProjectDashboard">
-                <svg data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<g>
-    <g>
-        <path d="M501.333,96H10.667C4.779,96,0,100.779,0,106.667s4.779,10.667,10.667,10.667h490.667c5.888,0,10.667-4.779,10.667-10.667    S507.221,96,501.333,96z" fill="#5d5d5d"/>
-    </g>
-</g>
+            <!-- Menu Option -->
+            <div class="cHamMenuProjectDashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 485.213 485.212" style="enable-background:new 0 0 485.213 485.212;" xml:space="preserve">
                     <g>
-                        <g>
-                            <path d="M501.333,245.333H10.667C4.779,245.333,0,250.112,0,256s4.779,10.667,10.667,10.667h490.667    c5.888,0,10.667-4.779,10.667-10.667S507.221,245.333,501.333,245.333z" fill="#5d5d5d"/>
-                        </g>
+                        <path d="M485.212,272.93v-60.648l-65.535-10.93c-4.564-19.69-12.321-38.083-22.72-54.756l38.647-54.078l-42.876-42.883   l-54.11,38.62c-16.675-10.366-35.063-18.155-54.759-22.745L272.934,0h-60.65l-10.931,65.509   c-19.662,4.59-38.083,12.379-54.756,22.745l-54.108-38.62L49.607,92.518l38.648,54.078c-10.396,16.645-18.155,35.066-22.717,54.756   l-65.537,10.93v60.648l65.537,10.931c4.562,19.695,12.321,38.088,22.717,54.759l-38.648,54.105l42.881,42.881l54.136-38.643   c16.646,10.393,35.066,18.154,54.729,22.714l10.931,65.535h60.65l10.926-65.535c19.663-4.56,38.084-12.321,54.759-22.714   l54.11,38.643l42.876-42.881l-38.647-54.105c10.398-16.671,18.155-35.092,22.72-54.759L485.212,272.93z M242.607,363.906   c-66.989,0-121.302-54.311-121.302-121.3c0-66.989,54.313-121.302,121.302-121.302c66.991,0,121.302,54.313,121.302,121.302   C363.909,309.595,309.599,363.906,242.607,363.906z" fill="#5d5d5d"/>
                     </g>
-                    <g>
-                        <g>
-                            <path d="M501.333,394.667H10.667C4.779,394.667,0,399.445,0,405.333C0,411.221,4.779,416,10.667,416h490.667    c5.888,0,10.667-4.779,10.667-10.667C512,399.445,507.221,394.667,501.333,394.667z" fill="#5d5d5d"/>
-                        </g>
-                    </g>
-
-</svg>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Comptes rendu</a></li>
-                    <li><a href="#">Checklist</a></li>
-                </ul>
+                </svg>
+                <!-- menu déroulant caché -->
+                <div class="cDropdownMenuProjectDashboard">
+                    <a href="#" class="cYnovGreen">Comptes rendu</a>
+                    <a href="#" class="cYnovGreen">Checklist</a>
+                </div>
             </div>
         </div>
 
@@ -263,5 +252,6 @@
 </body>
 
 <script src="{{ asset('js/ficheProjet.js') }}"></script>
+<script src="{{ asset('js/scriptHeader.js') }}"></script>
 
 </html>

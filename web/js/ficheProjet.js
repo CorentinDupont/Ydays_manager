@@ -29,9 +29,20 @@ $('#cTitleEditRoundButtonProjectDashboard').click(function(){
 
 /*-----------------------------------------------------------------------------------------*/
 
+/*----------------------------------- MENU DEROULANT (OPTIONS) ----------------------------------------*/
 
+var optionMenuIsVisible=false;
+$('.cHamMenuProjectDashboard>svg').click(function(){
+    if(!optionMenuIsVisible){
+        $(this).parent().find('.cDropdownMenuProjectDashboard').css("visibility", "visible");
+        optionMenuIsVisible=true;
+    }else{
+        $(this).parent().find('.cDropdownMenuProjectDashboard').css("visibility", "hidden");
+        optionMenuIsVisible=false;
+    }
+});
 
-
+/*-----------------------------------------------------------------------------------------------------*/
 
 /*--------------------------------------  IMAGE -------------------------------------------*/
 
