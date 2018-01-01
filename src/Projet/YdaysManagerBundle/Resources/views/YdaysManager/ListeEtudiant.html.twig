@@ -1,0 +1,529 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Liste des étudiants</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+    {% endblock %}
+</head>
+
+<body id="cBodyStudentList">
+    {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+    <!-- Block avec le contenu de la page -->
+    <div id="cGlobalContainerStudentList">
+        <!-- block bar de recherche -->
+        <section class="cSearchBarStudentList cShadowed">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 451 451" style="enable-background:new 0 0 451 451;" xml:space="preserve" width="512px" height="512px">
+                <g>
+                    <path d="M447.05,428l-109.6-109.6c29.4-33.8,47.2-77.9,47.2-126.1C384.65,86.2,298.35,0,192.35,0C86.25,0,0.05,86.3,0.05,192.3   s86.3,192.3,192.3,192.3c48.2,0,92.3-17.8,126.1-47.2L428.05,447c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4   C452.25,441.8,452.25,433.2,447.05,428z M26.95,192.3c0-91.2,74.2-165.3,165.3-165.3c91.2,0,165.3,74.2,165.3,165.3   s-74.1,165.4-165.3,165.4C101.15,357.7,26.95,283.5,26.95,192.3z" fill="#a8a8a8"/>
+                </g>
+            </svg>
+            <input type="text" name="cInputSearchBarStudentList"/>
+        </section>
+        <!-- block liste étudiant divisée par promo -->
+        <section id="cBlockStudentList">
+            <div class="cStudentClassBlockStudentList">
+                <div class="cStudentClassBarStudentList cShadowed">
+                    <h2>Ingésup B1</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enable-background="new 0 0 129 129" width="512px" height="512px">
+                        <g>
+                            <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" fill="#858585"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="cClassStudentListContainerStudentList">
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image3.png') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Corentin DUPONT</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image2.jpg') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image1.jpg') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cStudentClassBlockStudentList">
+                <div class="cStudentClassBarStudentList cShadowed">
+                    <h2>Ingésup B2</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enable-background="new 0 0 129 129" width="512px" height="512px">
+                        <g>
+                            <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" fill="#858585"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="cClassStudentListContainerStudentList">
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image4.jpg') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image5.png') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image6.png') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cStudentClassBlockStudentList">
+                <div class="cStudentClassBarStudentList cShadowed">
+                    <h2>Ingésup B3</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enable-background="new 0 0 129 129" width="512px" height="512px">
+                        <g>
+                            <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" fill="#858585"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="cClassStudentListContainerStudentList">
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image7.jpg') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image8.jpg') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cOneStudentItemStudentList cRounded cShadowed">
+                        <div class="cImageContainerOneStudentStudentList">
+                            <img src="{{ asset('img/image1.jpg') }}"/>
+                        </div>
+                        <div class="cInfoStudentStudentList">
+                            <div class="cOneInfoBlockStudentList">
+                                <h3>Charles HUET</h3>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>Ingésup B1</p>
+                                    <p>charles.huet@ynov.com</p>
+                                    <p>0504080645</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList">
+                                <p>Projet</p>
+                                <div class="cListInfoOneInfoBlockStudentList">
+                                    <p>The Legend Of Zelda - The Dark Side Of Dimension</p>
+                                    <p>Domotique</p>
+                                </div>
+                            </div>
+                            <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                <p>Indisponible</p>
+                                <div class="cAvailabilityDotStudentList"></div>
+                            </div>
+                        </div>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <div class="cRoundButton cKickRoundButton cTomatoRed cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.54 491.54" style="enable-background:new 0 0 491.54 491.54;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M282.58,387.484H36.909C16.534,387.484,0,404.016,0,424.394v67.115h319.488v-67.115    C319.488,404.016,302.955,387.484,282.58,387.484z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M484.916,392.69L260.66,168.433l43.315-43.238c7.142,6.298,18.125,5.99,24.883-0.768c7.066-7.142,7.066-18.586,0-25.728    L235.47,5.387c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.651l-0.768-0.768L90.471,148.772l0.768,0.844    c-7.066-7.142-18.586-7.142-25.651,0c-7.142,7.066-7.142,18.586,0,25.652l93.312,93.388c7.142,7.066,18.662,7.066,25.728,0    c7.066-7.142,7.066-18.585,0-25.726l0.768,0.766l43.315-43.238l224.179,224.18c8.832,8.832,23.194,8.832,32.026,0    C493.748,415.806,493.748,401.521,484.916,392.69z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="cRoundButton cSendMessageRoundButton cYnovGreen cShadowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 31.444 31.443" style="enable-background:new 0 0 31.444 31.443;" xml:space="preserve">
+                                    <g>
+                                        <path d="M31.202,16.369c-0.62-1.388-2.249-2.011-3.637-1.391l-1.325,0.594l-3.396-7.591l1.325-0.592   c1.388-0.622,2.01-2.25,1.389-3.637c-0.62-1.389-2.248-2.012-3.637-1.39l-1.324,0.593l-0.593-1.326   c-0.621-1.388-2.249-2.009-3.637-1.388c-1.388,0.62-2.009,2.247-1.389,3.637l0.593,1.325L7.98,8.598L7.388,7.273   c-0.621-1.39-2.249-2.009-3.637-1.39C2.363,6.504,1.742,8.132,2.362,9.52l0.592,1.324L1.63,11.438   c-1.388,0.621-2.01,2.247-1.389,3.636c0.62,1.388,2.249,2.01,3.637,1.39l1.325-0.594l3.394,7.592l-1.325,0.592   c-1.388,0.621-2.009,2.25-1.389,3.637c0.621,1.389,2.249,2.011,3.637,1.391l1.324-0.593l0.593,1.325   c0.621,1.389,2.249,2.01,3.637,1.389c1.387-0.62,2.009-2.248,1.388-3.636l-0.591-1.326l7.591-3.394l0.592,1.321   c0.621,1.391,2.248,2.013,3.637,1.392c1.388-0.619,2.01-2.248,1.389-3.637l-0.592-1.324l1.323-0.594   C31.201,19.384,31.823,17.757,31.202,16.369z M13.623,21.215l-3.395-7.593l7.591-3.394l3.395,7.591L13.623,21.215z" fill="#FFFFFF"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</body>
+
+<script src="{{ asset('js/scriptHeader.js') }}"></script>
+<script src="{{ asset('js/listeEtudiant.js') }}"></script>
+
+</html>

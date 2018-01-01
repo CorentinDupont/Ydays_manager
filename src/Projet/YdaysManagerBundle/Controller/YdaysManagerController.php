@@ -37,5 +37,9 @@ class YdaysManagerController extends Controller
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:lesProjets.html.twig');
     }
 
+    public function listeEtudiantAction(){
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:ListeEtudiant.html.twig');
+    }
+
 
 }

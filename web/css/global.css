@@ -421,6 +421,226 @@
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------*/
+/*------------------           LISTE ETUDIANT             --------------------*/
+/*--------------------------------------------------------------------------------*/
+
+#cBodyStudentList{
+    background-color:#F6F6F6;
+}
+
+#cGlobalContainerStudentList {
+    margin-left: 200px;
+    background-color:#F6F6F6;
+    padding:0 3vw 3vw 3vw;
+}
+
+#cGlobalContainerStudentList p {
+    font-size: 1.1vw;
+}
+
+#cGlobalContainerStudentList h1 {
+    font-size: 2.3vw;
+}
+
+#cGlobalContainerStudentList h2 {
+    font-size: 1.3vw;
+    margin:0;
+    color:#5D5D5D;
+}
+
+#cGlobalContainerStudentList h3 {
+    font-size: 1.3vw;
+    margin:0;
+    color:#5D5D5D;
+}
+
+/*block barre de recherche*/
+.cSearchBarStudentList{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    border-radius:0 0 17px 17px;
+    background-color:white;
+    padding:1vw;
+    margin-bottom:3vw;
+}
+
+.cSearchBarStudentList svg{
+    height:1.5vw;
+    width:1.5vw;
+    margin-right:1vw;
+}
+
+.cSearchBarStudentList input{
+    width:100%;
+    border-width: 0 0 1px 0;
+    border-color:#A8A8A8;
+    font-size:1.1vw;
+}
+
+/*Block avec toutes la liste d'étudiants*/
+#cBlockStudentList{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+}
+
+/*Block d'une promo avec sa barre et ses étudiants*/
+.cStudentClassBlockStudentList{
+    display:flex;
+    flex-direction:column;
+}
+
+/*Barre d'une promo*/
+.cStudentClassBarStudentList{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    padding:0.7vw;
+    background-color:white;
+    margin: 1vw 0;
+}
+
+.cStudentClassBarStudentList:hover{
+    cursor:pointer;
+    background-color:#E1E1E1;
+}
+
+.cStudentClassBarStudentList svg{
+    height:1.5vw;
+    width:1.5vw;
+}
+
+/*Block Liste d'étudiant*/
+.cClassStudentListContainerStudentList{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+/*Un item étudiant*/
+.cOneStudentItemStudentList{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position:relative;
+    margin:1vw 0;
+}
+
+/*Conteneur de l'image de profil*/
+.cImageContainerOneStudentStudentList{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:17px 0 0 17px;
+    width:8vw;
+    height:8vw;
+}
+
+.cImageContainerOneStudentStudentList img{
+    height:100%;
+}
+
+/*Block d'info de l'étudiant*/
+.cInfoStudentStudentList{
+    padding:1vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+}
+
+.cOneInfoBlockStudentList p{
+    margin:0;
+}
+
+.cListInfoOneInfoBlockStudentList p{
+    font-size:0.6vw;
+    color:#5D5D5D;
+}
+
+.cAvailabilityStudentList{
+    display:flex;
+    flex-direction:row;
+    align-items: flex-start;
+}
+
+.cAvailabilityDotStudentList{
+    width:1.5vw;
+    height:1.5vw;
+    background-color:#EC4747;
+    border-radius:0.75vw;
+    margin-left:1vw;
+}
+
+@media all and (max-width: 768px) {
+    #cGlobalContainerStudentList {
+        margin-left: 0;
+    }
+
+    #cGlobalContainerStudentList p {
+        font-size: 2vw;
+    }
+
+    #cGlobalContainerStudentList h1 {
+        font-size: 4.6vw;
+    }
+
+    #cGlobalContainerStudentList h2 {
+        font-size: 3.5vw;
+    }
+
+    #cGlobalContainerStudentList h3 {
+        font-size: 2.2vw;
+    }
+
+
+    .cSearchBarStudentList svg{
+        height:4vw;
+        width:4vw;
+        margin-right:2vw;
+    }
+
+    .cSearchBarStudentList input{
+        font-size: 2.2vw;
+    }
+
+    .cStudentClassBarStudentList{
+        padding:2vw;
+    }
+
+    .cStudentClassBarStudentList svg{
+        width:4vw;
+        height:4vw;
+    }
+
+    .cOneStudentItemStudentList{
+        flex-direction:column;
+    }
+
+    .cImageContainerOneStudentStudentList{
+        border-radius:17px 17px 0 0;
+        width:100%;
+        height:25vw;
+    }
+
+    .cImageContainerOneStudentStudentList img{
+        width:100%;
+        height:auto;
+    }
+
+    .cAvailabilityDotStudentList{
+        height:3vw;
+        width:3vw;
+        border-radius:1.5vw;
+    }
+}
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------*/
 /*------------------           ALL PROJECT              --------------------*/
 /*--------------------------------------------------------------------------------*/
 #project{
@@ -439,8 +659,8 @@
 }
 .fontProject{
     font-size: 1vw;
-
 }
+
 
 
 /*--------------------------------------------------------------------------------*/
