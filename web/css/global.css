@@ -2102,3 +2102,83 @@ body, html {
 #Capa_1{
     height: 100%;
 }
+
+/**
+  *
+  * @ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
+  * @ Copyright 2017 Jérémy Nunes
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+/**************************************************
+***************************************************
+******************** ACCUEIL **********************
+***************************************************
+**************************************************/
+
+html { height: 100%; } /* Pour permettre au contenu de se centrer au milieu de la page */
+
+#jBodyAccueil
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #d2d2d2;
+    height: 100%; /* Pour permettre au contenu de se centrer au milieu de la page */
+}
+
+/* Enveloppe de la page */
+.jWrapperAccueil
+{
+    margin-left: 230px; /* Décalage pour l'écart avec la navbar */
+    margin-right: 30px;
+    display: flex;				/* Pour permettre */
+    justify-content: center;	/* au contenu de */
+    align-items: center;		/* se centrer au */
+    min-height: 100%; 			/*  milieu de la page */
+}
+
+/* Gestion du positionnement du contenu du bloc */
+.jContainerAccueil
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Century Gothic";
+    color: #666;
+    text-align: center;
+}
+
+/* Gestion de l'image */
+.jContainerAccueil img
+{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 3px 0 10px black;
+}
+
+/* Gestion du texte */
+.jContainerAccueil h1
+{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.jContainerAccueil h1 span { text-transform: uppercase; } /* Majuscule sur les noms de famille */
+
+.jContainerAccueil p
+{
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+/* IL EST IMPORTANT DE METTRE CE MEDIA QUERIES À LA FIN DU CSS POUR SON BON FONCTIONNEMENT */
+/* Media Queries pour reset le margin lorsque la navbar disparaît */
+@media all and (max-width: 768px)
+{
+    .jWrapperAccueil { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
+}

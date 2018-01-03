@@ -39,3 +39,8 @@ projet_ydays_manager_login:
     path:     /login
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:login
+
+projet_ydays_manager_accueil:
+    path:     /accueil
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:accueil
