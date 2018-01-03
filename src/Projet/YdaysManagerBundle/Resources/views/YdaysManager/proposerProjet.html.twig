@@ -1,52 +1,73 @@
 <!--
-
-@ Auteur : Maxime Grand <maxime.grand@ynov.com>
-@ Copyright 2017 Maxime Grand
-@ Version 1.0
-
+  @ Auteur : Maxime Grand <maxime.grand@ynov.com>
+  @ Copyright 2017 Maxime Grand
+  @ Level : Ingésup B2
+  @ Version : 1.0
 -->
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 
 <html>
 
 <head>
     <title>Proposition de projet</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
+		<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/global.css') }}">
+		<script src="{{ asset('js/jquery.min.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.js') }}"></script>
+
     {% endblock %}
 </head>
 
-<body id="mBodyproposerProjet">
-    <div id="topCreateDashboard">
-        <form>
-            <select class="mCategorieproposerProjet" size="1">
-                <option selected="selected">Pro
-                <option>Perso
-            </select>
-            <select class="mAffiliationproposerProjet" size="1">
-                <option selected="selected">Interne
-                <option>Externe
-            </select>
-        </form>
-        <textarea class="mNameProjetproposerProjet" type="text" maxlength="80" onclick="this.value ='';">Nom de votre Projet</textarea>
-    </div>
-    <div id="midCreateDashboard">
-        <input class="mInputfileproposerProjet" type="file">
-    </div>
-    <div id="botCreateDashboard">
-        <textarea class="mMembersproposerProjet" type="text" disabled="disabled">Vos futurs membres s'afficheront ici</textarea>
-        <textarea class="mDescriptionproposerProjet" type="text" maxlength="500" onclick="this.value ='';">Description du projet</textarea>
-    </div>
-    <input class="mButtonproposerProjet" type="submit" value="Proposer mon projet">
+<body id="mBodyProposerProjet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	{% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+    
+    <div id="mWrapperProposerProjet">
+	    <div id="mTopDashboardProposerProjet">
+	            <form>
+	                <select class="mCategorieProposerProjet" size="1">
+	                    <option selected="selected">Pro</option>
+	                    <option>Perso</option>
+	                </select>
+	                <select class="mAffiliationProposerProjet" size="1">
+	                    <option selected="selected">Interne</option>
+	                    <option>Externe</option>
+	                </select>
+	            </form>
+	        <input class="mNameProjetProposerProjet" type="text" maxlength="80" placeholder="Nom de votre projet">
+	    </div>
+	    
+	    <div id="mMidDashboardProposerProjet">
+	        <input class="mInputFileProposerProjet" type="file" id="mMidDashboardInputFileProposerProjet"/>
+			<div id="mProjectImageContainerProposerProjet">
+				<label for="mMidDashboardInputFileProposerProjet">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve" width="512px" height="512px">
+						<g>
+							<path d="M57,6H1C0.448,6,0,6.447,0,7v44c0,0.553,0.448,1,1,1h56c0.552,0,1-0.447,1-1V7C58,6.447,57.552,6,57,6z M56,50H2V8h54V50z" fill="#a8a8a8"/>
+							<path d="M16,28.138c3.071,0,5.569-2.498,5.569-5.568C21.569,19.498,19.071,17,16,17s-5.569,2.498-5.569,5.569   C10.431,25.64,12.929,28.138,16,28.138z M16,19c1.968,0,3.569,1.602,3.569,3.569S17.968,26.138,16,26.138s-3.569-1.601-3.569-3.568   S14.032,19,16,19z" fill="#a8a8a8"/>
+							<path d="M7,46c0.234,0,0.47-0.082,0.66-0.249l16.313-14.362l10.302,10.301c0.391,0.391,1.023,0.391,1.414,0s0.391-1.023,0-1.414   l-4.807-4.807l9.181-10.054l11.261,10.323c0.407,0.373,1.04,0.345,1.413-0.062c0.373-0.407,0.346-1.04-0.062-1.413l-12-11   c-0.196-0.179-0.457-0.268-0.72-0.262c-0.265,0.012-0.515,0.129-0.694,0.325l-9.794,10.727l-4.743-4.743   c-0.374-0.373-0.972-0.392-1.368-0.044L6.339,44.249c-0.415,0.365-0.455,0.997-0.09,1.412C6.447,45.886,6.723,46,7,46z" fill="#a8a8a8"/>
+						</g>
+					</svg>
+					<p>Cliquez pour ajouter une image</p>
+				</label>
+				<img class="img-fluid h-100" src="#"/>
+			</div>
+	    </div>
+	    
+	    <div id="mBotDashboardProposerProjet">
+	        <textarea class="mMembersProposerProjet" disabled="disabled" placeholder="Vos futurs membres s'afficheront ici"></textarea>
+	        <textarea class="mDescriptionProposerProjet" placeholder="Description du projet..." onclick="this.value ='';"></textarea>
+	    </div>
+	    
+	    <input class="mButtonProposerProjet" type="submit" value="Proposer mon projet">
+	</div>
 
-</body>
+    <script src="{{ asset('js/scriptHeader.js') }}"></script>
+    <script src="{{ asset('js/proposerProjet.js') }}"></script>
+
+    </body>
 
 </html>
