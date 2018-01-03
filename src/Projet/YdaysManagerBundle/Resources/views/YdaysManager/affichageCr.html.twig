@@ -12,11 +12,17 @@
 		<title>Page Title</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="cssCustom/styleDisplayCr.css">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+        {% endblock %}
 	</head>
 
 	<body id="cBodyAffichageCr">
+        {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
         <button type="button" class="btn btn-primary">Revenir à la fiche projet</button>
         <div class="flexTopDisplayCr">
             <p>Comptes rendus</p>
@@ -95,4 +101,5 @@
             </div>
         </div>
 	</body>
+    <script src="{{ asset('js/scriptHeader.js') }}"></script>
 </html>
