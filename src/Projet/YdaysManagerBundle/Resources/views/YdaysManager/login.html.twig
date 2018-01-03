@@ -5,18 +5,22 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% endblock %}
 </head>
 
-<body background="{{ asset('Img/wallp_manager.jpg') }}">
+<body background="{{ asset('img/ynov_wallpaper_blur.jpg') }}">
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4 backLogin">
         <div id="flexImgLogin" class="row">
             <div class="col-md-2"></div>
             <div class="col-md-6" id="centerImgLogin">
-                <img class="img-responsive" id="logo" src="{{ asset('Img/ydays_manager.png') }}" alt="logo" />
+                <img class="img-responsive" id="logo" src="{{ asset('img/logo.png') }}" alt="logo" />
             </div>
         </div>
         <p class="fontLogin titleLogin">Connexion</p>

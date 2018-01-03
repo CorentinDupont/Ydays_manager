@@ -5,19 +5,23 @@
     <title>Page Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{{ asset(css/bootstrap.css) }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(css/global.css) }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% endblock %}
 </head>
 
-<body>
-    <div class="container">
-        <div class="col">
-            <div class="textAlignHome paddingHome">
-                <img id="imgHome" src="Img/pp%20link%20cosplay%20blue.png" alt="">
-                <p id="userNameHome">Bienvenue Charles HUET</p>
-                <p id="selectHome">Pour commencer, sélectionner une option à gauche</p>
-            </div>
+<body id="jBodyAccueil">
+    {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+    <div class="jWrapperAccueil">
+        <div class="jContainerAccueil">
+            <img src="{{ asset('img/image3.png')}}" alt="User picture"/>
+            <h1> Bienvenue Corentin <span>Dupont</span> ! </h1>
+            <p> Pour commencer, sélectionnez une action dans le menu à gauche </p>
         </div>
     </div>
+    <script src="{{ asset('js/scriptHeader.js') }}"></script>
 </body>
 </html>

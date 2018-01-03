@@ -418,6 +418,98 @@
     }
 }
 
+/**************************************************
+***************************************************
+*********** POP UP adminDashModifMemb *************
+***************************************************
+**************************************************/
+
+/*************************************************/
+/*                 HEADER MODAL                  */
+/*************************************************/
+/* Taille du modal */
+.modal-dialog { width: 400px; }
+
+/* Container */
+.modal-content
+{
+    background-color: #f6f6f6;
+    color: #8f8f8f;
+}
+
+/* Titre */
+.modal-header
+{
+    background-color: #00b298;
+    border-top-left-radius: 6px; border-top-right-radius: 6px;
+    color: white;
+}
+
+.modal-header h3 { font-size: 17px; }
+
+/* Bouton close */
+.close, .close:hover
+{
+    opacity: 1;
+    color: white;
+    font-weight: 100;
+}
+.close:focus { outline: none; }
+
+/*************************************************/
+/*                  BODY MODAL                   */
+/*************************************************/
+/* Container */
+.modal-body { padding: 0; margin: 0; }
+
+/* Titre (en background blanc) */
+.modal-body .modal-title
+{
+    padding: 8px 0 8px 15px;
+    margin: 0;
+    background-color: white;
+}
+
+/* Sous-contenu des titres */
+.user-modal-membre
+{
+    padding: 8px 0 0 15px;
+}
+
+/* Positionnement des titres */
+.wrapper-title-membres, .container-title-membres
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15px;
+}
+.wrapper-title-membres { background-color: white; }
+
+/* Positionnement des "+" et "x" */
+.wrapper-title-membres p a
+{
+    position: relative;
+    top: 5px;
+    color: #aaaaaa;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+.container-title-membres p a
+{
+    position: relative;
+    top: 2px;
+    color: #aaaaaa;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Responsive : Modal adminDashModifMemb */
+@media all and (max-width: 420px) { .modal-dialog { width: 250px; } } /* Taille du modal */
+
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------*/
@@ -898,6 +990,298 @@
 }
 
 /*--------------------------------------------------------------------------------*/
+
+/*
+  @ Auteur : Maxime Grand <maxime.grand@ynov.com>
+  @ Copyright 2017 Maxime Grand
+  @ Level : Ingésup B2
+  @ Version : 1.0
+*/
+
+/**************************************************
+***************************************************
+******************** PROPOSER PROJET **************
+***************************************************
+**************************************************/
+#mBodyProposerProjet {
+    background-color: #F6F6F6;
+    font-family: "Century Gothic" !important;
+    margin: 0;
+    padding: 0;
+}
+
+#mWrapperProposerProjet {
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mTopDashboardProposerProjet {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#mTopDashboardProposerProjet form {
+    margin-right: 85px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.mCategorieProposerProjet {
+    padding: 0 10px;
+    height: 25px !important;
+    width: 160px;
+    color: #A8A8A8;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px #CCC;
+}
+.mCategorieProposerProjet:focus { outline-style: none; }
+
+.mAffiliationProposerProjet {
+    margin-top: 10px;
+    padding: 0 10px;
+    height: 25px !important;
+    width: 160px;
+    color: #A8A8A8;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px #CCC;
+}
+.mAffiliationProposerProjet:focus { outline-style: none; }
+
+.mNameProjetProposerProjet {
+    padding: 0 10px;
+    height: 38px;
+    width: 500px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    outline-style:none;
+    border-radius: 5px;
+}
+.mNameProjetProposerProjet::-webkit-input-placeholder { color: #A8A8A8; }
+.mNameProjetProposerProjet:focus { outline-style: none; }
+
+#mMidDashboardProposerProjet input {
+    position:absolute;
+    z-index:-1;
+    left:-9999px;
+    opacity: 0;
+}
+
+#mMidDashboardProposerProjet #mProjectImageContainerProposerProjet {
+    height: 300px;
+    width: 1000px;
+    margin-top: 25px;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 12px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mMidDashboardProposerProjet label {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    color: #A8A8A8;
+    cursor: pointer;
+    position:absolute;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+
+#mMidDashboardProposerProjet label svg{
+    height:2.4vw;
+    width:2.4vw;
+    margin-right:2vw;
+}
+
+#mMidDashboardProposerProjet #mProjectImageContainerProposerProjet img{
+    width:100%;
+    height:auto;
+}
+
+#mMidDashboardProposerProjet input:focus { outline-style: none; }
+
+#mBotDashboardProposerProjet {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#mBotDashboardProposerProjet textarea { resize: none; }
+
+.mMembersProposerProjet {
+    margin-right: 25px;
+    padding: 5px 10px;
+    height: 120px;
+    width: 275px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 12px;
+    cursor: not-allowed;
+}
+.mMembersProposerProjet::-webkit-input-placeholder { color: #A8A8A8; }
+
+.mDescriptionProposerProjet {
+    padding: 5px 10px;
+    height: 120px;
+    width: 700px;
+    color: #A8A8A8;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 12px;
+    outline-style:none;
+}
+.mDescriptionProposerProjet::-webkit-input-placeholder { color: #A8A8A8; }
+
+.mButtonProposerProjet {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    height:40px;
+    width: 200px;
+    background-color: #00b396;
+    color: white;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 25px;
+    outline-style:none;
+}
+
+.mButtonProposerProjet:hover {
+    height: 40px;
+    width: 200px;
+    background-color: #008080;
+    color: white;
+    border: none;
+    box-shadow: 3px 3px 8px #CCC;
+    border-radius: 25px;
+    outline-style:none;
+    transform: translate(1px,1px);
+}
+
+@media all and (max-width: 768px)
+{
+    #mWrapperProposerProjet { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
+}
+
+/*********************************************************************************/
+/* Quand l'écran <= 1000px (#mTopDashboardProposerProjet pour form et son input) */
+/*********************************************************************************/
+@media all and (max-width: 1050px)
+{
+    #mTopDashboardProposerProjet
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #mTopDashboardProposerProjet form
+    {
+        margin: 15px 0;
+        display: flex;
+        flex-direction: row;
+    }
+    .mAffiliationProposerProjet { margin: 0 20px; }
+
+    @media all and (max-width: 1050px) { .mAffiliationProposerProjet { width: 200px; margin-right: 0; } }
+    @media all and (max-width: 1050px) { .mCategorieProposerProjet { width: 200px; } }
+
+    @media all and (max-width: 1050px) { .mNameProjetProposerProjet { width: 650px; } }
+    @media all and (max-width: 900px) { .mNameProjetProposerProjet { width: 500px; } }
+
+    @media all and (max-width: 550px)
+    {
+        .mNameProjetProposerProjet { width: 350px; }
+        .mAffiliationProposerProjet { margin: 0; }
+        .mCategorieProposerProjet { margin-right: 15px; width: 160px; }
+        .mAffiliationProposerProjet { margin-left: 15px; width: 160px; }
+    }
+
+    @media all and (max-width: 450px)
+    {
+        #mTopDashboardProposerProjet form
+        {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .mCategorieProposerProjet { margin: 0 0 20px 0; }
+        .mAffiliationProposerProjet { margin: 0 0 20px 0; }
+
+        .mNameProjetProposerProjet { width: 300px; }
+    }
+
+    @media all and (max-width: 350px)
+    {
+        .mNameProjetProposerProjet { width: 220px; }
+    }
+
+    @media all and (max-width: 300px)
+    {
+        .mCategorieProposerProjet, .mAffiliationProposerProjet { width: 130px; }
+    }
+}
+
+/****************************************************************************/
+/* Quand l'écran <= 1250px (#mMidDashboardProposerProjet et son input file) */
+/****************************************************************************/
+@media all and (max-width: 1250px) { #mMidDashboardProposerProjet input { width: 800px; } }
+@media all and (max-width: 1050px) { #mMidDashboardProposerProjet input { width: 650px; } }
+@media all and (max-width: 900px) { #mMidDashboardProposerProjet input { width: 500px; } }
+@media all and (max-width: 550px) { #mMidDashboardProposerProjet input { width: 350px; } }
+@media all and (max-width: 450px) { #mMidDashboardProposerProjet input { width: 300px; } }
+@media all and (max-width: 350px) { #mMidDashboardProposerProjet input { width: 220px; height: 200px; } }
+
+/****************************************************************************/
+/* Quand l'écran <= 1250px (#mBotDashboardProposerProjet et les 2 textarea) */
+/****************************************************************************/
+@media all and (max-width: 1250px) { .mMembersProposerProjet { width: 250px; } }
+@media all and (max-width: 1050px) { .mMembersProposerProjet { width: 225px; } }
+@media all and (max-width: 900px) { .mMembersProposerProjet { width: 500px; } }
+@media all and (max-width: 550px) { .mMembersProposerProjet { width: 350px; } }
+@media all and (max-width: 450px) { .mMembersProposerProjet { width: 300px; } }
+@media all and (max-width: 350px) { .mMembersProposerProjet { width: 220px; } }
+
+@media all and (max-width: 1250px) { .mDescriptionProposerProjet { width: 525px; } }
+@media all and (max-width: 1050px) { .mDescriptionProposerProjet { width: 400px; } }
+@media all and (max-width: 900px) { .mDescriptionProposerProjet { width: 500px; } }
+@media all and (max-width: 550px) { .mDescriptionProposerProjet { width: 350px; } }
+@media all and (max-width: 450px) { .mDescriptionProposerProjet { width: 300px; } }
+@media all and (max-width: 350px) { .mDescriptionProposerProjet { width: 220px; } }
+
+@media all and (max-width: 900px)
+{
+    #mBotDashboardProposerProjet { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .mMembersProposerProjet { margin: 0 0 25px 0; }
+}
+
+/****************************/
+/* Responsive input d'envoi */
+/****************************/
+@media all and (max-width: 350px)
+{
+    .mButtonProposerProjet { width: 170px; }
+    .mButtonProposerProjet:hover { width: 170px; }
+}
+
 
 /*--------------------------------------------------------------------------------*/
 /*------------------           ALL PROJECT              --------------------*/
@@ -1523,4 +1907,278 @@ body, html {
     }
 
     #menu { margin-left: -200px; } /* Camoufle la nav avant le clique sur le menu hamburger */
+}
+
+
+
+/**
+  *
+  * @ Auteur : Charles HUET <charles.huet@ynov.com>
+  * @ Copyright 2017 Charles HUET
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+
+/**************************************************
+***************************************************
+******************** les projets ******************
+***************************************************
+**************************************************/
+
+@media all and (max-width:768px){
+    #cBodyLesProjets{
+        margin-left: 0px;
+    }
+}
+#cBodyLesProjets{
+    background-color: #F6F6F6;
+    margin-left: 200px;
+}
+#cLinkLesProjets:hover{
+    text-decoration: none;
+}
+#cProjectListProject{
+    width: 90%;
+    height: 14vh;
+    margin-left: 5%;
+    border-radius: 17px;
+    border-width: 2px;
+    overflow: hidden;
+    padding: 0;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    -moz-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);    
+    
+}
+#ctitleDescListProject{
+     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.cInfoListProject{
+    padding-right: 0 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#cImgContainerLesProjets{
+    width: 12.5%;
+    
+}
+.cFontListProject{
+   font-size: calc(0.5vw + 0.5vh + 0.5vmin);
+    line-height: 100%;
+    color: #909090;
+}
+#ctitleDescListProject h5{
+   color: #878787;
+    font-size: calc(0.5vw + 0.7vh + 0.5vmin);
+}
+
+/**************************************************
+***************************************************
+************** affichage compte rendu *************
+***************************************************
+**************************************************/
+
+@media all and (max-width:768px){
+    #cBodyAffichageCr{
+        margin-left: 0px;
+    }
+}
+
+#cBodyAffichageCr{
+    background-color: #F6F6F6;
+    margin-left: 200px;
+}
+.containersDisplayCr{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    margin: 0 2.25vw 0 2.25vw;
+    background-color: #FFFFFF;
+    margin-bottom: 3%;
+    height: 15vh;
+    -webkit-box-shadow: 4px 4px 11px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 11px -2px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 11px -2px rgba(0,0,0,0.75);
+}
+
+.flexTopDisplayCr{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: baseline;
+	align-content: stretch;
+    text-align: center;
+    padding-bottom: 10vh;
+    font-size: 2.5rem;
+}
+.helperMarkDisplayCr{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: flex-end;
+	align-content: flex-end;
+    height: 2.5vw;
+    
+}
+.starYellow{
+    width: 25px;
+    padding: 0 3px 0 3px;
+}
+.starGrey{
+    width: 25px;
+    padding: 0 3px 0 3px;
+}
+
+
+/**************************************************
+***************************************************
+************** affichage liste entreprises ********
+***************************************************
+**************************************************/
+@media all and (max-width:768px){
+    #cBodyListEntreprises{
+        margin-left: 0px;
+    }
+}
+#cBodyListEntreprises{
+    background-color: #F6F6F6;
+    margin-left: 200px;
+}
+#cLinkListEntreprises:hover{
+    text-decoration: none;
+}
+#cListentrepriseProject{
+    width: 90%;
+    height: 14vh;
+    margin-left: 5%;
+    border-radius: 17px;
+    border-width: 2px;
+    overflow: hidden;
+    padding: 0;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    -moz-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);    
+    
+}
+#ctitleDescListentreprise{
+     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.cInfoListentreprise{
+    padding-right: 0 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#cImgContainerListentreprise{
+    width: 12.5%;
+    
+}
+.cFontListentreprise{
+   font-size: calc(0.6vw + 0.6vh + 0.7vmin);
+    line-height: 100%;
+    color: #909090;
+}
+.cH5ListEntreprises{
+   color: #878787;
+    font-size: calc(0.8vw + 0.7vh + 0.7vmin);
+}
+#Capa_1{
+    height: 100%;
+}
+
+/**
+  *
+  * @ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
+  * @ Copyright 2017 Jérémy Nunes
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+/**************************************************
+***************************************************
+******************** ACCUEIL **********************
+***************************************************
+**************************************************/
+
+html { height: 100%; } /* Pour permettre au contenu de se centrer au milieu de la page */
+
+#jBodyAccueil
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #d2d2d2;
+    height: 100%; /* Pour permettre au contenu de se centrer au milieu de la page */
+}
+
+/* Enveloppe de la page */
+.jWrapperAccueil
+{
+    margin-left: 230px; /* Décalage pour l'écart avec la navbar */
+    margin-right: 30px;
+    display: flex;				/* Pour permettre */
+    justify-content: center;	/* au contenu de */
+    align-items: center;		/* se centrer au */
+    min-height: 100%; 			/*  milieu de la page */
+}
+
+/* Gestion du positionnement du contenu du bloc */
+.jContainerAccueil
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Century Gothic";
+    color: #666;
+    text-align: center;
+}
+
+/* Gestion de l'image */
+.jContainerAccueil img
+{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 3px 0 10px black;
+}
+
+/* Gestion du texte */
+.jContainerAccueil h1
+{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.jContainerAccueil h1 span { text-transform: uppercase; } /* Majuscule sur les noms de famille */
+
+.jContainerAccueil p
+{
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+/* IL EST IMPORTANT DE METTRE CE MEDIA QUERIES À LA FIN DU CSS POUR SON BON FONCTIONNEMENT */
+/* Media Queries pour reset le margin lorsque la navbar disparaît */
+@media all and (max-width: 768px)
+{
+    .jWrapperAccueil { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
 }

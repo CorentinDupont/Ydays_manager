@@ -25,7 +25,6 @@ projet_ydays_manager_liste_objectif:
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:listeObjectif
 
-
 projet_ydays_manager_list_Entreprise:
     path:     /listEntreprises
     defaults:
@@ -35,3 +34,15 @@ projet_ydays_manager_display_cr:
     path:     /listCr
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:affichageCr
+
+
+projet_ydays_manager_login:
+    path:     /login
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:login
+
+projet_ydays_manager_accueil:
+    path:     /accueil
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:accueil
+
