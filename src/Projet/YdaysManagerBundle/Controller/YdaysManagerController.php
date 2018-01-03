@@ -41,5 +41,9 @@ class YdaysManagerController extends Controller
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:ListeEtudiant.html.twig');
     }
 
+    public function listeObjectifAction(){
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:ListeObjectif.html.twig');
+    }
+
 
 }

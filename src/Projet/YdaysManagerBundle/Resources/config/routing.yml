@@ -45,3 +45,8 @@ projet_ydays_manager_liste_edtudiant:
     path:     /listeEtudiant
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:listeEtudiant
+
+projet_ydays_manager_liste_objectif:
+    path:     /listeObjectif
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:listeObjectif

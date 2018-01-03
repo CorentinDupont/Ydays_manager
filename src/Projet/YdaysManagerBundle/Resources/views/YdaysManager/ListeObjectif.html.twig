@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html>
+
+    <head>
+        <title>Liste d'Objectifs</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+        {% endblock %}
+    </head>
+
+    <body id="cBodyCheckList">
+        {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+        <!-- Block avec le contenu de la page -->
+        <div id="cGlobalContainerCheckList">
+            <a href="" id="cReturnButtonCheckList" class="cYnovPurple">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enable-background="new 0 0 129 129" width="512px" height="512px">
+                    <g>
+                        <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" fill="#FFFFFF"/>
+                    </g>
+                </svg>
+                <p>Retour à la fiche du projet</p>
+            </a>
+            <h1>Liste d'Objectifs</h1>
+            <section id="cCheckListContainerCheckList" class="cRounded cShadowed">
+                <div class="cOneGoalBlockCheckList">
+                    <input type="checkbox" class="cCheckBoxCheckList" id="cCheckBox1CheckList"/>
+                    <label for="cCheckBox1CheckList" class="cShadowed">Maquette</label>
+                </div>
+                <div class="cOneGoalBlockCheckList">
+                    <input type="checkbox" class="cCheckBoxCheckList" id="cCheckBox2CheckList"/>
+                    <label for="cCheckBox2CheckList" class="cShadowed">Mockup</label>
+                </div>
+                <div class="cOneGoalBlockCheckList">
+                    <input type="checkbox" class="cCheckBoxCheckList" id="cCheckBox3CheckList"/>
+                    <label for="cCheckBox3CheckList" class="cShadowed">Intégration</label>
+                </div>
+            </section>
+        </div>
+        <div id="cAddGoalBlockCheckList">
+            <div id="cAddGoalHiddenBlockCheckList" class="cShadowed">
+                <p>Texte de l'élément</p>
+                <div id="cBlockInputAddGoalCheckList">
+                    <input type="text" id="cInputAddGoalCheckList" class="cShadowed"/>
+                    <div class="cRoundButton cShadowed" id="cPushNewGoalButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enable-background="new 0 0 129 129" width="512px" height="512px">
+                            <g>
+                                <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" fill="#00b297"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="cRoundButton cAddGoalButton cYnovGreen cShadowed">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px">
+                <g transform="translate(1 1)">
+                    <g>
+                        <path d="M489.667,233.667H276.333V20.333C276.333,8.551,266.782-1,255-1s-21.333,9.551-21.333,21.333v213.333H20.333    C8.551,233.667-1,243.218-1,255s9.551,21.333,21.333,21.333h213.333v213.333c0,11.782,9.551,21.333,21.333,21.333    s21.333-9.551,21.333-21.333V276.333h213.333c11.782,0,21.333-9.551,21.333-21.333S501.449,233.667,489.667,233.667z" fill="#FFFFFF"/>
+                    </g>
+                </g>
+            </svg>
+            </div>
+        </div>
+
+    </body>
+
+    <script src="{{ asset('js/scriptHeader.js') }}"></script>
+    <script src="{{ asset('js/listeObjectif.js') }}"></script>
+</html>

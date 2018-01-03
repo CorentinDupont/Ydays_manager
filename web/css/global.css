@@ -3,7 +3,7 @@
 /*--------------------------------------------------------------------------------*/
 /*------------------Global-----------------------*/
 .cShadowed{
-    box-shadow: 0px 3px 6px 0px #D8D8D8;
+    box-shadow: 0px 3px 6px 0px #00000022;
 }
 
 .cRounded{
@@ -638,6 +638,265 @@
         border-radius:1.5vw;
     }
 }
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------*/
+/*------------------           CHECK LIST              --------------------*/
+/*--------------------------------------------------------------------------------*/
+
+#cBodyCheckList{
+    background-color:#F6F6F6;
+}
+
+/*Conteneur du contenu de la page*/
+#cGlobalContainerCheckList{
+    margin-left:200px;
+    padding:2vw 14vw;
+    background-color:#F6F6F6;
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cGlobalContainerCheckList h1{
+    font-size: 2vw;
+    color:#6B6B6B;
+    margin:0 0 4vw 0;
+}
+
+#cGlobalContainerCheckList h2{
+    font-size: 2vw;
+    margin:0;
+}
+
+#cGlobalContainerCheckList p{
+    font-size: 1vw;
+    margin:0;
+}
+
+/*Bouton retour à la fiche projet*/
+#cReturnButtonCheckList{
+    position:absolute;
+    left:0;
+    top:1vw;
+    display:flex;
+    flex-direction: row;
+    padding:0.8vw;
+    align-items: center;
+    border-radius:0 17px 17px 0;
+    text-decoration: none;
+}
+
+#cReturnButtonCheckList svg{
+    height:1.5vw;
+    width:1.5vw;
+    margin-right:1vw;
+    transform:Rotate(90deg);
+}
+
+#cReturnButtonCheckList p{
+    color:white;
+}
+
+/*Contenur de la checklist*/
+#cCheckListContainerCheckList{
+    background-color: white;
+    width:100%;
+    padding:3.5vw 5vw;
+    display:flex;
+    flex-direction: column;
+}
+
+/*Un item de la checklist*/
+.cOneGoalBlockCheckList{
+    width:100%;
+    margin: 0.5vw 0;
+    display:flex;
+    flex-direction:row;
+}
+
+.cOneGoalBlockCheckList label{
+    width:100%;
+    font-weight: normal;
+    font-size:1.2vw;
+    padding:0.5vw 0.8vw;
+    background-color:#F6F6F6;
+    color:#6B6B6B;
+}
+
+.cOneGoalBlockCheckList [type="checkbox"]:not(:checked),
+.cOneGoalBlockCheckList [type="checkbox"]:checked{
+    position: absolute;
+    left: -9999px;
+}
+
+/* on prépare le label */
+.cOneGoalBlockCheckList [type="checkbox"]:not(:checked) + label,
+.cOneGoalBlockCheckList [type="checkbox"]:checked + label {
+    position: relative; /* permet de positionner les pseudo-éléments */
+    cursor: pointer;    /* affiche un curseur adapté */
+    padding-left:3.5vw;
+}
+
+/* Aspect des checkboxes */
+/* :before sert à créer la case à cocher */
+.cOneGoalBlockCheckList [type="checkbox"]:not(:checked) + label:before,
+.cOneGoalBlockCheckList [type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left:0; top: 0px;
+    width: 2.6vw; height: 2.6vw; /* dim. de la case */
+    background: white;
+    border-radius: 3px;
+}
+
+/* Aspect général de la coche */
+.cOneGoalBlockCheckList [type="checkbox"]:not(:checked) + label:after,
+.cOneGoalBlockCheckList [type="checkbox"]:checked + label:after {
+    content: '✔';
+    position: absolute;
+    top: 0; left: 0.5vw;
+    font-size: 2vw;
+    color: #00B297;
+    transition: all .2s; /* on prévoit une animation */
+}
+/* Aspect si "pas cochée" */
+.cOneGoalBlockCheckList [type="checkbox"]:not(:checked) + label:after {
+    opacity: 0; /* coche invisible */
+    transform: scale(0); /* mise à l'échelle à 0 */
+}
+
+/* Aspect si "cochée" */
+.cOneGoalBlockCheckList [type="checkbox"]:checked + label:after {
+    opacity: 1; /* coche opaque */
+    transform: scale(1); /* mise à l'échelle 1:1 */
+}
+
+.cOneGoalBlockCheckList input{
+    margin-right:2vw;
+}
+
+/*Block Ajout Objectif*/
+#cAddGoalBlockCheckList{
+    position:fixed;
+    right:2vw;
+    bottom:2vw;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/*Bouton rond +*/
+#cAddGoalBlockCheckList .cAddGoalButton{
+    margin-top:2vw;
+}
+
+/*Block chaché de l'ajout d'objectif*/
+#cAddGoalHiddenBlockCheckList{
+    visibility:hidden;
+    background-color:#00B297;
+    display:flex;
+    flex-direction: column;
+    padding:1.5vw;
+}
+
+#cAddGoalHiddenBlockCheckList>p{
+    color:white;
+    margin:0;
+    font-size:1.1vw;
+}
+
+#cBlockInputAddGoalCheckList{
+    display: flex;
+    flex-direction: row;
+}
+
+#cBlockInputAddGoalCheckList input{
+    border:none;
+    font-size:1.1vw;
+    margin-right: 2vw;
+    width:25vw;
+}
+
+/*Bouton rond push nouvel objectif*/
+#cBlockInputAddGoalCheckList .cRoundButton{
+    background-color:white;
+}
+
+#cBlockInputAddGoalCheckList .cRoundButton svg{
+    transform:Rotate(-90deg);
+}
+
+@media all and (max-width: 768px) {
+    #cGlobalContainerCheckList{
+        margin-left:0;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    #cGlobalContainerCheckList p{
+        font-size: 2vw;
+    }
+
+    #cGlobalContainerCheckList h1{
+        font-size: 4.6vw;
+    }
+
+    #cGlobalContainerCheckList h2{
+        font-size: 4vw;
+    }
+
+    #cReturnButtonCheckList{
+        padding:2vw 2vw;
+    }
+
+    #cReturnButtonCheckList svg{
+        width:2.2vw;
+        height:2.2vw;
+    }
+
+    .cOneGoalBlockCheckList{
+        margin:1vw 0;
+    }
+
+    .cOneGoalBlockCheckList label{
+        font-size:2.6vw;
+    }
+
+    /* on prépare le label */
+    .cOneGoalBlockCheckList [type="checkbox"]:not(:checked) + label,
+    .cOneGoalBlockCheckList [type="checkbox"]:checked + label {
+        padding-left:7vw;
+    }
+
+    /* Aspect des checkboxes */
+    /* :before sert à créer la case à cocher */
+    .cOneGoalBlockCheckList [type="checkbox"]:not(:checked) + label:before,
+    .cOneGoalBlockCheckList [type="checkbox"]:checked + label:before {
+        width: 5vw; height: 5vw; /* dim. de la case */
+    }
+
+    /* Aspect général de la coche */
+    .cOneGoalBlockCheckList [type="checkbox"]:not(:checked) + label:after,
+    .cOneGoalBlockCheckList [type="checkbox"]:checked + label:after {
+        top: 0; left: 1vw;
+        font-size: 3.7vw;
+    }
+
+    #cAddGoalHiddenBlockCheckList{
+        padding:3vw;
+    }
+
+    #cAddGoalHiddenBlockCheckList p{
+        font-size:2.2vw
+    }
+
+    #cAddGoalHiddenBlockCheckList input{
+        width:70vw;
+    }
+}
+
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------*/
