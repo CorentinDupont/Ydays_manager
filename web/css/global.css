@@ -1927,8 +1927,14 @@ body, html {
 ***************************************************
 **************************************************/
 
+@media all and (max-width:768px){
+    #cBodyLesProjets{
+        margin-left: 0px;
+    }
+}
 #cBodyLesProjets{
     background-color: #F6F6F6;
+    margin-left: 200px;
 }
 #cLinkLesProjets:hover{
     text-decoration: none;
@@ -1981,8 +1987,15 @@ body, html {
 ***************************************************
 **************************************************/
 
+@media all and (max-width:768px){
+    #cBodyAffichageCr{
+        margin-left: 0px;
+    }
+}
+
 #cBodyAffichageCr{
     background-color: #F6F6F6;
+    margin-left: 200px;
 }
 .containersDisplayCr{
     padding-top: 5px;
@@ -2033,9 +2046,14 @@ body, html {
 ************** affichage liste entreprises ********
 ***************************************************
 **************************************************/
-
+@media all and (max-width:768px){
+    #cBodyListEntreprises{
+        margin-left: 0px;
+    }
+}
 #cBodyListEntreprises{
     background-color: #F6F6F6;
+    margin-left: 200px;
 }
 #cLinkListEntreprises:hover{
     text-decoration: none;
@@ -2048,7 +2066,7 @@ body, html {
     border-width: 2px;
     overflow: hidden;
     padding: 0;
-    background-color: #FFFFFF
+    background-color: #FFFFFF;
     -webkit-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
     -moz-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
     box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);    

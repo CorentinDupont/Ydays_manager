@@ -6,11 +6,17 @@
     <title>Page Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="cssCustom/styleLesProjets.css">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+   {% endblock %}
 </head>
 
 <body id="cBodyLesProjets">
+{% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
     <a id="cLinkLesProjets" href="#">
         <div id="cProjectListProject" class=" d-flex flex-row">
             <img class="img-fluid h-100" src="Img/glink_by_thiefxrikku-d36x4uu.png" alt="">
@@ -38,5 +44,5 @@
 
     
 </body>
-
+<script src="{{ asset('js/scriptHeader.js') }}"></script>
 </html>
