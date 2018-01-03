@@ -1524,3 +1524,179 @@ body, html {
 
     #menu { margin-left: -200px; } /* Camoufle la nav avant le clique sur le menu hamburger */
 }
+
+
+
+/**
+  *
+  * @ Auteur : Charles HUET <charles.huet@ynov.com>
+  * @ Copyright 2017 Charles HUET
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+
+/**************************************************
+***************************************************
+******************** les projets ******************
+***************************************************
+**************************************************/
+
+#cBodyLesProjets{
+    background-color: #F6F6F6;
+}
+#cLinkLesProjets:hover{
+    text-decoration: none;
+}
+#cProjectListProject{
+    width: 90%;
+    height: 14vh;
+    margin-left: 5%;
+    border-radius: 17px;
+    border-width: 2px;
+    overflow: hidden;
+    padding: 0;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    -moz-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);    
+    
+}
+#ctitleDescListProject{
+     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.cInfoListProject{
+    padding-right: 0 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#cImgContainerLesProjets{
+    width: 12.5%;
+    
+}
+.cFontListProject{
+   font-size: calc(0.5vw + 0.5vh + 0.5vmin);
+    line-height: 100%;
+    color: #909090;
+}
+#ctitleDescListProject h5{
+   color: #878787;
+    font-size: calc(0.5vw + 0.7vh + 0.5vmin);
+}
+
+/**************************************************
+***************************************************
+************** affichage compte rendu *************
+***************************************************
+**************************************************/
+
+#cBodyAffichageCr{
+    background-color: #F6F6F6;
+}
+.containersDisplayCr{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    margin: 0 2.25vw 0 2.25vw;
+    background-color: #FFFFFF;
+    margin-bottom: 3%;
+    height: 15vh;
+    -webkit-box-shadow: 4px 4px 11px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 11px -2px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 11px -2px rgba(0,0,0,0.75);
+}
+
+.flexTopDisplayCr{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: baseline;
+	align-content: stretch;
+    text-align: center;
+    padding-bottom: 10vh;
+    font-size: 2.5rem;
+}
+.helperMarkDisplayCr{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: flex-end;
+	align-content: flex-end;
+    height: 2.5vw;
+    
+}
+.starYellow{
+    width: 25px;
+    padding: 0 3px 0 3px;
+}
+.starGrey{
+    width: 25px;
+    padding: 0 3px 0 3px;
+}
+
+
+/**************************************************
+***************************************************
+************** affichage liste entreprises ********
+***************************************************
+**************************************************/
+
+#cBodyListEntreprises{
+    background-color: #F6F6F6;
+}
+#cLinkListEntreprises:hover{
+    text-decoration: none;
+}
+#cListentrepriseProject{
+    width: 90%;
+    height: 14vh;
+    margin-left: 5%;
+    border-radius: 17px;
+    border-width: 2px;
+    overflow: hidden;
+    padding: 0;
+    background-color: #FFFFFF
+    -webkit-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    -moz-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
+    box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);    
+    
+}
+#ctitleDescListentreprise{
+     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.cInfoListentreprise{
+    padding-right: 0 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#cImgContainerListentreprise{
+    width: 12.5%;
+    
+}
+.cFontListentreprise{
+   font-size: calc(0.6vw + 0.6vh + 0.7vmin);
+    line-height: 100%;
+    color: #909090;
+}
+.cH5ListEntreprises{
+   color: #878787;
+    font-size: calc(0.8vw + 0.7vh + 0.7vmin);
+}
+#Capa_1{
+    height: 100%;
+}

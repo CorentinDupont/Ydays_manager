@@ -1,31 +1,5 @@
-#projet_ydays_manager_accueil:
-#   path:     /accueil
-#   defaults:  _controller: ProjetYdaysManagerBundle:YdaysManager:accueil
-#
-#projet_ydays_manager_les_projets:
-#   path:     /lesProjets
-#   defaults:
-#       _controller: ProjetYdaysManagerBundle:YdaysManager:lesProjets
-#
-#projet_ydays_manager_fiche_projet:
-#   path:     /ficheProjet/{id}
-#   defaults:
-#       _controller: ProjetYdaysManagerBundle:YdaysManager:ficheProjet
-#   requirements:
-#       id: \d+
-#
-#projet_ydays_manager_proposer_projet:
-#   path:     /proposerProjet
-#   defaults:
-#       _controller: ProjetYdaysManagerBundle:YdaysManager:proposerProjet
-#
-#projet_ydays_manager_login:
-#   path:     /login
-#   defaults:
-#       _controller: ProjetYdaysManagerBundle:YdaysManager:login
-
 projet_ydays_manager_projet:
-  path:      /project
+  path:      /projects
   defaults:
       _controller: ProjetYdaysManagerBundle:YdaysManager:lesProjets
 
@@ -50,3 +24,13 @@ projet_ydays_manager_liste_objectif:
     path:     /listeObjectif
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:listeObjectif
+
+projet_ydays_manager_list_Entreprise:
+    path:     /listEntreprises
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:listEntreprises
+
+projet_ydays_manager_display_cr:
+    path:     /listCr
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:affichageCr

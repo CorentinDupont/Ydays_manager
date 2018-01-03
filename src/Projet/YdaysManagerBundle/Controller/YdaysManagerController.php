@@ -43,5 +43,12 @@ class YdaysManagerController extends Controller
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:ListeObjectif.html.twig');
     }
 
+    public function listEntreprisesAction(){
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:ListEntreprises.html.twig');
+    }
+
+    public function affichageCrAction(){
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:affichageCr.html.twig');
+    }
 
 }
