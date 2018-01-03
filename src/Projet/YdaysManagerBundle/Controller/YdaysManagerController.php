@@ -30,7 +30,7 @@ class YdaysManagerController extends Controller
     }
 
     public function proposerProjetAction(){
-        return $this->render('ProjetYdaysManagerBundle:YdaysManager:proposerProjet.html.twig');
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:ProposerProjet.html.twig');
     }
 
     public function lesProjetsAction(){

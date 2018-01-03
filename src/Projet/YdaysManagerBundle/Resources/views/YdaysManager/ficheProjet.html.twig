@@ -67,13 +67,13 @@
             <!-- Bouton modif -->
             <label for="cImageInputProjectDashboard" class="cRoundButton cEditRoundButton cRoundButtonTopRight cShadowed cYnovPurple" id="cEditRoundButtonImgProjectDashboard">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
-<g>
-    <g id="create">
-        <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
-    </g>
-</g>
+                <g>
+                    <g id="create">
+                        <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                    </g>
+                </g>
 
-</svg>
+                </svg>
             </label>
             <input id="cImageInputProjectDashboard" type="file"/>
         </div>
@@ -99,15 +99,42 @@
                     <p>Antonin DOUILLARD</p>
                 </div>
                 <!-- Bouton modif -->
-                <div class="cRoundButton cEditRoundButton cRoundButtonTopRight cShadowed cYnovPurple" id="cEditRoundButtonMembersListProjectDashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
-                    <g>
-                        <g id="create">
-                            <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
-                        </g>
-                    </g>
-
-                    </svg>
+                <div class="container">
+                    <!-- Modal Pop-Up adminDashModifMemb -->
+                    <a href="#" data-toggle="modal" data-target="#PopUp_adminDashModifMemb">
+                        <div class="cRoundButton cEditRoundButton cRoundButtonTopRight cShadowed cYnovPurple" id="cEditRoundButtonMembersListProjectDashboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+                                <g>
+                                    <g id="create">
+                                        <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+                    <div class="modal fade" id="PopUp_adminDashModifMemb">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Header du modal -->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"> x </button>
+                                    <h3 class="modal-title"> Membres du projet </h3>
+                                </div>
+                                <!-- Body du modal -->
+                                <div class="modal-body">
+                                    <h4 class="modal-title"> Chef de projet </h4>
+                                    <p class="user-modal-membre"> Corentin DUPONT </p>
+                                    <h4 class="modal-title"> Helper </h4>
+                                    <p class="user-modal-membre"> Killian Delorme </p>
+                                    <div class="wrapper-title-membres"> <h4 class="modal-title"> Membres </h4> <p><a href="#">+</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Charles HUET </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Maxime GRAND </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Guillaume HECHT </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Jérémy NUNES </p> <p><a href="#">x</a></p> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="cDescProjetDashboard" class="cShadowed cRounded">
