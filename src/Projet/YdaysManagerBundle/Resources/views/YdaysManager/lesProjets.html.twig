@@ -6,39 +6,37 @@
     <title>Page Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="cssCustom/styleLesProjets.css">
 </head>
 
 <body>
+    <a href="#">
+        <div id="cProjectListProject" class=" d-flex flex-row">
+            <img class="img-fluid h-100" src="Img/glink_by_thiefxrikku-d36x4uu.png" alt="">
+            <div id="ctitleDescListProject" class="text-left col-xs-7 col-md-6 col-sm-7 col-lg-7 d-flex flex-column">
 
+                <h5 class="cFontListProject">ZELDA ORCANIA OF CORENTIN DUPONT LOL</h5>
 
-    {% for project in projects %}
-        <div id="project" class="container-fluid">
-            <div class="row">
-                <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 containerImgProject">
-                    <img class="img-fluid" src="{{ asset('img/image1') }}" alt="">
-                </div>
-                <div id="titleDesc" class="col-xs-6 col-md-6 col-sm-7 col-lg-7">
-                    <p class="fontProject">{{ project.getNomProjet() }}</p>
-                    <p class="fontProject">{{ project.id }}</p>
-                </div>
-                <div class="col-xs-2 col-md-4 col-sm-3 col-lg-3  infoProject">
-                    <p class="fontProject">{{ project.getChefProjet() }}</p>
-                    <p class="fontProject">{{ project.getReferentProjet() }}</p>
-                    <div>
-                        <div id="projetStatutCircle"></div>
-                        <p class="fontProject">Projet en cours</p>
-                    </div>
+                <p class="cFontListProject">un projet vraiment incroyable consistant à être un projet incroyable consistant à être un projet incroyable consistant à être un projet incroyable consistant à être un projet incroyable consistant à être un projet incroyable </p>
+            </div>
+            <div class="col-xs-3 col-md-4 col-sm-3 col-lg-3 d-flex flex-column text-right cInfoListProject ">
+                <p class="cFontListProject">Chef projet - Corentin DUPONT</p>
+                <p class="cFontListProject">Helper - Kilian DELORME</p>
+                <div class="row">  
+                    <p class="cFontListProject">Projet en cours</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 438.533 438.533" style="enable-background:new 0 0 438.533 438.533;" xml:space="preserve">
+                            <g>
+                                <path d="M409.133,109.203c-19.608-33.592-46.205-60.189-79.798-79.796C295.736,9.801,259.058,0,219.273,0   c-39.781,0-76.47,9.801-110.063,29.407c-33.595,19.604-60.192,46.201-79.8,79.796C9.801,142.8,0,179.489,0,219.267   c0,39.78,9.804,76.463,29.407,110.062c19.607,33.592,46.204,60.189,79.799,79.798c33.597,19.605,70.283,29.407,110.063,29.407   s76.47-9.802,110.065-29.407c33.593-19.602,60.189-46.206,79.795-79.798c19.603-33.596,29.403-70.284,29.403-110.062   C438.533,179.485,428.732,142.795,409.133,109.203z" fill="#91DC5A"/>
+                            </g>
+
+                        </svg>
                 </div>
             </div>
         </div>
-        <div id="adminSupprProject"><svg></svg></div>
-    {% endfor %}
+    </a>
+
+    
 </body>
 
 </html>

@@ -24,8 +24,6 @@ class YdaysManagerController extends Controller
     }
 
     public function ficheProjetAction($id){
-
-
         return $this->render("ProjetYdaysManagerBundle:YdaysManager:ficheProjet.html.twig", array('id' => $id));
     }
 
