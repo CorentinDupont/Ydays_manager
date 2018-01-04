@@ -35,6 +35,7 @@ projet_ydays_manager_display_cr:
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:affichageCr
 
+
 projet_ydays_manager_login:
     path:     /login
     defaults:
