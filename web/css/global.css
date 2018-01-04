@@ -2182,3 +2182,322 @@ html { height: 100%; } /* Pour permettre au contenu de se centrer au milieu de l
 {
     .jWrapperAccueil { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
 }
+
+/**
+  *
+  * @ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
+  * @ Copyright 2017 Jérémy Nunes
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+/**************************************************
+***************************************************
+***************** REQUESTS ADMIN ******************
+***************************************************
+**************************************************/
+
+#jBodyAdminDemande
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+    font-family: "Century Gothic";
+    color: #858585;
+}
+
+/* Enveloppe de la page */
+.jWrapperAdminDemande
+{
+    margin-left: 230px; /* Décalage pour l'écart avec la navbar */
+    margin-right: 30px;
+    display: flex;				/* Pour permettre au */
+    justify-content: center;	/* contenu de centrer */
+    align-items: center;		/* au milieu de la page */
+
+}
+
+/***************************************/
+/***************************************/
+/***** Filtrage des demandes admin *****/
+/***************************************/
+/***************************************/
+#jNavRequestsAdminDemande
+{
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15; /* z-index pour passer le filtrage dessus les éléments */
+}
+
+/* Media Queries : Si le device à une taille >= 950px */
+@media all and (min-width: 950px)
+{
+    #jNavRequestsAdminDemande button
+    {
+        height: 35px;
+        width: 200px;
+        background: white;
+        font-family: "Century Gothic";
+        border: none;
+        box-shadow: 5px 0 8px #ccc;
+        overflow: hidden; /* Empêche le dépassement */
+    }
+
+    #jNavRequestsAdminDemande div:first-child button:first-child { border-bottom-left-radius: 10px; }
+    #jNavRequestsAdminDemande div:last-child button:last-child { border-bottom-right-radius: 10px; }
+
+    #jNavRequestsAdminDemande button:hover { background-color: #c94672; transition: 0.3s; color: white; cursor: pointer; }
+    #jNavRequestsAdminDemande button:focus { outline-style: none; }
+
+    @media all and (max-width: 1050px)
+    {
+        #jNavRequestsAdminDemande button { width: 175px; } /* Réduit la taille des boutons à 175px si device size = 1050px */
+    }
+}
+
+/* Media Queries : Si le device à une taille comprise entre 601 et 949px */
+@media all and (max-width: 949px)
+{
+    #jNavRequestsAdminDemande
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #jNavRequestsAdminDemande button
+    {
+        height: 30px;
+        width: 250px;
+        background: white;
+        font-family: "Century Gothic";
+        border: none;
+    }
+
+    #jNavRequestsAdminDemande button:hover { background-color: #c94672; transition: 0.3s; color: white; cursor: pointer; }
+    #jNavRequestsAdminDemande button:focus { outline-style: none; }
+
+    #jNavRequestsAdminDemande div:first-child button:last-child { box-shadow: 2px 2px 2px #ccc; }
+    #jNavRequestsAdminDemande div:last-child button:first-child { border-bottom-left-radius: 10px; box-shadow: 2px 2px 2px #ccc; }
+    #jNavRequestsAdminDemande div:last-child button:last-child { border-bottom-right-radius: 10px; box-shadow: 2px 2px 2px #ccc; }
+
+    @media all and (max-width: 650px)
+    {
+        #jNavRequestsAdminDemande button { width: 220px; } /* Réduit la taille des boutons à 175px si device size = 650px */
+    }
+}
+
+/* Media Queries : Si le device à une taille <= 600px */
+@media all and (max-width: 600px)
+{
+    #jNavRequestsAdminDemande
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #jNavRequestsAdminDemande button:hover { background-color: #c94672; transition: 0.3s; color: white; cursor: pointer; }
+    #jNavRequestsAdminDemande button:focus { outline-style: none; }
+
+    @media all and (max-width: 550px)
+    {
+        #jNavRequestsAdminDemande button { width: 175px; } /* Réduit la taille des boutons à 175px si device size = 550px */
+    }
+
+    @media all and (max-width: 500px)
+    {
+        #jNavRequestsAdminDemande button
+        {
+            display: flex;
+            flex-direction: column; /* Affiche les boutons en colonne à 500px */
+            justify-content: center;
+            align-items: center;
+        }
+
+        #jNavRequestsAdminDemande
+        {
+            position: fixed;
+            top: 0;
+            right: 0; /* Colle le filtrage à droite de la page */
+            box-shadow: 3px 3px 8px #ccc;
+        }
+
+        #jNavRequestsAdminDemande div:last-child button:first-child { border-bottom-left-radius: 0; }
+        #jNavRequestsAdminDemande div:last-child button:last-child { border-bottom-left-radius: 10px; border-bottom-right-radius: 0; }
+    }
+}
+
+/***************************************/
+/***************************************/
+/***** Requêtes envoyées à l'admin *****/
+/***************************************/
+/***************************************/
+
+/* Container de la liste des demandes */
+.jContainerAdminDemande
+{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+/* Block qui contient chaque demande */
+.jBlockDemandeAdmin
+{
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0; /* Espacement entre chaque block de demande */
+}
+
+/* Centrage de l'image par rapport à son bloc */
+.jBlockDemandeAdmin div:first-child { display: flex; align-items: center; }
+
+/* Image liée au bloc */
+.jUserPictureDemandeAdmin
+{
+    width: 75px;
+    height: 75px;
+    margin-right: 30px;
+    border-radius: 50%;
+    box-shadow: 3px 0 8px #ccc;
+}
+
+.jTextSvgDemandeAdmin
+{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 0 8px #ccc;
+    padding: 15px 25px;
+    position: relative; /* position relative pour le placement de la date */
+    width: 100%; /* La div prend 100% de la largeur du parent */
+}
+
+.jTextSvgDemandeAdmin p:first-child
+{
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.jTextSvgDemandeAdmin p:nth-child(2) { font-size: 15px; }
+
+.jTextSvgDemandeAdmin p span { text-transform: uppercase; } /* Passe les noms de famille en majuscule */
+
+/* Placement du block contenant la date */
+.jBlockDateDemandeAdmin
+{
+    position: absolute;
+    bottom: -23px;
+    left: 0;
+    width: 150px;
+    background-color: #00B297;
+    border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;
+    text-align: center;
+    z-index: -3; /* z-index pour camoufler le background de la date sous celui du container */
+}
+
+/* Gestion du style de la date et déplacement dans son block */
+.jBlockDateDemandeAdmin p
+{
+    margin: 0;
+    padding: 7px 0;
+    position: relative;
+    top: 3px;
+    color: white;
+    font-size: 13px !important;
+}
+
+/* 3 SVG sur la droite du bloc */
+.jBlockSVG1_DemandeAdmin img
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    bottom: -13px;
+    box-shadow: 3px 0 8px #ccc;
+    background-color: #81e569;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.jBlockSVG2_DemandeAdmin img
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 50px;
+    bottom: -13px;
+    box-shadow: 3px 0 8px #ccc;
+    background-color: #ec4747;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.jBlockSVG3_DemandeAdmin img
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 90px;
+    bottom: -13px;
+    box-shadow: 3px 0 8px #ccc;
+    background-color: #00b297;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+/* Animation sur le SVG "Eye" */
+.jBlockSVG3_DemandeAdmin img { opacity: 0; transition: ease-in 0.35s; } /* On cache le SVG */
+.jBlockDemandeAdmin:hover .jSVG_EyeDemandeAdmin { opacity: 1; } /* On l'affiche au survol du bloc */
+
+/* Media Queries : Si le device à une taille <= 1024px */
+@media all and (max-width: 1024px)
+{
+    .jBlockSVG3_DemandeAdmin img { opacity: 1; } /* Le SVG "Eye" restera affiché (nécessaire pour les devices tablette/smartphone) */
+}
+
+/* Media Queries : Si le device à une taille <= 750px */
+@media all and (max-width: 750px)
+{
+    /* Passage des SVG dans le bloc et non plus sur la limite du bloc parent */
+    .jSVG_ContainerDemandeAdmin
+    {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    /* 3 SVG */
+    .jBlockSVG1_DemandeAdmin, .jBlockSVG2_DemandeAdmin, .jBlockSVG3_DemandeAdmin { padding: 0 8px; }
+
+    .jBlockSVG1_DemandeAdmin img { position: static; padding: 6.5px; }
+    .jBlockSVG2_DemandeAdmin img { position: static; padding: 6.5px; }
+    .jBlockSVG3_DemandeAdmin img { position: static; padding: 6.5px; }
+}
+
+/* Media Queries : Si le device à une taille <= 500px */
+@media all and (max-width: 500px)
+{
+    .jContainerAdminDemande { margin-top: 60px; } /* Pour espacer davantage le 1er block avec le filtrage qui passera en colonne à 500px */
+}
+
+/* Media Queries : Si le device à une taille <= 375px */
+@media all and (max-width: 375px)
+{
+    .jBlockDemandeAdmin { display: flex; flex-direction: column; }
+    .jUserPictureDemandeAdmin { position: relative; top: 15px; left: 0; z-index: 1; } /* Pour placer le bout de l'image sur le block contenant le texte */
+    .jSVG_ContainerDemandeAdmin { display: flex; justify-content: center; }
+}
+
+@media all and (max-width: 375px)
+{
+    .jBlockDateDemandeAdmin { width: 100%; } /* Place le bloc de date à la même largeur que son parent */
+}
+/* IL EST IMPORTANT DE METTRE CE MEDIA QUERIES À LA FIN DU CSS POUR SON BON FONCTIONNEMENT */
+/* Media Queries pour reset le margin lorsque la navbar disparaît */
+@media all and (max-width: 768px)
+{
+    .jWrapperAdminDemande { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
+}

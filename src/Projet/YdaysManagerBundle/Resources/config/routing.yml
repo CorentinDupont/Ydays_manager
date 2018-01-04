@@ -44,3 +44,8 @@ projet_ydays_manager_accueil:
     path:     /accueil
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:accueil
+
+projet_ydays_manager_admin_demande:
+    path:     /adminDemande
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:adminDemande

@@ -51,4 +51,8 @@ class YdaysManagerController extends Controller
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:affichageCr.html.twig');
     }
 
+    public function adminDemandeAction(){
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:AdminDemande.html.twig');
+    }
+
 }
