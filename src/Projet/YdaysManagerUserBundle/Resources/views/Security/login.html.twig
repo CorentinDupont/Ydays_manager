@@ -1,0 +1,35 @@
+
+{% extends "ProjetYdaysManagerUserBundle::layout.html.twig" %}
+{# On affiche les messages flash que définissent les contrôleurs du bundle #}
+
+{% block fos_user_content %}
+    <div class="container">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 backLogin">
+            <div id="flexImgLogin" class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6" id="centerImgLogin">
+                    <img class="img-responsive" id="logo" src="{{ asset('img/logo.png') }}" alt="logo" />
+                </div>
+            </div>
+            <p class="fontLogin titleLogin">Connexion</p>
+            <form class="formLogin" action="{{ path('fos_user_security_check') }}" method="post">
+                <div class="formSigninLogin">
+                    <p class="fontLogin">Login</p>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Votre adresse Mail" required autofocus>
+                    <p class="fontLogin">Mot de passe</p>
+                    <input type="password" id="password" name="_password" class="form-control" placeholder="Votre mot de passe">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                    </br>
+                    {% if error %}
+                        <p>Mauvais login ou mot de passe.</p>
+                    {% endif %}
+                    <button type="submit" class="btnLogin btnSigninLogin">C'est parti !</button>
+                </div><!-- /form -->
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div><!-- /container -->
+{% endblock fos_user_content %}
+

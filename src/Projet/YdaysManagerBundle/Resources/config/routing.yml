@@ -36,11 +36,6 @@ projet_ydays_manager_display_cr:
         _controller: ProjetYdaysManagerBundle:YdaysManager:affichageCr
 
 
-projet_ydays_manager_login:
-    path:     /login
-    defaults:
-        _controller: ProjetYdaysManagerBundle:YdaysManager:login
-
 projet_ydays_manager_accueil:
     path:     /accueil
     defaults:
@@ -50,3 +45,20 @@ projet_ydays_manager_admin_demande:
     path:     /adminDemande
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:adminDemande
+
+
+projet_ydays_manager_test_login:
+    path:     /testLogin
+    defaults:
+        _controller: ProjetYdaysManagerBundle:YdaysManager:testLogin
+
+
+
+
+
+
+
+#projet_ydays_manager_login:
+#    path:     /login
+#    defaults:
+#        _controller: ProjetYdaysManagerBundle:YdaysManager:login

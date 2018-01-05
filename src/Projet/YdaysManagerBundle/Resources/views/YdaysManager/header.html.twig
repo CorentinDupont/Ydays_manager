@@ -23,9 +23,13 @@
             <li><a href="#">Proposer un projet</a></li>
             <li><a href="#">Les étudiants</a></li>
             <li><a href="#">Les entreprises</a></li>
-            <li><a href="#">Projets supervisés</a></li>
-            <li><a href="#">Helpers</a></li>
-            <li><a href="#">Demandes</a></li>
+            {% if is_granted('ROLE_HELPER') %}
+                <li><a href="#">Projets supervisés</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="#">Helpers</a></li>
+                <li><a href="#">Demandes</a></li>
+            {% endif %}
         </ul>
     </nav>
 </header>
