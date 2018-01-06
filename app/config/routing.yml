@@ -1,3 +1,7 @@
+projet_ydays_manager_promotion:
+    resource: "@ProjetYdaysManagerBundle/Controller/PromotionController.php"
+    type:     annotation
+
 projet_ydays_manager_project:
     resource: "@ProjetYdaysManagerBundle/Controller/ProjectController.php"
     type:     annotation

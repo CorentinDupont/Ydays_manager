@@ -31,6 +31,15 @@
                 <li><a href="#">Demandes</a></li>
             {% endif %}
         </ul>
+        <div id="jConnectionInfoBlockHeader">
+            <p>Connecté en tant que</p>
+            <div id="jImgProfileContainerHeader">
+                <img src="{{ asset('img/' ~ app.user.imageName) }}"/>
+            </div>
+            <p>{{ app.user.username }} {{ app.user.lastName }}</p>
+            <a id="jDisconnectButtonHeader" href="{{ path('fos_user_security_logout') }}" class="cRounded">Déconnexion</a>
+        </div>
+
     </nav>
 </header>
 <!-- Menu hamburger -->
