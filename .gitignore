@@ -16,3 +16,5 @@
 .idea/
 /vendor/
 /vendor/*
+app/config/parameter.yml
+app/config/parameters.yml

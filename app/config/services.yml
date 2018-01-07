@@ -17,16 +17,27 @@ services:
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     #Projet\YdaysManagerUserBundle\:
+<<<<<<< HEAD
         #resource: '../../src/Projet/YdaysManagerUserBundle/*'
         #you can exclude directories or files
+=======
+    #    resource: '../../src/Projet/YdaysManagerUserBundle/*'
+        # you can exclude directories or files
+>>>>>>> 0d8abad5b83bc3be5d2ee02f9ff6e6aeef0a9b81
         # but if a service is unused, it's removed anyway
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
     #Projet\YdaysManagerUserBundle\Controller\:
+<<<<<<< HEAD
        #resource: '../../src/Projet/YdaysManagerUserBundle/Controller'
        #public: true
        #tags: ['controller.service_arguments']
+=======
+    #    resource: '../../src/ProjetYdaysManagerUserBundle/Controller'
+    #    public: true
+    #    tags: ['controller.service_arguments']
+>>>>>>> 0d8abad5b83bc3be5d2ee02f9ff6e6aeef0a9b81
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
