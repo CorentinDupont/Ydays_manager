@@ -1,0 +1,273 @@
+<?php
+
+namespace Projet\YdaysManagerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Entreprise
+ *
+ * @ORM\Table(name="entreprise")
+ * @ORM\Entity(repositoryClass="Projet\YdaysManagerBundle\Repository\EntrepriseRepository")
+ */
+class Entreprise
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_entreprise", type="string", length=191, unique=true)
+     */
+    private $nomEntreprise;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse_entreprise", type="string", length=191)
+     */
+    private $adresseEntreprise;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cp_entreprise", type="integer")
+     */
+    private $cpEntreprise;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="siret_entreprise", type="string",length=191, unique=true)
+     */
+    private $siretEntreprise;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="img_entreprise", type="string", length=191)
+     */
+    private $imgEntreprise;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville_entreprise", type="string", length=191)
+     */
+    private $villeEntreprise;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="info_entreprise", type="string", length=165)
+     */
+    private $infoEntreprise;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Project")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $project;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomEntreprise
+     *
+     * @param string $nomEntreprise
+     *
+     * @return entreprise
+     */
+    public function setNomEntreprise($nomEntreprise)
+    {
+        $this->nomEntreprise = $nomEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get nomEntreprise
+     *
+     * @return string
+     */
+    public function getNomEntreprise()
+    {
+        return $this->nomEntreprise;
+    }
+
+    /**
+     * Set adresseEntreprise
+     *
+     * @param string $adresseEntreprise
+     *
+     * @return entreprise
+     */
+    public function setAdresseEntreprise($adresseEntreprise)
+    {
+        $this->adresseEntreprise = $adresseEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseEntreprise
+     *
+     * @return string
+     */
+    public function getAdresseEntreprise()
+    {
+        return $this->adresseEntreprise;
+    }
+
+    /**
+     * Set cpEntreprise
+     *
+     * @param integer $cpEntreprise
+     *
+     * @return entreprise
+     */
+    public function setCpEntreprise($cpEntreprise)
+    {
+        $this->cpEntreprise = $cpEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get cpEntreprise
+     *
+     * @return int
+     */
+    public function getCpEntreprise()
+    {
+        return $this->cpEntreprise;
+    }
+
+    /**
+     * Set siretEntreprise
+     *
+     * @param string $siretEntreprise
+     *
+     * @return entreprise
+     */
+    public function setSiretEntreprise($siretEntreprise)
+    {
+        $this->siretEntreprise = $siretEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get siretEntreprise
+     *
+     * @return string
+     */
+    public function getSiretEntreprise()
+    {
+        return $this->siretEntreprise;
+    }
+
+    /**
+     * Set imgEntreprise
+     *
+     * @param string $imgEntreprise
+     *
+     * @return entreprise
+     */
+    public function setImgEntreprise($imgEntreprise)
+    {
+        $this->imgEntreprise = $imgEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get imgEntreprise
+     *
+     * @return string
+     */
+    public function getImgEntreprise()
+    {
+        return $this->imgEntreprise;
+    }
+
+    /**
+     * Set villeEntreprise
+     *
+     * @param string $villeEntreprise
+     *
+     * @return entreprise
+     */
+    public function setVilleEntreprise($villeEntreprise)
+    {
+        $this->villeEntreprise = $villeEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get villeEntreprise
+     *
+     * @return string
+     */
+    public function getVilleEntreprise()
+    {
+        return $this->villeEntreprise;
+    }
+
+
+    /**
+     * Set infoEntreprise
+     *
+     * @param string $infoEntreprise
+     *
+     * @return entreprise
+     */
+    public function setInfoEntreprise($infoEntreprise)
+    {
+        $this->infoEntreprise = $infoEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get infoEntreprise
+     *
+     * @return string
+     */
+    public function getInfoEntreprise()
+    {
+        return $this->infoEntreprise;
+    }
+
+
+    
+    public function setProject(Project $project)
+    {
+      $this->project = $project;
+  
+      return $this;
+    }
+  
+    public function getProject()
+    {
+      return $this->project;
+    }
+}
+

@@ -28,7 +28,7 @@ projet_ydays_manager_liste_objectif:
 projet_ydays_manager_list_Entreprise:
     path:     /listEntreprises
     defaults:
-        _controller: ProjetYdaysManagerBundle:YdaysManager:listEntreprises
+        _controller: ProjetYdaysManagerBundle:Entreprise:listEntreprises
 
 projet_ydays_manager_display_cr:
     path:     /listCr
