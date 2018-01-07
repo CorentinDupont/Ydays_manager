@@ -15,7 +15,7 @@ projet_ydays_manager_fiche_projet:
    requirements:
        id: \d+
 
-projet_ydays_manager_liste_edtudiant:
+projet_ydays_manager_liste_etudiant:
     path:     /listeEtudiant
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:listeEtudiant

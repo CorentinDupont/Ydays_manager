@@ -1863,11 +1863,14 @@ body, html {
 #jConnectionInfoBlockHeader{
     display:flex;
     flex-direction: column;
+    align-items:center;
+    margin:20px;
 }
 
 #jConnectionInfoBlockHeader>p{
     color:#A8A8A8;
-    margin:0 10px;
+    margin:20px 0;
+    font-size:15px;
 }
 
 /*Conteneur de l'image*/
@@ -1876,14 +1879,29 @@ body, html {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border-radius: 40px;
-    width:80px;
-    height:80px;
+    border-radius: 30px;
+    width:60px;
+    height:60px;
 }
 
 #jImgProfileContainerHeader img{
     width:100%;
     height:auto;
+}
+
+
+/*Bouton déconnexion*/
+#jDisconnectButtonHeader{
+    background-color:#141414;
+    color:#A8A8A8;
+    padding:10px;
+    width:100%;
+    text-align: center;
+}
+
+#jDisconnectButtonHeader:hover{
+    color:white;
+    cursor:pointer;
 }
 /*******************************************************************/
 

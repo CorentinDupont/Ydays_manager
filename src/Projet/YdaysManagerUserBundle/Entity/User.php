@@ -2,6 +2,7 @@
 
 namespace Projet\YdaysManagerUserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -35,6 +36,24 @@ class User extends BaseUser
      * @ORM\Column(name="imageName", type="string", length=999, nullable=true)
      */
     public $imageName;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Promotion", inversedBy="users")
+     * @ORM\JoinColumn(name="promotion_id", referencedColumnName="id")
+     */
+    public $promotion;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Projet\YdaysManagerBundle\Entity\Project")
+     * @ORM\JoinTable(name="user_project")
+     */
+    private $projects;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->projects = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -92,5 +111,63 @@ class User extends BaseUser
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    /**
+     * Set promotion
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Promotion $promotion
+     *
+     * @return User
+     */
+    public function setPromotion(\Projet\YdaysManagerBundle\Entity\Promotion $promotion = null)
+    {
+        $this->promotion = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Get promotion
+     *
+     * @return \Projet\YdaysManagerBundle\Entity\Promotion
+     */
+    public function getPromotion()
+    {
+        return $this->promotion;
+    }
+
+    /**
+     * Add project
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Project $project
+     *
+     * @return User
+     */
+    public function addProject(\Projet\YdaysManagerBundle\Entity\Project $project)
+    {
+        $this->projects[] = $project;
+
+        return $this;
+    }
+
+    /**
+     * Remove project
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Project $project
+     */
+    public function removeProject(\Projet\YdaysManagerBundle\Entity\Project $project)
+    {
+        $this->projects->removeElement($project);
+    }
+
+    /**
+     * Get projects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjects()
+    {
+        return $this->projects;
     }
 }

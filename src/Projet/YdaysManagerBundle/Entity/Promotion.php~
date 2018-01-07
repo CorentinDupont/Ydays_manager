@@ -25,7 +25,7 @@ class Promotion
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=191, unique=true)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
@@ -71,39 +71,5 @@ class Promotion
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Add user
-     *
-     * @param \Projet\YdaysManagerUserBundle\Entity\User $user
-     *
-     * @return Promotion
-     */
-    public function addUser(\Projet\YdaysManagerUserBundle\Entity\User $user)
-    {
-        $this->users[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param \Projet\YdaysManagerUserBundle\Entity\User $user
-     */
-    public function removeUser(\Projet\YdaysManagerUserBundle\Entity\User $user)
-    {
-        $this->users->removeElement($user);
-    }
-
-    /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsers()
-    {
-        return $this->users;
     }
 }

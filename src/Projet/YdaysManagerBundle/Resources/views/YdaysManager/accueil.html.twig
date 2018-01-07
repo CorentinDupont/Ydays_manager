@@ -18,7 +18,7 @@
     <div class="jWrapperAccueil">
         <div class="jContainerAccueil">
             <img src="{{ asset('img/' ~ app.user.imageName)}}" alt="User picture"/>
-            <h1> Bienvenue {{ app.user.username }} <span>{{ app.user.lastName }}</span> ! </h1>
+            <h1> Bienvenue {{ app.user.username|capitalize }} <span>{{ app.user.lastName|upper }}</span> ! </h1>
             <p> Pour commencer, sélectionnez une action dans le menu à gauche </p>
         </div>
     </div>
