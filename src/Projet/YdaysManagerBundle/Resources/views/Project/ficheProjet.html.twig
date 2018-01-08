@@ -1,0 +1,279 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>{{ project.name }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+    {% endblock %}
+</head>
+
+<body>
+    {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+    <!-- Div global de la fiche de projet-->
+    <div id="cDashboardContainerProjectDashboard">
+
+        <!-- Partie haute -->
+        <div id="cTopProjectDashboard">
+            <!-- Informations gauche -->
+            <div id="cTopLeftProjectDashboard">
+                {% if project.isPro %}
+                    <p>Pro</p>
+                {% else %}
+                    <p>Perso</p>
+                {% endif %}
+
+                {% if project.isInternal %}
+                    <p>Interne</p>
+                {% else %}
+                    <p>Externe</p>
+                {% endif %}
+
+                <p>project.classroom</p>
+            </div>
+
+            <!-- Titre projet -->
+            <div id="cTitleProjectBlockProjectDashboard">
+                <h1>{{project.name}}</h1>
+                <!-- Bouton modif -->
+                <div class="cRoundButton cEditRoundButton cYnovPurple cShadowed cRoundButtonTopRight" id="cTitleEditRoundButtonProjectDashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+                    <g>
+                        <g id="create">
+                            <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                        </g>
+                    </g>
+
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Menu Option -->
+            <div class="cHamMenuProjectDashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 485.213 485.212" style="enable-background:new 0 0 485.213 485.212;" xml:space="preserve">
+                    <g>
+                        <path d="M485.212,272.93v-60.648l-65.535-10.93c-4.564-19.69-12.321-38.083-22.72-54.756l38.647-54.078l-42.876-42.883   l-54.11,38.62c-16.675-10.366-35.063-18.155-54.759-22.745L272.934,0h-60.65l-10.931,65.509   c-19.662,4.59-38.083,12.379-54.756,22.745l-54.108-38.62L49.607,92.518l38.648,54.078c-10.396,16.645-18.155,35.066-22.717,54.756   l-65.537,10.93v60.648l65.537,10.931c4.562,19.695,12.321,38.088,22.717,54.759l-38.648,54.105l42.881,42.881l54.136-38.643   c16.646,10.393,35.066,18.154,54.729,22.714l10.931,65.535h60.65l10.926-65.535c19.663-4.56,38.084-12.321,54.759-22.714   l54.11,38.643l42.876-42.881l-38.647-54.105c10.398-16.671,18.155-35.092,22.72-54.759L485.212,272.93z M242.607,363.906   c-66.989,0-121.302-54.311-121.302-121.3c0-66.989,54.313-121.302,121.302-121.302c66.991,0,121.302,54.313,121.302,121.302   C363.909,309.595,309.599,363.906,242.607,363.906z" fill="#5d5d5d"/>
+                    </g>
+                </svg>
+                <!-- menu déroulant caché -->
+                <div class="cDropdownMenuProjectDashboard">
+                    <a href="#" class="cYnovGreen">Comptes rendu</a>
+                    <a href="#" class="cYnovGreen">Checklist</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conteneur Image projet -->
+        <div id="cBlockImageProjectDashboard">
+            <div id="cImageContainerProjectDashboard" class="cShadowed cRounded">
+                <img id="cImageProjectDashboard" src="{{ asset('uploads/project/img/' ~ project.imageName) }}" alt="Image du projet">
+            </div>
+            <!-- Bouton modif -->
+            <label for="cImageInputProjectDashboard" class="cRoundButton cEditRoundButton cRoundButtonTopRight cShadowed cYnovPurple" id="cEditRoundButtonImgProjectDashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+                <g>
+                    <g id="create">
+                        <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                    </g>
+                </g>
+
+                </svg>
+            </label>
+            <input id="cImageInputProjectDashboard" type="file"/>
+        </div>
+
+
+
+        <!-- Block liste membres et description -->
+        <div id="cMidProjectDashboard">
+            <div id="cMembersProjectDashboard" class="cRounded cShadowed">
+                <div class="cOnePartListMemberProjectDashboard" id="cProjectManagerProjectDashboard">
+                    <p>Chef de projet</p>
+                    <p>{{ project.projectManager.username|capitalize }} {{ project.projectManager.lastName|upper }}</p>
+                </div>
+                <div class="cOnePartListMemberProjectDashboard" id="cHelperListProjectDashboard">
+                    <p>Helper</p>
+                    <p>{{ project.helper.username|capitalize }} {{ project.helper.lastName|upper }}</p>
+                </div>
+                <div class="cOnePartListMemberProjectDashboard" id="cMemberListProjectDashboard">
+                    <p>Membres</p>
+                    {% for member in project.members %}
+                        <p>{{ member.username|capitalize }} {{ member.lastName|upper }}</p>
+                    {% endfor %}
+                </div>
+                <!-- Bouton modif -->
+                <div class="container">
+                    <!-- Modal Pop-Up adminDashModifMemb -->
+                    <a href="#" data-toggle="modal" data-target="#PopUp_adminDashModifMemb">
+                        <div class="cRoundButton cEditRoundButton cRoundButtonTopRight cShadowed cYnovPurple" id="cEditRoundButtonMembersListProjectDashboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+                                <g>
+                                    <g id="create">
+                                        <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+                    <div class="modal fade" id="PopUp_adminDashModifMemb">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Header du modal -->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"> x </button>
+                                    <h3 class="modal-title"> Membres du projet </h3>
+                                </div>
+                                <!-- Body du modal -->
+                                <div class="modal-body">
+                                    <h4 class="modal-title"> Chef de projet </h4>
+                                    <p class="user-modal-membre"> Corentin DUPONT </p>
+                                    <h4 class="modal-title"> Helper </h4>
+                                    <p class="user-modal-membre"> Killian Delorme </p>
+                                    <div class="wrapper-title-membres"> <h4 class="modal-title"> Membres </h4> <p><a href="#">+</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Charles HUET </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Maxime GRAND </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Guillaume HECHT </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres"> <p class="user-modal-membre"> Jérémy NUNES </p> <p><a href="#">x</a></p> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cDescProjetDashboard" class="cShadowed cRounded">
+                <p>{{ project.description }}</p>
+                <!-- Bouton modif -->
+                <div class="cRoundButton cEditRoundButton cRoundButtonTopRight cShadowed cYnovPurple" id="cEditRoundButtonDescProjectDashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+                    <g>
+                        <g id="create">
+                            <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                        </g>
+                    </g>
+
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Titre Commentaires -->
+        <div id="cCommentTitleBlockProjectDashboard">
+            <h2>Commentaires</h2>
+            <button id="cAddCommentButtonProjectDashboard" class="cRounded cYnovGreen cShadowed cButton">Rédiger un commentaire</button>
+        </div>
+
+        <!-- Block tous les commentaires -->
+        <div id="cAllCommentsProjectDashboard">
+            {% for comment in project.comments %}
+
+                <!-- Input commentaire caché, affichier avec bouton "rédiger un commentaire" -->
+                <div id="cBlockHiddenInputAddCommentProjectDashboard" class="cOneCommentProjectDashboard cBlockHiddenInputCommentProjectDashboard">
+                    <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
+                    <div class="cInputAddCommentProjectDashboard cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
+                        <!-- <div class="cArrowCommentProjectDashboard"></div>-->
+                        <textarea class="cTextAreaAddCommentProjectDashboard" title="cTextAreaAddCommentProjectDashboard"></textarea>
+                        <!-- Conteneur Bouton-->
+                        <div class="cButtonRowContainer">
+                            <!-- Bouton annuler -->
+                            <button class="cCancelCommentButtonProjectDashboard cRounded cTomatoRed cShadowed cButton">Annuler</button>
+                            <!-- Bouton poster -->
+                            <button class="cPostCommentButtonProjectDashboard cRounded cYnovGreen cShadowed cButton">Poster</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Bloc d'un commentaire et ses réponses -->
+                <div class="cBlockOneCommentProjectDashboard">
+                    <!-- Un commentaire -->
+                    <div class="cOneCommentProjectDashboard">
+                        <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
+                        <div class="cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
+                            <!-- <div class="cArrowCommentProjectDashboard"></div>-->
+                           <p>{{ comment.text }}</p>
+                            <!-- Conteneur Bouton rond réponse et suppression-->
+                            <div class="cButtonRowContainer">
+                                <div class="cRoundButton cDeleteRoundButton cTomatoRed cShadowed">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 59 59" style="enable-background:new 0 0 59 59;" xml:space="preserve" width="512px" height="512px">
+                                    <path d="M52.5,6H38.456c-0.11-1.25-0.495-3.358-1.813-4.711C35.809,0.434,34.751,0,33.499,0H23.5c-1.252,0-2.31,0.434-3.144,1.289  C19.038,2.642,18.653,4.75,18.543,6H6.5c-0.552,0-1,0.447-1,1s0.448,1,1,1h2.041l1.915,46.021C10.493,55.743,11.565,59,15.364,59  h28.272c3.799,0,4.871-3.257,4.907-4.958L50.459,8H52.5c0.552,0,1-0.447,1-1S53.052,6,52.5,6z M20.5,50c0,0.553-0.448,1-1,1  s-1-0.447-1-1V17c0-0.553,0.448-1,1-1s1,0.447,1,1V50z M30.5,50c0,0.553-0.448,1-1,1s-1-0.447-1-1V17c0-0.553,0.448-1,1-1  s1,0.447,1,1V50z M40.5,50c0,0.553-0.448,1-1,1s-1-0.447-1-1V17c0-0.553,0.448-1,1-1s1,0.447,1,1V50z M21.792,2.681  C22.24,2.223,22.799,2,23.5,2h9.999c0.701,0,1.26,0.223,1.708,0.681c0.805,0.823,1.128,2.271,1.24,3.319H20.553  C20.665,4.952,20.988,3.504,21.792,2.681z" fill="#FFFFFF"/>
+
+                                    </svg>
+                                </div>
+                                <div class="cRoundButton cAnswerRoundButton cYnovGreen cShadowed">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 384 384" style="enable-background:new 0 0 384 384;" xml:space="preserve" width="512px" height="512px">
+                                    <g>
+                                        <g>
+                                            <path d="M149.333,117.333V32L0,181.333l149.333,149.333V243.2C256,243.2,330.667,277.333,384,352    C362.667,245.333,298.667,138.667,149.333,117.333z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g>
+
+                                    </svg>
+                                </div>
+                            </div>
+
+                       </div>
+                   </div>
+
+                   <!-- Bloc de réponse du commentaire -->
+                    <div class="cBlockAnswerOneCommentProjectDashboard">
+
+                        <div class="cLeftBarProjectDashboard"></div>
+
+                        <div class="cAllAnswersToOneCommentProjectDashboard">
+
+                            <!-- Input commentaire caché, affichier avec bouton "rédiger un commentaire" -->
+                            <div class="cOneCommentProjectDashboard cBlockHiddenInputCommentProjectDashboard">
+                                <img src="{{ asset('img/image3.png') }}" class="cProfilImageProjectDashboard cShadowed">
+                                <div class="cInputAddCommentProjectDashboard cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
+                                    <!-- <div class="cArrowCommentProjectDashboard"></div>-->
+                                    <textarea class="cTextAreaAddCommentProjectDashboard" title="cTextAreaAnswerCommentProjectDashboard"></textarea>
+                                    <!-- Conteneur Bouton-->
+                                    <div class="cButtonRowContainer">
+                                        <!-- Bouton annuler -->
+                                        <button class="cCancelCommentButtonProjectDashboard cRounded cTomatoRed cShadowed cButton">Annuler</button>
+                                        <!-- Bouton poster -->
+                                        <button class="cPostCommentButtonProjectDashboard cRounded cYnovGreen cShadowed cButton">Poster</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% for answer in comment.answers %}
+                                <!-- une réponse -->
+                                <div class="cOneCommentProjectDashboard">
+                                    <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
+                                    <div class="cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
+                                        <!-- <div class="cArrowCommentProjectDashboard"></div>-->
+                                        <p>{{ answer.text }}</p>
+                                        <!-- Conteneur Bouton rond suppression-->
+                                        <div class="cButtonRowContainer">
+                                            <div class="cRoundButton cDeleteRoundButton cTomatoRed cShadowed">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 59 59" style="enable-background:new 0 0 59 59;" xml:space="preserve" width="512px" height="512px">
+                                                    <path d="M52.5,6H38.456c-0.11-1.25-0.495-3.358-1.813-4.711C35.809,0.434,34.751,0,33.499,0H23.5c-1.252,0-2.31,0.434-3.144,1.289  C19.038,2.642,18.653,4.75,18.543,6H6.5c-0.552,0-1,0.447-1,1s0.448,1,1,1h2.041l1.915,46.021C10.493,55.743,11.565,59,15.364,59  h28.272c3.799,0,4.871-3.257,4.907-4.958L50.459,8H52.5c0.552,0,1-0.447,1-1S53.052,6,52.5,6z M20.5,50c0,0.553-0.448,1-1,1  s-1-0.447-1-1V17c0-0.553,0.448-1,1-1s1,0.447,1,1V50z M30.5,50c0,0.553-0.448,1-1,1s-1-0.447-1-1V17c0-0.553,0.448-1,1-1  s1,0.447,1,1V50z M40.5,50c0,0.553-0.448,1-1,1s-1-0.447-1-1V17c0-0.553,0.448-1,1-1s1,0.447,1,1V50z M21.792,2.681  C22.24,2.223,22.799,2,23.5,2h9.999c0.701,0,1.26,0.223,1.708,0.681c0.805,0.823,1.128,2.271,1.24,3.319H20.553  C20.665,4.952,20.988,3.504,21.792,2.681z" fill="#FFFFFF"/>
+
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+<script src="{{ asset('js/ficheProjet.js') }}"></script>
+<script src="{{ asset('js/scriptHeader.js') }}"></script>
+
+</html>

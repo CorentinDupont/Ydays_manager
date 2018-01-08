@@ -44,9 +44,7 @@ class YdaysManagerController extends Controller
         //return $this->render('ProjetYdaysManagerBundle:YdaysManager:AdminDemande.html.twig');
     }
 
-    public function ficheProjetAction($id){
-        return $this->render("ProjetYdaysManagerBundle:YdaysManager:ficheProjet.html.twig", array('id' => $id));
-    }
+
 
     public function proposerProjetAction(){
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:ProposerProjet.html.twig');

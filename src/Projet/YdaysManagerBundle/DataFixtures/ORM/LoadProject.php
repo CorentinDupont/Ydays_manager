@@ -26,10 +26,18 @@ class LoadProject implements FixtureInterface
             'Batman : The movie'
         );
 
-        foreach ($names as $name) {
+        $classrooms = array('205', '206', '207', '306', '307');
+
+        foreach ($names as $index=>$name) {
             // On crée la catégorie
             $project = new Project();
             $project->setName($name);
+            $project->setClassroom($classrooms[$index]);
+            $project->setDescription("Une description très détaillée et extrêmement enrichissante");
+            $project->setImageName("image1.jpg");
+            $project->setIsInternal(true);
+            $project->setIsPro(true);
+            $project->setState("STATE_AVAILABLE");
 
             // On la persiste
             $manager->persist($project);

@@ -33,7 +33,7 @@
         </ul>
         <div id="jConnectionInfoBlockHeader">
             <div id="jImgProfileContainerHeader">
-                <img src="{{ asset('img/' ~ app.user.imageName) }}"/>
+                <img src="{{ asset('uploads/user/profilePics/defpic.png') }}"/>
             </div>
             <p>{{ app.user.username|capitalize }} {{ app.user.lastName|upper }}</p>
             <a id="jDisconnectButtonHeader" href="{{ path('fos_user_security_logout') }}" class="cRounded">Déconnexion</a>

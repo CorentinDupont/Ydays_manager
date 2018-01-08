@@ -5,6 +5,10 @@ namespace Projet\YdaysManagerUserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Asset\Package;
+use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -48,6 +52,8 @@ class User extends BaseUser
      * @ORM\JoinTable(name="user_project")
      */
     private $projects;
+
+
 
     public function __construct()
     {

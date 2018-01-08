@@ -31,6 +31,14 @@ class ProjectController extends Controller
         ));
     }
 
+    public function ficheProjetAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $projectRepository = $em->getRepository(Project::class);
+        $project = $projectRepository->find($id);
+
+        return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project));
+    }
+
     public function proposerProjet()
     {
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:proposerProjet.html.twig');
