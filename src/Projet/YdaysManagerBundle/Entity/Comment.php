@@ -42,6 +42,7 @@ class Comment
 
     /**
      * @ORM\OneToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Comment")
+     * @ORM\JoinColumn(name="Parent_Comment_Id", referencedColumnName="id")
      */
     private $parentComment;
 
