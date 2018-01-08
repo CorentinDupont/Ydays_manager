@@ -41,9 +41,10 @@ class Comment
     private $project;
 
     /**
-     * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\Comment", mappedBy="comment")
+     * @ORM\OneToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Comment")
+     * @ORM\JoinColumn(name="Parent_Comment_Id", referencedColumnName="id")
      */
-    private $answers;
+    private $parentComment;
 
     /**
      * Get id
@@ -78,5 +79,93 @@ class Comment
     {
         return $this->text;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set author
+     *
+     * @param \Projet\YdaysManagerUserBundle\Entity\User $author
+     *
+     * @return Comment
+     */
+    public function setAuthor(\Projet\YdaysManagerUserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Projet\YdaysManagerUserBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Project $project
+     *
+     * @return Comment
+     */
+    public function setProject(\Projet\YdaysManagerBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \Projet\YdaysManagerBundle\Entity\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * Add answer
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Comment $answer
+     *
+     * @return Comment
+     */
+    public function addAnswer(\Projet\YdaysManagerBundle\Entity\Comment $answer)
+    {
+        $this->answers[] = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Remove answer
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Comment $answer
+     */
+    public function removeAnswer(\Projet\YdaysManagerBundle\Entity\Comment $answer)
+    {
+        $this->answers->removeElement($answer);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+}

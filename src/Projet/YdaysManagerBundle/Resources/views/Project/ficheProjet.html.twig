@@ -285,11 +285,12 @@
                             </div>
 
                                 <!-- une réponse -->
+                                {% for answerComment in answerComments %}
                                 <div class="cOneCommentProjectDashboard">
                                     <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
                                     <div class="cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
                                         <!-- <div class="cArrowCommentProjectDashboard"></div>-->
-                                        <p>{{ answer.text }}</p>
+                                        <p>{{ answerComment.text }}</p>
                                         <!-- Conteneur Bouton rond suppression-->
                                         <div class="cButtonRowContainer">
                                             <div class="cRoundButton cDeleteRoundButton cTomatoRed cShadowed">
@@ -301,7 +302,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                {% endfor %}
 
                         </div>
                     </div>

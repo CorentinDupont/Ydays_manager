@@ -3,6 +3,8 @@
 namespace Projet\YdaysManagerBundle\Controller;
 
 use Projet\YdaysManagerBundle\Entity\Project;
+use Projet\YdaysManagerBundle\Entity\Comment;
+use Projet\YdaysManagerBundle\Entity\AnswerComment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -33,13 +35,17 @@ class ProjectController extends Controller
 
     public function ficheProjetAction($id){
         $em = $this->getDoctrine()->getManager();
+
         $projectRepository = $em->getRepository(Project::class);
         $project = $projectRepository->find($id);
 
         $commentRepository = $em->getRepository(Comment::class);
         $comments = $commentRepository->findByProject($project);
 
-        return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments));
+        $answerCommentRepository = $em->getRepository(AnswerComment::class);
+        $answerComments = $answerCommentRepository->findByComment($comments);
+
+        return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments ));
     }
 
     public function proposerProjet()

@@ -5,12 +5,12 @@ namespace Projet\YdaysManagerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comment
+ * AnswerComment
  *
- * @ORM\Table(name="comment")
- * @ORM\Entity(repositoryClass="Projet\YdaysManagerBundle\Repository\CommentRepository")
+ * @ORM\Table(name="answer_comment")
+ * @ORM\Entity(repositoryClass="Projet\YdaysManagerBundle\Repository\AnswerCommentRepository")
  */
-class Comment
+class AnswerComment
 {
     /**
      * @var int
@@ -24,7 +24,7 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="string")
+     * @ORM\Column(name="text", type="string", length=191)
      */
     private $text;
 
@@ -35,12 +35,11 @@ class Comment
     private $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Project", inversedBy="comments")
-     * @ORM\JoinColumn(name="Project_Id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Comment")
+     * @ORM\JoinColumn(name="Comment_Id", referencedColumnName="id")
      */
-    private $project;
+    private $comment;
 
-  
 
     /**
      * Get id
@@ -57,7 +56,7 @@ class Comment
      *
      * @param string $text
      *
-     * @return Comment
+     * @return AnswerComment
      */
     public function setText($text)
     {
@@ -76,7 +75,7 @@ class Comment
         return $this->text;
     }
 
-    /**
+     /**
      * Set author
      *
      * @param \Projet\YdaysManagerUserBundle\Entity\User $author
@@ -101,27 +100,28 @@ class Comment
     }
 
     /**
-     * Set project
+     * Set comment
      *
-     * @param \Projet\YdaysManagerBundle\Entity\Project $project
+     * @param \Projet\YdaysManagerUserBundle\Entity\Comment $comment
      *
-     * @return Comment
+     * @return AnswerComment
      */
-    public function setProject(\Projet\YdaysManagerBundle\Entity\Project $project = null)
+    public function setComment(\Projet\YdaysManagerUserBundle\Entity\User $comment = null)
     {
-        $this->project = $project;
+        $this->comment = $comment;
 
         return $this;
     }
 
     /**
-     * Get project
+     * Get comment
      *
-     * @return \Projet\YdaysManagerBundle\Entity\Project
+     * @return \Projet\YdaysManagerUserBundle\Entity\Comment
      */
-    public function getProject()
+    public function getComment()
     {
-        return $this->project;
+        return $this->comment;
     }
-    
+
 }
+
