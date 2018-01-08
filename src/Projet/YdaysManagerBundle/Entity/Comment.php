@@ -40,7 +40,15 @@ class Comment
      */
     private $project;
 
-  
+  /**
+     * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\AnswerComment", mappedBy="comment")
+     */
+    private $answers;
+    
+        public function __construct()
+        {
+            $this->answers = new ArrayCollection();
+        }
 
     /**
      * Get id
@@ -124,4 +132,37 @@ class Comment
         return $this->project;
     }
     
+    /**
+     * Add answer
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\AnswerComment $answer
+     *
+     * @return Comment
+     */
+    public function addAnswer(\Projet\YdaysManagerBundle\Entity\AnswerComment $answer)
+    {
+        $this->answers[] = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Remove answer
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\AnswerComment $user
+     */
+    public function removeAnswer(\Projet\YdaysManagerBundle\Entity\AnswerComment $answer)
+    {
+        $this->answers->removeElement($answer);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Projet\YdaysManagerBundle\Entity\AnswerComment
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }

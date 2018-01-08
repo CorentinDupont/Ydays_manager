@@ -48,6 +48,10 @@ class ProjectController extends Controller
         return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments ));
     }
 
+
+
+
+
     public function proposerProjet()
     {
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:proposerProjet.html.twig');
