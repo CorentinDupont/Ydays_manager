@@ -17,7 +17,7 @@ class ProjectController extends Controller
     /**
      * Lists all project entities.
      *
-     * @Route("/", name="project_index")
+     * @Route("/", name="lesProjets")
      * @Method("GET")
      */
     public function lesProjetsAction()

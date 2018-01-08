@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reports list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sessionreport</th>
+                <th>Individualreport</th>
+                <th>Objectivesreport</th>
+                <th>Needsreport</th>
+                <th>Annexreport</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for report in reports %}
+            <tr>
+                <td><a href="{{ path('report_show', { 'id': report.id }) }}">{{ report.id }}</a></td>
+                <td>{{ report.sessionReport }}</td>
+                <td>{{ report.individualReport }}</td>
+                <td>{{ report.objectivesReport }}</td>
+                <td>{{ report.needsReport }}</td>
+                <td>{{ report.annexReport }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('report_show', { 'id': report.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

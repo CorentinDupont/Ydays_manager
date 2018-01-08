@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Report</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ report.id }}</td>
+            </tr>
+            <tr>
+                <th>Sessionreport</th>
+                <td>{{ report.sessionReport }}</td>
+            </tr>
+            <tr>
+                <th>Individualreport</th>
+                <td>{{ report.individualReport }}</td>
+            </tr>
+            <tr>
+                <th>Objectivesreport</th>
+                <td>{{ report.objectivesReport }}</td>
+            </tr>
+            <tr>
+                <th>Needsreport</th>
+                <td>{{ report.needsReport }}</td>
+            </tr>
+            <tr>
+                <th>Annexreport</th>
+                <td>{{ report.annexReport }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('report_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

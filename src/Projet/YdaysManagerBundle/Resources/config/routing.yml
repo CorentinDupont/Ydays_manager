@@ -1,7 +1,7 @@
-projet_ydays_manager_projet:
+projet_ydays_manager_project:
   path:      /projects
   defaults:
-      _controller: ProjetYdaysManagerBundle:YdaysManager:lesProjets
+      _controller: ProjetYdaysManagerBundle:Project:lesProjets
 
 projet_ydays_manager_proposer_projet:
   path:      /proposerProjet
@@ -31,9 +31,11 @@ projet_ydays_manager_list_Entreprise:
         _controller: ProjetYdaysManagerBundle:Entreprise:listEntreprises
 
 projet_ydays_manager_display_cr:
-    path:     /listCr
+    path:     ficheProjet/{id}/allReports
     defaults:
-        _controller: ProjetYdaysManagerBundle:YdaysManager:affichageCr
+        _controller: ProjetYdaysManagerBundle:Report:displayReport
+    requirements:
+       id: \d+
 
 
 projet_ydays_manager_accueil:

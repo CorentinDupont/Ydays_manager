@@ -17,6 +17,8 @@
 
 <body id="cBodyLesProjets">
 {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+
+{% for project in projects %}
     <a id="cLinkLesProjets" href="#">
         <div id="cProjectListProject" class=" d-flex flex-row">
             <img class="img-fluid h-100" src="Img/glink_by_thiefxrikku-d36x4uu.png" alt="">
@@ -41,6 +43,7 @@
             </div>
         </div>
     </a>
+{% endfor %}
 
     
 </body>

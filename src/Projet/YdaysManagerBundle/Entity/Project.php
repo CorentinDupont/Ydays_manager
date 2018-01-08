@@ -21,12 +21,6 @@ class Project
      */
     private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Id_projet", type="integer", unique=true)
-     */
-    private $idProjet;
 
     /**
      * @var string
@@ -70,6 +64,13 @@ class Project
      */
     private $referentProjet;
 
+    /**
+    * @var int
+    * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Entreprise")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $entreprise;
+
 
     /**
      * Get id
@@ -79,30 +80,6 @@ class Project
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set idProjet
-     *
-     * @param integer $idProjet
-     *
-     * @return Project
-     */
-    public function setIdProjet($idProjet)
-    {
-        $this->idProjet = $idProjet;
-
-        return $this;
-    }
-
-    /**
-     * Get idProjet
-     *
-     * @return int
-     */
-    public function getIdProjet()
-    {
-        return $this->idProjet;
     }
 
     /**
@@ -247,5 +224,29 @@ class Project
     public function getReferentProjet()
     {
         return $this->referentProjet;
+    }
+
+    /**
+     * Set entreprise
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Entreprise $entreprise
+     *
+     * @return Project
+     */
+    public function setEntreprise(\Projet\YdaysManagerBundle\Entity\Entreprise $entreprise)
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return \Projet\YdaysManagerBundle\Entity\Entreprise
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
     }
 }
