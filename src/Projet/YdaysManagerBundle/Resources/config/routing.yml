@@ -31,7 +31,7 @@ projet_ydays_manager_list_Entreprise:
         _controller: ProjetYdaysManagerBundle:Entreprise:listEntreprises
 
 projet_ydays_manager_display_cr:
-    path:     ficheProjet/{id}/allReports
+    path:     ficheProjet/allReports/{id}
     defaults:
         _controller: ProjetYdaysManagerBundle:Report:displayReport
     requirements:

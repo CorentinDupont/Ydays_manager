@@ -22,6 +22,12 @@ class Project
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
 
     /**
      * @var string
