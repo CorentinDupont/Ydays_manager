@@ -41,9 +41,9 @@ class Comment
     private $project;
 
     /**
-     * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\Comment", mappedBy="comment")
+     * @ORM\OneToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Comment")
      */
-    private $answers;
+    private $parentComment;
 
     /**
      * Get id

@@ -16,8 +16,7 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // add your custom field
-        $builder->add('lastName')
-            ->add('profilePictureFile');
+        $builder->add('lastName');
 
     }
 
