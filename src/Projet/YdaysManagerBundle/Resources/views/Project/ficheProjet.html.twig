@@ -24,24 +24,24 @@
         <div id="cTopProjectDashboard">
             <!-- Informations gauche -->
             <div id="cTopLeftProjectDashboard">
-                {% if project.isPro %}
+                {% if project.isPro() %}
                     <p>Pro</p>
                 {% else %}
                     <p>Perso</p>
                 {% endif %}
 
-                {% if project.isInternal %}
+                {% if project.isInternal() %}
                     <p>Interne</p>
                 {% else %}
                     <p>Externe</p>
                 {% endif %}
 
-                <p>project.classroom</p>
+                <p>{{ project.classroom }}</p>
             </div>
 
             <!-- Titre projet -->
             <div id="cTitleProjectBlockProjectDashboard">
-                <h1>{{project.name}}</h1>
+                <h1>{{project.getName()}}</h1>
                 <!-- Bouton modif -->
                 <div class="cRoundButton cEditRoundButton cYnovPurple cShadowed cRoundButtonTopRight" id="cTitleEditRoundButtonProjectDashboard">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
@@ -73,7 +73,7 @@
         <!-- Conteneur Image projet -->
         <div id="cBlockImageProjectDashboard">
             <div id="cImageContainerProjectDashboard" class="cShadowed cRounded">
-                <img id="cImageProjectDashboard" src="{{ asset('uploads/project/img/' ~ project.imageName) }}" alt="Image du projet">
+                <img id="cImageProjectDashboard" src="{{ asset('uploads/project/img/' ~ project.getImageName()) }}" alt="Image du projet">
             </div>
             <!-- Bouton modif -->
             <label for="cImageInputProjectDashboard" class="cRoundButton cEditRoundButton cRoundButtonTopRight cShadowed cYnovPurple" id="cEditRoundButtonImgProjectDashboard">
