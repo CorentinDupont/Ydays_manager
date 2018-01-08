@@ -70,6 +70,11 @@ class Entreprise
      */
     private $infoEntreprise;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\Project", mappedBy="entreprise")
+     */
+    private $projects;
+
 
 
 
@@ -250,5 +255,46 @@ class Entreprise
     public function getInfoEntreprise()
     {
         return $this->infoEntreprise;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add project
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Project $project
+     *
+     * @return Entreprise
+     */
+    public function addProject(\Projet\YdaysManagerBundle\Entity\Project $project)
+    {
+        $this->projects[] = $project;
+
+        return $this;
+    }
+
+    /**
+     * Remove project
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Project $project
+     */
+    public function removeProject(\Projet\YdaysManagerBundle\Entity\Project $project)
+    {
+        $this->projects->removeElement($project);
+    }
+
+    /**
+     * Get projects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjects()
+    {
+        return $this->projects;
     }
 }

@@ -71,12 +71,12 @@ class Project
     private $state;
 
     /**
-    * @var int
-    * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Entreprise")
-    * @ORM\JoinColumn(nullable=false)
+    *
+    * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Entreprise", inversedBy="projects")
+    * @ORM\JoinColumn(name="Entreprise_Id", referencedColumnName="id")
     */
     private $entreprise;
-
+    /** 
      * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerUserBundle\Entity\User")
      * @ORM\JoinColumn(name="Project_Manager_Id", referencedColumnName="id")
      */
@@ -366,5 +366,54 @@ class Project
     public function getClassroom()
     {
         return $this->classroom;
+    }
+
+    /**
+     * Set state
+     *
+     * @param string $state
+     *
+     * @return Project
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+
+    /**
+     * Set entreprise
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Entreprise $entreprise
+     *
+     * @return Project
+     */
+    public function setEntreprise(\Projet\YdaysManagerBundle\Entity\Entreprise $entreprise = null)
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return \Projet\YdaysManagerBundle\Entity\Entreprise
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
     }
 }
