@@ -299,8 +299,6 @@ class Project
 
         return $this;
     }
-<<<<<<< HEAD
-=======
 
     /**
      * Get helper
@@ -369,5 +367,4 @@ class Project
     {
         return $this->classroom;
     }
->>>>>>> dc177cbe8af5454ad43926528008a3b2070c875d
 }
