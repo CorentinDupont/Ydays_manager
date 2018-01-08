@@ -17,8 +17,8 @@
     {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
     <div class="jWrapperAccueil">
         <div class="jContainerAccueil">
-            <img src="{{ asset('img/' ~ app.user.imageName)}}" alt="User picture"/>
-            <h1> Bienvenue {{ app.user.username }} <span>{{ app.user.lastName }}</span> ! </h1>
+            <img src="{{ asset("uploads/user/profilePics/defpic.png")}}" alt="User picture"/>
+            <h1> Bienvenue {{ app.user.username|capitalize }} <span>{{ app.user.lastName|upper }}</span> ! </h1>
             <p> Pour commencer, sélectionnez une action dans le menu à gauche </p>
         </div>
     </div>

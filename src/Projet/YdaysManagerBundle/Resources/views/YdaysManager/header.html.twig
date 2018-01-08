@@ -21,7 +21,7 @@
             <li><a href="#">Mes projets</a></li>
             <li><a href="{{path('projet_ydays_manager_project')}}">Tous les projets</a></li>
             <li><a href="#">Proposer un projet</a></li>
-            <li><a href="#">Les étudiants</a></li>
+            <li><a href="{{ path('projet_ydays_manager_liste_etudiant') }}">Les étudiants</a></li>
             <li><a href="#">Les entreprises</a></li>
             {% if is_granted('ROLE_HELPER') %}
                 <li><a href="#">Projets supervisés</a></li>
@@ -32,11 +32,10 @@
             {% endif %}
         </ul>
         <div id="jConnectionInfoBlockHeader">
-            <p>Connecté en tant que</p>
             <div id="jImgProfileContainerHeader">
-                <img src="{{ asset('img/' ~ app.user.imageName) }}"/>
+                <img src="{{ asset('uploads/user/profilePics/defpic.png') }}"/>
             </div>
-            <p>{{ app.user.username }} {{ app.user.lastName }}</p>
+            <p>{{ app.user.username|capitalize }} {{ app.user.lastName|upper }}</p>
             <a id="jDisconnectButtonHeader" href="{{ path('fos_user_security_logout') }}" class="cRounded">Déconnexion</a>
         </div>
 

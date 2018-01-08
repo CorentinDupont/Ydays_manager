@@ -11,11 +11,11 @@ projet_ydays_manager_proposer_projet:
 projet_ydays_manager_fiche_projet:
    path:     /ficheProjet/{id}
    defaults:
-       _controller: ProjetYdaysManagerBundle:YdaysManager:ficheProjet
+       _controller: ProjetYdaysManagerBundle:Project:ficheProjet
    requirements:
        id: \d+
 
-projet_ydays_manager_liste_edtudiant:
+projet_ydays_manager_liste_etudiant:
     path:     /listeEtudiant
     defaults:
         _controller: ProjetYdaysManagerBundle:YdaysManager:listeEtudiant
