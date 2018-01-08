@@ -510,6 +510,85 @@
 /* Responsive : Modal adminDashModifMemb */
 @media all and (max-width: 420px) { .modal-dialog { width: 250px; } } /* Taille du modal */
 
+/**************************************************
+***************************************************
+*********** POP UP AjoutMembres *******************
+***************************************************
+**************************************************/
+
+/*************************************************/
+/*                 HEADER MODAL                  */
+/*************************************************/
+/* Taille du modal */
+.modal-dialog { width: 400px; height: 400px; overflow-y: scroll;}
+
+::-webkit-scrollbar {
+    overflow-x: hidden;
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(245,245,245); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgb(245,245,245); 
+}
+
+/* Container */
+.modal-content
+{ 
+    background-color: #f6f6f6;
+    color: #8f8f8f;
+}
+
+/* Titre */
+.modal-header
+{
+    background-color: #00b298;
+    border-top-left-radius: 6px; border-top-right-radius: 6px;
+    color: white;
+}
+
+.modal-header h3 { font-size: 17px; }
+
+/* Bouton close */
+.close, .close:hover
+{
+    opacity: 1;
+    color: white;
+    font-weight: 100;
+}
+.close:focus { outline: none; }
+
+/*************************************************/
+/*                  BODY MODAL                   */
+/*************************************************/
+/* Container */
+.modal-body { padding: 0; margin: 0; }
+
+.input-group {
+    width: 372px;
+}
+
+.btn.btn-default {
+    height: 34px;
+    width: 40px;
+}
+
+.user-select { display: flex; flex-direction: column; }
+
+.user-name
+{ 
+	padding: 3px 15px;
+	display: flex;
+	flex-direction: row;
+}
+
+.user-name div:first-child { padding-right: 30px; }
+
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------*/
