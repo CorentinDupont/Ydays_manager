@@ -25,13 +25,6 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="Name", type="string", length=191)
      */
     private $name;
