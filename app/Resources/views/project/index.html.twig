@@ -7,13 +7,13 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Idprojet</th>
-                <th>Nomprojet</th>
-                <th>Compositiongroupe</th>
-                <th>Typeprojet</th>
-                <th>Chefprojet</th>
-                <th>Ydaysperso</th>
-                <th>Referentprojet</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Ispro</th>
+                <th>Isinternal</th>
+                <th>Imagename</th>
+                <th>Classroom</th>
+                <th>State</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,13 +21,13 @@
         {% for project in projects %}
             <tr>
                 <td><a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.id }}</a></td>
-                <td>{{ project.idProjet }}</td>
-                <td>{{ project.nomProjet }}</td>
-                <td>{{ project.compositionGroupe }}</td>
-                <td>{{ project.typeProjet }}</td>
-                <td>{{ project.chefProjet }}</td>
-                <td>{% if project.ydaysPerso %}Yes{% else %}No{% endif %}</td>
-                <td>{{ project.referentProjet }}</td>
+                <td>{{ project.name }}</td>
+                <td>{{ project.description }}</td>
+                <td>{% if project.isPro %}Yes{% else %}No{% endif %}</td>
+                <td>{% if project.isInternal %}Yes{% else %}No{% endif %}</td>
+                <td>{{ project.imageName }}</td>
+                <td>{{ project.classroom }}</td>
+                <td>{{ project.state }}</td>
                 <td>
                     <ul>
                         <li>

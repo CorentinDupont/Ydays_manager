@@ -2,7 +2,6 @@
 
 namespace Projet\YdaysManagerBundle\Controller;
 
-use Projet\YdaysManagerBundle\Entity\Comment;
 use Projet\YdaysManagerBundle\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -15,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class ProjectController extends Controller
 {
-    /**
+     /**
      * Lists all project entities.
      *
      * @Route("/", name="lesProjets")
@@ -65,7 +64,7 @@ class ProjectController extends Controller
             $em->persist($project);
             $em->flush();
 
-            return $this->redirectToRoute('project_show', array('id' => $project->getId()));
+            return $this->redirectToRoute('projet_ydays_manager_fiche_projet', array('id' => $project->getId()));
         }
 
         return $this->render('project/new.html.twig', array(

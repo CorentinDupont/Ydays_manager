@@ -13,9 +13,8 @@ class ProjectType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idProjet')->add('nomProjet')->add('compositionGroupe')->add('typeProjet')->add('chefProjet')->add('ydaysPerso')->add('referentProjet');
+        $builder->add('name')->add('description')->add('isPro')->add('isInternal')->add('imageName')->add('classroom')->add('state')->add('members')->add('entreprise')->add('projectManager')->add('helper');
     }
-    
     /**
      * {@inheritdoc}
      */

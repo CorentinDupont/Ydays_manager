@@ -264,6 +264,9 @@ class Entreprise
         $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString() {
+        return (string) $this->nomEntreprise; }
+
     /**
      * Add project
      *
