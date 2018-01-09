@@ -34,13 +34,19 @@ class ReportController extends Controller
     /**
      * Finds and displays a report entity.
      *
-     * @Route("/{id}", name="report_show")
+     * @Route("ficheProjet/allReports/report/{id}", name="projet_ydays_manager_display_one_cr")
      * @Method("GET")
      */
-    public function showAction(Report $report)
+    public function displayOneReportAction($idReport)
     {
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render('report/show.html.twig', array(
+
+        
+        $report = $em->getRepository('ProjetYdaysManagerBundle:Report')->find($idReport);
+
+
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:AffichageCompteRendu.html.twig', array(
             'report' => $report,
         ));
     }

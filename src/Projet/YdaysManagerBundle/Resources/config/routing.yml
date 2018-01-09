@@ -37,6 +37,12 @@ projet_ydays_manager_display_cr:
     requirements:
        id: \d+
 
+projet_ydays_manager_display_one_cr:
+    path:     ficheProjet/allReports/report/{idReport}
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Report:displayOneReport
+    requirements:
+       idReport: \d+
 
 projet_ydays_manager_accueil:
     path:     /accueil

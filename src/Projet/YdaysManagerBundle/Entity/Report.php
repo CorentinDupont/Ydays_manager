@@ -21,6 +21,14 @@ class Report
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nameReport", type="string")
+     */
+    private $nameReport;
+
     /**
      * @var string
      *
@@ -246,5 +254,29 @@ class Report
     public function getMarkReport()
     {
         return $this->markReport;
+    }
+
+    /**
+     * Set nameReport
+     *
+     * @param string $nameReport
+     *
+     * @return Report
+     */
+    public function setNameReport($nameReport)
+    {
+        $this->nameReport = $nameReport;
+
+        return $this;
+    }
+
+    /**
+     * Get nameReport
+     *
+     * @return string
+     */
+    public function getNameReport()
+    {
+        return $this->nameReport;
     }
 }

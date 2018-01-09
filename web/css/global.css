@@ -1733,7 +1733,7 @@ body, html {
     font-size: 1.50rem;
 }
 .titleLogin{
-    font-size: 2rem; !important;
+    font-size: 2rem !important;
     text-align: center;
 
 }
@@ -2110,10 +2110,276 @@ body, html {
    color: #878787;
     font-size: calc(0.5vw + 0.7vh + 0.5vmin);
 }
-
 /**************************************************
 ***************************************************
 ************** affichage compte rendu *************
+***************************************************
+**************************************************/
+
+/**
+  *
+  * @ Auteur : Guillaume Hecht <guillaume.hecht@ynov.com>
+  * @ Copyright 2017 Guillaume Hecht
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+/**************************************************
+***************************************************
+********************* WRAPPER *********************
+***************************************************
+**************************************************/
+
+#gBodyAffichageCompteRendu
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: #f6f6f6;
+	font-family: "Century Gothic";
+	color: #858585;
+}
+
+/* Enveloppe de la page */
+.gWrapperAffichageCompteRendu
+{ 
+	margin-left: 200px; /* Décalage pour l'écart avec la navbar */
+	display: flex;				/* Pour permettre au */
+	justify-content: center;	/* contenu de centrer */
+	align-items: center;		/* au milieu de la page */
+    flex-direction: column;
+    background-color: #f6f6f6;
+    
+}
+
+/**************************************************
+***************************************************
+************* BACK TO COMPTE RENDU ****************
+***************************************************
+**************************************************/
+
+.gBackToAffichageCompteRendu
+{
+	position: fixed;
+	top: 20px;
+	left: 200px;
+
+	background-color: #ca4572;
+	border-top-right-radius: 10px; border-bottom-right-radius: 10px;
+	color: white;
+}
+
+.gBackToAffichageCompteRendu a
+{ 
+	position: relative;
+	top: -1px;
+	color: white; 
+	text-decoration: none;
+}
+
+.gBackToAffichageCompteRendu p
+{
+    
+	margin: 0;
+	padding: 5px 11px 7px 15px;
+}
+
+.gBackToAffichageCompteRendu p span
+{
+	font-size: 20px;
+	padding-right: 8px;
+	position: relative;
+	top: 1px;
+}
+
+@media all and (max-width: 768px)
+{
+	.gBackToAffichageCompteRendu
+	{ 
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: initial;
+
+		padding: 0;
+		margin: 0;
+		width: 230px;
+
+		border-top-right-radius: 0; border-bottom-right-radius: 0;
+		border-top-left-radius: 10px; border-bottom-left-radius: 10px;
+	}
+}
+
+@media all and (max-width: 350px)
+{
+	.gBackToAffichageCompteRendu { width: 150px; }
+
+}
+
+/**************************************************
+***************************************************
+********************* TITLE ***********************
+***************************************************
+**************************************************/
+
+.gTitleAffichageCompteRendu
+{
+	padding: 20px 0 10px 0;
+	text-align: center;
+}
+
+.gTitleAffichageCompteRendu p, h1 { margin: 0; }
+
+.gTitleAffichageCompteRendu h1 { font-size: 16px; }
+
+@media all and (max-width: 768px)
+{
+	.gTitleAffichageCompteRendu
+	{ 
+		padding-top: 80px;
+	}
+}
+
+/**************************************************
+***************************************************
+********************* INPUT ***********************
+***************************************************
+**************************************************/
+.gFormAffichageCompteRendu
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 1000px;
+}
+
+/* RESPONSIVE DU FORMULAIRE */
+@media all and (max-width: 1250px) { .gFormAffichageCompteRendu { width: 900px; } }
+@media all and (max-width: 1150px) { .gFormAffichageCompteRendu { width: 800px; } }
+@media all and (max-width: 1050px) { .gFormAffichageCompteRendu { width: 750px; } }
+@media all and (max-width: 975px) { .gFormAffichageCompteRendu { width: 600px; } }
+@media all and (max-width: 850px) { .gFormAffichageCompteRendu { width: 525px; } }
+@media all and (max-width: 768px) { .gFormAffichageCompteRendu { width: 600px; } }
+@media all and (max-width: 625px) { .gFormAffichageCompteRendu { width: 450px; } }
+	@media all and (max-width: 625px)
+	{
+		.gFormRowAffichageCompteRendu { display: flex; flex-direction: column !important; }
+		.gFormRowAffichageCompteRendu p { width: 100% !important; }
+		.gFormRowAffichageCompteRendu p:first-child { margin-right: 0 !important; }
+		.gFormRowAffichageCompteRendu p:last-child { margin-left: 0 !important; }
+	}
+@media all and (max-width: 475px) { .gFormAffichageCompteRendu { width: 325px; } }
+@media all and (max-width: 350px) { .gFormAffichageCompteRendu { width: 220px; } }
+
+/* PERSONNALISER LA SCROLLBAR */
+::-webkit-scrollbar { width: 15px; }
+ 
+::-webkit-scrollbar-track
+{
+	border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+ 
+::-webkit-scrollbar-thumb
+{
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+/* PERSONNALISER LES PLACEHOLDER */
+::-webkit-input-placeholder { font-style: italic; }
+
+
+.gFormAffichageCompteRendu form { width: 100%; }
+
+.gFormAffichageCompteRendu form p
+{ 
+    
+	margin: 30px 0;
+	box-shadow: 3px 3px 8px #ccc;
+	background-color: white;
+	text-align: center;
+	border-radius: 3px;
+}
+
+.gFormAffichageCompteRendu form textarea
+{ 
+	padding: 0 20px;
+	resize: none;
+	outline: none;
+}
+
+/* Compte rendu textarea ( 1, 2, 3 ) */
+#labelCompteRenduAffichageCompteRendu, #labelCompteRenduIndividuelAffichageCompteRendu, #labelObjectifsAffichageCompteRendu { padding: 12px 0; }
+
+#textareaCompteRenduAffichageCompteRendu, #textareaCompteRenduIndividuelAffichageCompteRendu, #textareaObjectifsAffichageCompteRendu
+{
+	width: 100%;
+	height: 200px;
+	border: none;
+}
+
+.gFormRowAffichageCompteRendu
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.gFormRowAffichageCompteRendu p { width: 80%; }
+.gFormRowAffichageCompteRendu p:first-child { margin-right: 20px; }
+.gFormRowAffichageCompteRendu p:last-child { margin-left: 20px; }
+
+/* Compte rendu textarea ( 4, 5 ) */
+#labelBesoinsAffichageCompteRendu, #labelAnnexesAffichageCompteRendu { padding: 12px 0; }
+
+#textareaBesoinsAffichageCompteRendu, #textareaAnnexesAffichageCompteRendu
+{
+	width: 100%;
+	height: 200px;
+	border: none;
+}
+
+/* Notation */
+.gNoteAffichageCompteRendu
+{
+	margin: 20px 0 50px 0;
+	padding: 20px 40px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	background-color: white;
+	box-shadow: 3px 3px 8px #ccc;
+	text-align: center;
+	font-size: 16px;
+}
+
+.gContainerSVG_AffichageCompteRendu
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.gContainerSVG_AffichageCompteRendu svg
+{
+	width: 25px;
+	height: 25px;
+	padding: 0 3px;
+}
+
+/* IL EST IMPORTANT DE METTRE CE MEDIA QUERIES À LA FIN DU CSS POUR SON BON FONCTIONNEMENT */
+/* Media Queries pour reset le margin lorsque la navbar disparaît */
+@media all and (max-width: 768px)
+{
+	.gWrapperAffichageCompteRendu { margin: 0 1px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
+}
+
+/**************************************************
+***************************************************
+*********** affichage liste compte rendu **********
 ***************************************************
 **************************************************/
 
