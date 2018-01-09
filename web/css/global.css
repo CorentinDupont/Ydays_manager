@@ -2438,7 +2438,13 @@ body, html {
     }
 }
 
-/* modif bouton guillaume hecht */
+
+.cAddReportButtonAllReport{
+    position:fixed;
+    right:2vw;
+    bottom:2vw;
+}
+/* modif boutton guillaume hecht */
 .gBackAffichageCr{
     background-color: #CA4572;
     display: inline-flex;

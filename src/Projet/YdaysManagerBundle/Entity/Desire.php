@@ -28,11 +28,7 @@ class Desire
      */
     private $type;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\Comment")
-     * @ORM\JoinColumn(name="Helper_Id", referencedColumnName="id")
-     */
-    private $user;
+
     /**
      * Get id
      *
