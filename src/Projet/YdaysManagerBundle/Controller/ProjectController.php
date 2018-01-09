@@ -5,6 +5,7 @@ namespace Projet\YdaysManagerBundle\Controller;
 use Projet\YdaysManagerBundle\Entity\Project;
 use Projet\YdaysManagerBundle\Entity\Comment;
 use Projet\YdaysManagerBundle\Entity\AnswerComment;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -50,11 +51,47 @@ class ProjectController extends Controller
 
 
 
-
-
     public function proposerProjetAction()
     {
         return $this->render('ProjetYdaysManagerBundle:Project:proposerProjet.html.twig');
+    }
+
+    /**
+     * Push New Project in DataBase
+     *
+     * @Route("/pushProjectInDb", options={"expose"=true}, name="projet_ydays_manager_push_project_in_db")
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function pushProjectInDbAction(){
+        $request = Request::createFromGlobals();
+        $param = $request->query->all();
+
+        $newProject = new Project();
+        $newProject -> setName((urldecode($param['title'])));
+        $newProject -> setIsPro(urldecode((int)$param['isPro']));
+        $newProject -> setIsInternal(urldecode((int)$param['isInternal']));
+        $newProject -> setImageName(urldecode($param['imageName']));
+        $newProject -> setDescription(urldecode($param['description']));
+        $newProject -> setState("STATE_REQUESTED");
+        $newProject -> setProjectManager($this->get('security.token_storage')->getToken()->getUser());
+
+        $em = $this -> getDoctrine() -> getManager();
+
+        $em -> persist($newProject);
+        $em -> flush();
+
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:accueil.html.twig');
+    }
+
+    /**
+     * Upload Image
+     *
+     * @Route("/uploadProjectImage", options={"expose"=true}, name="projet_ydays_manager_upload_project_image")
+     * @Method("POST")
+     */
+    public function uploadProjectImage(){
+
     }
 
     /**

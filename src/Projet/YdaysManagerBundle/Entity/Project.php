@@ -65,7 +65,7 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="Classroom", type="string", length=191)
+     * @ORM\Column(name="Classroom", type="string", length=191, nullable=true)
      */
     private $classroom;
 

@@ -20,7 +20,7 @@
         <ul class="jListHeader">
             <li><a href="#">Mes projets</a></li>
             <li><a href="{{path('projet_ydays_manager_project')}}">Tous les projets</a></li>
-            <li><a href="#">Proposer un projet</a></li>
+            <li><a href="{{ path('projet_ydays_manager_proposer_projet')}}">Proposer un projet</a></li>
             <li><a href="{{ path('projet_ydays_manager_liste_etudiant') }}">Les étudiants</a></li>
             <li><a href="{{ path('projet_ydays_manager_list_Entreprise') }}">Les entreprises</a></li>
             {% if is_granted('ROLE_HELPER') %}
