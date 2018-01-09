@@ -2438,6 +2438,11 @@ body, html {
     }
 }
 
+.cAddReportButtonAllReport{
+    position:fixed;
+    right:2vw;
+    bottom:2vw;
+}
 /* modif boutton guillaume hecht */
 .gBackAffichageCr{
     background-color: #CA4572;
