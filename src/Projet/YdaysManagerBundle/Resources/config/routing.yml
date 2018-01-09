@@ -44,6 +44,13 @@ projet_ydays_manager_display_one_cr:
     requirements:
        idReport: \d+
 
+projet_ydays_manager_create_one_cr:
+    path:     ficheProjet/allReports/newReport/{idProjet}
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Report:CreateOneReport
+    requirements:
+       idReport: \d+
+
 projet_ydays_manager_accueil:
     path:     /accueil
     defaults:

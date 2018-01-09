@@ -27,7 +27,7 @@ class ReportController extends Controller
         $reports = $em->getRepository('ProjetYdaysManagerBundle:Report')->findByProject($id);
         
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:affichageCr.html.twig', array(
-            'reports' => $reports,
+            'reports' => $reports, 'projectId' => $id,
         ));
     }
 
@@ -41,13 +41,29 @@ class ReportController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-
-        
         $report = $em->getRepository('ProjetYdaysManagerBundle:Report')->find($idReport);
-
 
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:AffichageCompteRendu.html.twig', array(
             'report' => $report,
         ));
+    }
+
+    /**
+     * Create and displays a report entity.
+     *
+     * @Route("ficheProjet/allReports/report/{idProject}", name="projet_ydays_manager_create_one_cr")
+     * @Method("GET")
+     */
+    public function createOneReportAction($idProject)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $report = $em->getRepository('ProjetYdaysManagerBundle:Report')->find($idProject);
+
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:AffichageCompteRendu.html.twig', array(
+            'report' => $report,
+        ));
+
+    
     }
 }
