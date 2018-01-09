@@ -17,7 +17,8 @@
 		<link rel="stylesheet" href="{{ asset('css/global.css') }}">
 		<script src="{{ asset('js/jquery.min.js') }}"></script>
 		<script src="{{ asset('js/bootstrap.js') }}"></script>
-
+		<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+		<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     {% endblock %}
 </head>
 
@@ -27,17 +28,17 @@
     
     <div id="mWrapperProposerProjet">
 	    <div id="mTopDashboardProposerProjet">
-	            <form>
-	                <select class="mCategorieProposerProjet" size="1">
-	                    <option selected="selected">Pro</option>
-	                    <option>Perso</option>
-	                </select>
-	                <select class="mAffiliationProposerProjet" size="1">
-	                    <option selected="selected">Interne</option>
-	                    <option>Externe</option>
-	                </select>
-	            </form>
-	       {{form_widget(form.name)}}
+			<form>
+				<select class="mCategorieProposerProjet" size="1">
+					<option selected="selected">Pro</option>
+					<option>Perso</option>
+				</select>
+				<select class="mAffiliationProposerProjet" size="1">
+					<option selected="selected">Interne</option>
+					<option>Externe</option>
+				</select>
+			</form>
+			<input type="text" class="mNameProjetProposerProjet" placeholder="Nom du projet"/>
 	    </div>
 	    
 	    <div id="mMidDashboardProposerProjet">

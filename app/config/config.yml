@@ -82,6 +82,9 @@ fos_user:
         form:
             type: Projet\YdaysManagerUserBundle\Form\RegistrationType
 
+fos_js_routing:
+    routes_to_expose: [ (.*) ]
+
 #assetic configuration
 assetic:
     debug:          "%kernel.debug%"

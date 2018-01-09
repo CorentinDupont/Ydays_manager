@@ -16,3 +16,7 @@ function previewImage(input, image) {
         image.attr('src', oFREvent.target.result);
     };
 };
+
+$('.mButtonProposerProjet').click(function(){
+    window.location.href = Routing.generate('projet_ydays_manager_accueil');
+});
