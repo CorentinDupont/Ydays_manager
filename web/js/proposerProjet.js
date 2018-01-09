@@ -14,9 +14,38 @@ function previewImage(input, image) {
 
     oFReader.onload = function (oFREvent) {
         image.attr('src', oFREvent.target.result);
+        $completeImagePath = oFREvent.target.result;
     };
 };
 
 $('.mButtonProposerProjet').click(function(){
-    window.location.href = Routing.generate('projet_ydays_manager_accueil');
+    var numOfError = 0;
+
+    //titre
+    $title = $('.mNameProjetProposerProjet').val();
+    //Si le titre est vide
+    if($title.replace(/\s/g, '') === ''){
+        numOfError++;
+        $('.mNameProjetProposerProjet').css("background-color", "#FFCBCB");
+    }
+
+    //projet pro ?
+    $isPro=false;
+    if($('.mCategorieProposerProjet').find(":selected").text().toLowerCase() === "pro"){
+        $isPro=true;
+    }
+
+    //projet interne ?
+    $isInternal=false;
+    if($('.mAffiliationProposerProjet').find(":selected").text().toLowerCase() === "interne"){
+        $isInternal=true;
+    }
+
+    //image
+    console.log($completeImagePath);
+
+    if(numOfError===0){
+        window.location.href = Routing.generate('projet_ydays_manager_accueil');
+    }
+
 });

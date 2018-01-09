@@ -13,37 +13,41 @@
     <title>Page Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
-   {% block stylesheets %}
+    {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('css/global.css') }}">
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.js') }}"></script>
 
-   {% endblock %}
+    {% endblock %}
 </head>
 
 <body id="cBodyListEntreprises">
-    {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+{% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
 
-    {% for entreprise in entreprises %}
-            <div id="cListentrepriseProject" class=" d-flex flex-row">
-                <img class="img-fluid h-100" src="{{ asset('img/'~ entreprise.imgEntreprise)}}" alt="{{entreprise.nomEntreprise}}">
-                <div id="ctitleDescListentreprise" class="text-left col-xs-7 col-md-6 col-sm-7 col-lg-7 d-flex flex-column">
+{% for entreprise in entreprises %}
+    <div class="cListentrepriseProject d-flex flex-row">
+        <div class="gCentrImg">
+            <img class="img-fluid h-100" src="{{ asset('img/'~ entreprise.imgEntreprise)}}" alt="{{entreprise.nomEntreprise}}">
+        </div>
 
-                    <h5 class="cH5ListEntreprises">{{entreprise.nomEntreprise}}</h5>
+        <div class="ctitleDescListentreprise text-left col-xs-7 col-md-4 col-sm-7 col-lg-7 d-flex flex-column">
+            <h5 class="cH5ListEntreprises">{{entreprise.nomEntreprise}}</h5>
 
-                    <p class="cFontListentreprise">{{entreprise.infoEntreprise}}</p>
-                </div>
-                <div class="col-xs-3 col-md-4 col-sm-3 col-lg-3 d-flex flex-column cInfoListentreprise ">
-                    <p class="cFontListentreprise">{{entreprise.adresseEntreprise}}</p>
-                    <p class="cFontListentreprise">{{entreprise.cpEntreprise}} {{entreprise.villeEntreprise}}</p> 
-                    <p class="cFontListentreprise">Siret : {{entreprise.siretEntreprise}}</p>
-                    
-                </div>
-            </div>
-    {% endfor %}
+            <p class="cFontListentreprise">{{entreprise.infoEntreprise}}</p>
+        </div>
+        <div class="col-xs-3 col-md-4 col-sm-3 col-lg-3 d-flex flex-column cInfoListentreprise ">
+            <p class="cFontListentreprise">{{entreprise.adresseEntreprise}}</p>
+            <p class="cFontListentreprise">{{entreprise.cpEntreprise}} {{entreprise.villeEntreprise}}</p>
+            <p class="cFontListentreprise">Siret : {{entreprise.siretEntreprise}}</p>
 
-    
+        </div>
+    </div>
+{% endfor %}
+
+
 </body>
 <script src="{{ asset('js/scriptHeader.js') }}"></script>
 </html>
+
+
