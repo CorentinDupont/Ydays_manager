@@ -65,6 +65,13 @@ class Report
     private $annexReport;
     
     /**
+     * @var date
+     *
+     * @ORM\Column(name="dateReport", type="date")
+     */
+    private $dateReport;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="mark_report", type="integer")
@@ -278,5 +285,29 @@ class Report
     public function getNameReport()
     {
         return $this->nameReport;
+    }
+
+    /**
+     * Set dateReport
+     *
+     * @param \DateTime $dateReport
+     *
+     * @return Report
+     */
+    public function setDateReport($dateReport)
+    {
+        $this->dateReport = $dateReport;
+
+        return $this;
+    }
+
+    /**
+     * Get dateReport
+     *
+     * @return \DateTime
+     */
+    public function getDateReport()
+    {
+        return $this->dateReport;
     }
 }

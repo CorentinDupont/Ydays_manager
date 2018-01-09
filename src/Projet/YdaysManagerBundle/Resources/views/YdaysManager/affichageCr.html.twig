@@ -23,7 +23,11 @@
 
 	<body id="cBodyAffichageCr">
         {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
-        <a href="{{app.request.headers.get('referer')}}"><button  type="button" class="btn btn-primary">Revenir à la fiche projet</button></a>
+      <a href="{{app.request.headers.get('referer')}}">
+    <div class="gBackAffichageCr">
+                <button  type="button" class="btn btn-primary gBackFicheProjet"><span>&lsaquo;</span>Revenir à la fiche projet</button>
+            </div>
+</a>
         <div class="flexTopDisplayCr">
             <p>Comptes rendus</p>
         </div>
@@ -34,7 +38,8 @@
                 <div id="cr{{report.Id}}" class="containersDisplayCr col-md-3 col-xl-3">
                     <div class="infoDisplayCr">
                         <p>{{report.nameReport}}</p>
-                        <p>14/05/2017</p>
+                        <p>{{report.dateReport|date('d/m/Y')}}</p>
+                       
                     </div>
                     <div class="helperMarkDisplayCr">
                        

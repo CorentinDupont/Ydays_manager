@@ -2438,6 +2438,41 @@ body, html {
     }
 }
 
+/* modif boutton guillaume hecht */
+.gBackAffichageCr{
+    background-color: #CA4572;
+    display: inline-flex;
+    top: 20px;
+    left: 200px;
+    margin-top: 2%;
+    border-top-right-radius: 10px; border-bottom-right-radius: 10px;
+    color: white;
+    text-decoration: none !important;
+
+}
+
+.gBackFicheProjet{
+    background-color: #CA4572!important;
+    border-color: transparent !important;
+    text-decoration: none !important;
+}
+
+.gBackFicheProjet span{
+    margin-right: 5%;
+}
+
+.gBackAffichageCr:hover{
+    background-color: #CA4572 !important;
+    display: inline-flex;
+    top: 20px;
+    left: 200px;
+    border-top-right-radius: 10px; border-bottom-right-radius: 10px;
+    color: white;
+    text-decoration: none !important;
+}
+/* Fin modif guillaume */
+
+
 #cBodyAffichageCr{
     background-color: #F6F6F6;
     margin-left: 200px;
