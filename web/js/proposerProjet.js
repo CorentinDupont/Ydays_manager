@@ -17,7 +17,7 @@ function previewImage(input, image) {
         $imageBase64 = oFREvent.target.result;
     };
 };
-
+//clique bouton proposer projet
 $('.mButtonProposerProjet').click(function(){
     var numOfError = 0;
 
