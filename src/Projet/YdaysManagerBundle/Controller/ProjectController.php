@@ -52,9 +52,9 @@ class ProjectController extends Controller
 
 
 
-    public function proposerProjet()
+    public function proposerProjetAction()
     {
-        return $this->render('ProjetYdaysManagerBundle:YdaysManager:proposerProjet.html.twig');
+        return $this->render('ProjetYdaysManagerBundle:Project:proposerProjet.html.twig');
     }
 
     /**
