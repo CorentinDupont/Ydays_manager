@@ -1,4 +1,4 @@
-$imageBase64="";
+var imageBase64="";
 //Input image
 $('#mMidDashboardInputFileProposerProjet').change(function(){
     $(this).parent().find('label').css('background-color','transparent');
@@ -14,7 +14,7 @@ function previewImage(input, image) {
 
     oFReader.onload = function (oFREvent) {
         image.attr('src', oFREvent.target.result);
-        $imageBase64 = oFREvent.target.result;
+        imageBase64 = oFREvent.target.result;
     };
 };
 //clique bouton proposer projet
@@ -22,9 +22,9 @@ $('.mButtonProposerProjet').click(function(){
     var numOfError = 0;
 
     //titre
-    $title = $('.mNameProjetProposerProjet').val();
+    var title = $('.mNameProjetProposerProjet').val();
     //Si le titre est vide
-    if($title.replace(/\s/g, '') === ''){
+    if(title.replace(/\s/g, '') === ''){
         numOfError++;
         $('.mNameProjetProposerProjet').css("background-color", "#FFCBCB");
     }else{
@@ -32,20 +32,20 @@ $('.mButtonProposerProjet').click(function(){
     }
 
     //projet pro ?
-    $isPro=false;
+    var isPro=false;
     if($('.mCategorieProposerProjet').find(":selected").text().toLowerCase() === "pro"){
-        $isPro=true;
+        isPro=true;
     }
 
     //projet interne ?
-    $isInternal=false;
+    var isInternal=false;
     if($('.mAffiliationProposerProjet').find(":selected").text().toLowerCase() === "interne"){
-        $isInternal=true;
+        isInternal=true;
     }
 
     //image (chargé au niveau du js image au début du fichier)
     //Si aucune image n'est choisie
-    if($imageBase64===""){
+    if(imageBase64===""){
         numOfError++;
         $('#mMidDashboardInputFileProposerProjet').parent().find('label').css("background-color", "#FFCBCB");
     }else{
@@ -53,9 +53,9 @@ $('.mButtonProposerProjet').click(function(){
     }
 
     //description
-    $description = $('.mDescriptionProposerProjet').val();
+    var description = $('.mDescriptionProposerProjet').val();
     //Si le titre est vide
-    if($description.replace(/\s/g, '') === ''){
+    if(description.replace(/\s/g, '') === ''){
         numOfError++;
         $('.mDescriptionProposerProjet').css("background-color", "#FFCBCB");
     }else{
@@ -65,11 +65,10 @@ $('.mButtonProposerProjet').click(function(){
     //image
     //préparation à l'upload
     var imageDatas = new Array();
-    imageDatas.push(['image', $imageBase64]);
+    imageDatas.push(['image', imageBase64]);
     //récupération du nom pour la base de donnée.
-    $imageName = makeid()+$('#mMidDashboardInputFileProposerProjet')[0].files[0]['name'];
-    console.log($imageName);
-    imageDatas.push(['imageName', $imageName]);
+    var imageName = makeid()+$('#mMidDashboardInputFileProposerProjet')[0].files[0]['name'];
+    imageDatas.push(['imageName', imageName]);
 
     if(numOfError===0){
         //Upload de l'image
@@ -95,11 +94,11 @@ $('.mButtonProposerProjet').click(function(){
 
         //Appel de la méthode du ProjectController pour entrer en base de données le projet
         window.location.href = Routing.generate('projet_ydays_manager_push_project_in_db', {
-            'title': $title,
-            'isPro': $isPro,
-            'isInternal': $isInternal,
-            'imageName': $imageName,
-            'description': $description
+            'title': title,
+            'isPro': isPro,
+            'isInternal': isInternal,
+            'imageName': imageName,
+            'description': description
         });
     }
 
