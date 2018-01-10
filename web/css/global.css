@@ -531,21 +531,6 @@
 /* Taille du modal */
 .modal-dialog {height: 40vw;}
 
-.modal-dialog::-webkit-scrollbar {
-    overflow-x: hidden;
-    width: 6px;
-}
- 
-.modal-dialog::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgb(245,245,245); 
-    border-radius: 10px;
-}
- 
-.modal-dialog::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgb(245,245,245); 
-}
-
 /* Container */
 .modal-content
 { 
@@ -1460,6 +1445,8 @@
 	align-content: stretch;
 }
 /*--------------------------------------------------------------------------------*/
+
+
 
 /**************************************************
 ***************************************************
