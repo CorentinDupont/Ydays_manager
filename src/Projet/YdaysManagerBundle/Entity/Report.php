@@ -74,7 +74,7 @@ class Report
     /**
      * @var int
      *
-     * @ORM\Column(name="mark_report", type="integer")
+     * @ORM\Column(name="mark_report", type="integer", nullable=true)
      */
     private $markReport;
 

@@ -3003,3 +3003,256 @@ html { height: 100%; } /* Pour permettre au contenu de se centrer au milieu de l
 {
     .jWrapperAdminDemande { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
 }
+
+/**
+  *
+  * @ Auteur : Guillaume Hecht <guillaume.hecht@ynov.com>
+  * @ Copyright 2017 Guillaume Hecht
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+/**************************************************
+***************************************************
+********************* WRAPPER *********************
+***************************************************
+**************************************************/
+
+#gBodyAjoutCompteRendu
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: #f6f6f6;
+	font-family: "Century Gothic";
+	color: #858585;
+}
+
+/* Enveloppe de la page */
+.gWrapperAjoutCompteRendu
+{ 
+	margin-left: 230px; /* Décalage pour l'écart avec la navbar */
+	margin-right: 30px;
+	display: flex;				/* Pour permettre au */
+	justify-content: center;	/* contenu de centrer */
+	align-items: center;		/* au milieu de la page */
+	flex-direction: column;
+}
+
+/**************************************************
+***************************************************
+************* BACK TO COMPTE RENDU ****************
+***************************************************
+**************************************************/
+
+.gBackToAjoutCompteRendu
+{
+	position: fixed;
+	top: 20px;
+	left: 200px;
+
+	background-color: #ca4572;
+	border-top-right-radius: 10px; border-bottom-right-radius: 10px;
+	color: white;
+}
+
+.gBackToAjoutCompteRendu a
+{ 
+	position: relative;
+	top: -1px;
+	color: white; 
+	text-decoration: none;
+}
+
+.gBackToAjoutCompteRendu p
+{
+	margin: 0;
+	padding: 5px 11px 7px 15px;
+}
+
+.gBackToAjoutCompteRendu p span
+{
+	font-size: 20px;
+	padding-right: 8px;
+	position: relative;
+	top: 1px;
+}
+
+@media all and (max-width: 768px)
+{
+	.gBackToAjoutCompteRendu
+	{ 
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: initial;
+
+		padding: 0;
+		margin: 0;
+		width: 230px;
+
+		border-top-right-radius: 0; border-bottom-right-radius: 0;
+		border-top-left-radius: 10px; border-bottom-left-radius: 10px;
+	}
+}
+
+@media all and (max-width: 350px)
+{
+	.gBackToAjoutCompteRendu { width: 150px; }
+
+}
+
+/**************************************************
+***************************************************
+********************* TITLE ***********************
+***************************************************
+**************************************************/
+
+.gTitleAjoutCompteRendu
+{
+	padding: 20px 0 10px 0;
+	text-align: center;
+}
+
+.gTitleAjoutCompteRendu p, h1 { margin: 0; }
+
+.gTitleAjoutCompteRendu h1 { font-size: 16px; }
+
+@media all and (max-width: 768px)
+{
+	.gTitleAjoutCompteRendu
+	{ 
+		padding-top: 80px;
+	}
+}
+
+/**************************************************
+***************************************************
+********************* INPUT ***********************
+***************************************************
+**************************************************/
+.gFormAjoutCompteRendu
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 1000px;
+}
+
+/* RESPONSIVE DU FORMULAIRE */
+@media all and (max-width: 1250px) { .gFormAjoutCompteRendu { width: 900px; } }
+@media all and (max-width: 1150px) { .gFormAjoutCompteRendu { width: 800px; } }
+@media all and (max-width: 1050px) { .gFormAjoutCompteRendu { width: 750px; } }
+@media all and (max-width: 975px) { .gFormAjoutCompteRendu { width: 600px; } }
+@media all and (max-width: 850px) { .gFormAjoutCompteRendu { width: 525px; } }
+@media all and (max-width: 768px) { .gFormAjoutCompteRendu { width: 600px; } }
+@media all and (max-width: 625px) { .gFormAjoutCompteRendu { width: 450px; } }
+	@media all and (max-width: 625px)
+	{
+		.gFormRowAjoutCompteRendu { display: flex; flex-direction: column !important; }
+		.gFormRowAjoutCompteRendu p { width: 100% !important; }
+		.gFormRowAjoutCompteRendu p:first-child { margin-right: 0 !important; }
+		.gFormRowAjoutCompteRendu p:last-child { margin-left: 0 !important; }
+	}
+@media all and (max-width: 475px) { .gFormAjoutCompteRendu { width: 325px; } }
+@media all and (max-width: 350px) { .gFormAjoutCompteRendu { width: 220px; } }
+
+/* PERSONNALISER LA SCROLLBAR */
+::-webkit-scrollbar { width: 15px; }
+ 
+::-webkit-scrollbar-track
+{
+	border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+ 
+::-webkit-scrollbar-thumb
+{
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+/* PERSONNALISER LES PLACEHOLDER */
+::-webkit-input-placeholder { font-style: italic; }
+
+
+.gFormAjoutCompteRendu form { width: 100%; }
+
+.gFormAjoutCompteRendu form p
+{ 
+	margin: 30px 0;
+	box-shadow: 3px 3px 8px #ccc;
+	background-color: white;
+	text-align: center;
+	border-radius: 3px;
+}
+
+.gFormAjoutCompteRendu form textarea
+{ 
+	padding: 0 20px;
+	resize: none;
+	outline: none;
+}
+
+/* Compte rendu textarea ( 1, 2, 3 ) */
+#labelCompteRenduAjoutCompteRendu, #labelCompteRenduIndividuelAjoutCompteRendu, #labelObjectifsAjoutCompteRendu { padding: 12px 0; }
+
+#textareaCompteRenduAjoutCompteRendu, #textareaCompteRenduIndividuelAjoutCompteRendu, #textareaObjectifsAjoutCompteRendu
+{
+	width: 100%;
+	height: 200px;
+	border: none;
+}
+
+.gFormRowAjoutCompteRendu
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.gFormRowAjoutCompteRendu p { width: 80%; }
+.gFormRowAjoutCompteRendu p:first-child { margin-right: 20px; }
+.gFormRowAjoutCompteRendu p:last-child { margin-left: 20px; }
+
+/* Compte rendu textarea ( 4, 5 ) */
+#labelBesoinsAjoutCompteRendu, #labelAnnexesAjoutCompteRendu { padding: 12px 0; }
+
+#textareaBesoinsAjoutCompteRendu, #textareaAnnexesAjoutCompteRendu
+{
+	width: 100%;
+	height: 200px;
+	border: none;
+}
+
+/* Input d'envoi */
+.gValidAjoutCompteRendu
+{
+	width: 100%;
+	padding: 20px 0 50px 0;
+	text-align: center;
+}
+
+#inputValidAjoutCompteRendu
+{
+	padding: 12px 15px;
+	background-color: #00b297;
+	color: white;
+	border: none;
+	border-radius: 20px;
+	box-shadow: 3px 3px 8px #ccc;
+	transition: ease-out 0.3s;
+}
+
+#inputValidAjoutCompteRendu:hover { background-color: #009982; }
+#projectIdAjoutCompteRendu{
+    display: none;
+}
+/* IL EST IMPORTANT DE METTRE CE MEDIA QUERIES À LA FIN DU CSS POUR SON BON FONCTIONNEMENT */
+/* Media Queries pour reset le margin lorsque la navbar disparaît */
+@media all and (max-width: 768px)
+{
+	.gWrapperAjoutCompteRendu { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
+}

@@ -1,0 +1,91 @@
+<!--
+
+  @ Auteur : Guillaume Hecht <guillaume.hecht@ynov.com>
+  @ Copyright 2017 Guillaume Hecht
+  @ Level : Ingésup B2
+  @ Version : 1.0
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <title>Ajout Compte Rendu</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+		    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        {% endblock %}
+    </head>
+
+    <body id="gBodyAjoutCompteRendu">
+
+        {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
+        <p id="projectIdAjoutCompteRendu">{{ projectId }}</p>
+        <div class="gWrapperAjoutCompteRendu">
+
+            <div class="gBackToAjoutCompteRendu">
+                <a href="#"> <p> <span>&lsaquo;</span> Retour aux comptes rendus </p> </a>
+            </div>
+
+           <div class="gTitleAjoutCompteRendu">
+                <p> Compte rendu n°1 </p>
+                <p> - </p>
+                <h1> The Legend Of Zelda - The Dark Side Of Dimension </h1>
+           </div>
+
+           <div class="gFormAjoutCompteRendu">
+                <form>
+
+                    <p>
+                        <label for="compteRenduAjoutCompteRendu" id="labelCompteRenduAjoutCompteRendu"> 1 - Compte rendu de la session </label>
+                        <br/>
+                        <textarea name="compteRenduAjoutCompteRendu" id="textareaCompteRenduAjoutCompteRendu" placeholder="Votre texte..."></textarea>
+                    </p>
+
+                    <p>
+                        <label for="compteRenduIndividuelAjoutCompteRendu" id="labelCompteRenduIndividuelAjoutCompteRendu"> 2 - Compte rendu individuel </label>
+                        <br/>
+                        <textarea name="compteRenduIndividuelAjoutCompteRendu" id="textareaCompteRenduIndividuelAjoutCompteRendu" placeholder="Votre texte..."></textarea>
+                    </p>
+
+                    <p>
+                        <label for="objectifsAjoutCompteRendu" id="labelObjectifsAjoutCompteRendu"> 3 - Objectifs pour la prochaine session </label>
+                        <br/>
+                        <textarea name="objectifsAjoutCompteRendu" id="textareaObjectifsAjoutCompteRendu" placeholder="Votre texte..."></textarea>
+                    </p>
+
+                    <div class="gFormRowAjoutCompteRendu">
+                        <p>
+                            <label for="besoinsAjoutCompteRendu" id="labelBesoinsAjoutCompteRendu"> 4 - Besoins matériels pour la prochaine session </label>
+                            <br/>
+                            <textarea name="besoinsAjoutCompteRendu" id="textareaBesoinsAjoutCompteRendu" placeholder="Votre texte..."></textarea>
+                        </p>
+
+                        <p>
+                            <label for="annexesAjoutCompteRendu" id="labelAnnexesAjoutCompteRendu"> 5 - Annexes </label>
+                            <br/>
+                            <textarea name="annexesAjoutCompteRendu" id="textareaAnnexesAjoutCompteRendu" placeholder="Votre texte..."></textarea>
+                        </p>
+                    </div>
+
+                    <div class="gValidAjoutCompteRendu">
+                        <input type="button" value="Valider le compte rendu" id="inputValidAjoutCompteRendu">
+                    </div>
+
+                </form>
+           </div>
+
+        </div>
+
+        <script src="{{ asset('js/scriptHeader.js') }}"></script>
+        <script src="{{ asset('js/ajoutCompteRendu.js') }}"></script>
+
+    </body>
+</html>
