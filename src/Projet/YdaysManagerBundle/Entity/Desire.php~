@@ -73,52 +73,5 @@ class Desire
     {
         return $this->type;
     }
-
-    /**
-     * Set requester
-     *
-     * @param \Projet\YdaysManagerUserBundle\Entity\User $requester
-     *
-     * @return Desire
-     */
-    public function setRequester(\Projet\YdaysManagerUserBundle\Entity\User $requester = null)
-    {
-        $this->requester = $requester;
-
-        return $this;
-    }
-
-    /**
-     * Get requester
-     *
-     * @return \Projet\YdaysManagerUserBundle\Entity\User
-     */
-    public function getRequester()
-    {
-        return $this->requester;
-    }
-
-    /**
-     * Set linkedProject
-     *
-     * @param \Projet\YdaysManagerBundle\Entity\Project $linkedProject
-     *
-     * @return Desire
-     */
-    public function setLinkedProject(\Projet\YdaysManagerBundle\Entity\Project $linkedProject = null)
-    {
-        $this->linkedProject = $linkedProject;
-
-        return $this;
-    }
-
-    /**
-     * Get linkedProject
-     *
-     * @return \Projet\YdaysManagerBundle\Entity\Project
-     */
-    public function getLinkedProject()
-    {
-        return $this->linkedProject;
-    }
 }
+

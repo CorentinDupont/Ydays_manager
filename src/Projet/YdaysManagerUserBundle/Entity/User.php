@@ -53,12 +53,18 @@ class User extends BaseUser
      */
     private $projects;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\Desire", mappedBy="requester")
+     */
+    private $desires;
+
 
 
     public function __construct()
     {
         parent::__construct();
         $this->projects = new ArrayCollection();
+        $this->desires = new ArrayCollection();
     }
 
     /**

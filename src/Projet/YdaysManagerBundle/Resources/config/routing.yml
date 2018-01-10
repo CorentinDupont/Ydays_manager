@@ -59,7 +59,7 @@ projet_ydays_manager_accueil:
 projet_ydays_manager_admin_demande:
     path:     /adminDemande
     defaults:
-        _controller: ProjetYdaysManagerBundle:YdaysManager:adminDemande
+        _controller: ProjetYdaysManagerBundle:Desire:adminDemande
 
 
 projet_ydays_manager_test_login:

@@ -2,13 +2,14 @@
 
 namespace Projet\YdaysManagerBundle\Controller;
 
+use Projet\YdaysManagerBundle\Entity\Desire;
 use Projet\YdaysManagerBundle\Entity\Project;
 use Projet\YdaysManagerBundle\Entity\Comment;
 use Projet\YdaysManagerBundle\Entity\AnswerComment;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Project controller.
@@ -49,8 +50,6 @@ class ProjectController extends Controller
         return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments ));
     }
 
-
-
     public function proposerProjetAction()
     {
         return $this->render('ProjetYdaysManagerBundle:Project:proposerProjet.html.twig');
@@ -67,18 +66,39 @@ class ProjectController extends Controller
         $request = Request::createFromGlobals();
         $param = $request->query->all();
 
+        //Création du nouveau projet
         $newProject = new Project();
         $newProject -> setName((urldecode($param['title'])));
-        $newProject -> setIsPro(urldecode((int)$param['isPro']));
-        $newProject -> setIsInternal(urldecode((int)$param['isInternal']));
+        if($param['isPro']){
+            $isPro = 1;
+        }else{
+            $isPro = 0;
+        }
+        $newProject -> setIsPro($isPro);
+        if($param['isInternal']){
+            $isInternal = 1;
+        }else{
+            $isInternal = 0;
+        }
+        $newProject -> setIsInternal($isInternal);
         $newProject -> setImageName(urldecode($param['imageName']));
         $newProject -> setDescription(urldecode($param['description']));
         $newProject -> setState("STATE_REQUESTED");
         $newProject -> setProjectManager($this->get('security.token_storage')->getToken()->getUser());
 
+        //Création de la demande pour l'admin
+        $desire = new Desire();
+        $desire -> setLinkedProject($newProject);
+        $desire -> setRequester($newProject->getProjectManager());
+        $desire ->setType("TYPE_PROJECT_REQUEST");
+
         $em = $this -> getDoctrine() -> getManager();
 
+        //On dit au manager de prendre en compte nos nouvelles entités
         $em -> persist($newProject);
+        $em -> persist($desire);
+
+        //On valide l'insertion en base de donnée.
         $em -> flush();
 
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:accueil.html.twig');
