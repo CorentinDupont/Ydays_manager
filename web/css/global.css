@@ -77,10 +77,18 @@
     height:30%;
 }
 
+/*Bouton rond placé en haut à droite du parent*/
 .cRoundButtonTopRight{
     position:absolute;
     top:-1.5vw;
     right:-1.5vw;
+}
+
+/*Bouton rond ajout +*/
+.cPlusAddButton{
+    position:fixed;
+    right:2vw;
+    bottom:2vw;
 }
 
 @media all and (max-width: 768px){

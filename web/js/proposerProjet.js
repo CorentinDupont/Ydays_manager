@@ -91,7 +91,6 @@ $('.mButtonProposerProjet').click(function(){
             }
         });
 
-
         //Appel de la méthode du ProjectController pour entrer en base de données le projet
         window.location.href = Routing.generate('projet_ydays_manager_push_project_in_db', {
             'title': title,
