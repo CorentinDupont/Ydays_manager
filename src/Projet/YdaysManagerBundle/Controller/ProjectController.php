@@ -18,6 +18,37 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProjectController extends Controller
 {
+    /**
+     * Lists all project entities by current user id.
+     *
+     * @Route("/", name="myProjects")
+     * @Method("GET")
+     */
+    /*public function myProjectsAction()
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user -> getId();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $projects = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
+
+        foreach($projects as $project){
+            $projectUsers = $project -> getMembers();
+            foreach($projectUsers as $projectUser){
+                if($userId == $projectUser->getId()){
+                    $UserProjects = $project;  
+                }
+
+            }
+        }
+        
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:lesProjets.html.twig', array(
+            'userProjects' => $userProjects
+            )
+        );
+    }*/
+
      /**
      * Lists all project entities.
      *

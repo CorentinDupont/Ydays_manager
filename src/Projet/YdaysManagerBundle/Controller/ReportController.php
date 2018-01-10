@@ -61,9 +61,10 @@ class ReportController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $report = $em->getRepository('ProjetYdaysManagerBundle:Report')->find($idProject);
+        $project = $em->getRepository('ProjetYdaysManagerBundle:Project')->find($idProject);
 
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:AjoutCompteRendu.html.twig', array(
-            'report' => $report, 'projectId' => $idProject,
+            'report' => $report, 'projectId' => $idProject, 'project' => $project,
         ));
     }
 
