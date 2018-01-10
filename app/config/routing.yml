@@ -18,6 +18,10 @@ projet_ydays_manager_project:
     resource: "@ProjetYdaysManagerBundle/Controller/ProjectController.php"
     type:     annotation
 
+projet_ydays_manager_desire:
+    resource: "@ProjetYdaysManagerBundle/Controller/DesireController.php"
+    type:     annotation
+
 projet_core:
     resource: "@ProjetCoreBundle/Resources/config/routing.yml"
     prefix:   /
