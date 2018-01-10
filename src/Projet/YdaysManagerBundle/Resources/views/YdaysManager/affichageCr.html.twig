@@ -31,10 +31,10 @@
         <div class="flexTopDisplayCr">
             <p>Comptes rendus</p>
         </div>
-        <div class="container-fluid">
+        <div class="container cPaddingAffichageCr">
         {% for report in reports %}
         <a href="{{path('projet_ydays_manager_display_one_cr', {'idReport': report.id})}}">
-            <div class="row">
+            <div class="row container-fluid">
                 <div id="cr{{report.Id}}" class="containersDisplayCr col-md-3 col-xl-3">
                     <div class="infoDisplayCr">
                         <p>{{report.nameReport}}</p>

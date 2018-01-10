@@ -1432,8 +1432,24 @@
 
 }
 
+.cFlexSvgProjectState{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: stretch;
+	align-content: stretch;
 
+}
 
+.cFlexInfoStudentListProject{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-end;
+	align-content: stretch;
+}
 /*--------------------------------------------------------------------------------*/
 
 /**************************************************
@@ -2434,10 +2450,15 @@ body, html {
 
 @media all and (max-width:768px){
     #cBodyAffichageCr{
-        margin-left: 0px;
+        
+        margin-left: 0px !important;
     }
+    
 }
 
+cPaddingAffichageCr{
+    padding-left: 200px;
+}
 
 .cAddReportButtonAllReport{
     position:fixed;
