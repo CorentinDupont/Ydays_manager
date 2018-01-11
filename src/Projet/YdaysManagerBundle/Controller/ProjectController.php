@@ -104,49 +104,52 @@ class ProjectController extends Controller
      * Push New Project in DataBase
      *
      * @Route("/pushProjectInDb", options={"expose"=true}, name="projet_ydays_manager_push_project_in_db")
-     * @Method("GET")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
      */
-    public function pushProjectInDbAction(){
-        $request = Request::createFromGlobals();
-        $param = $request->query->all();
+    public function pushProjectInDbAction(Request $request){
+        if($request->isXmlHttpRequest()){
+            //Création du nouveau projet
+            $newProject = new Project();
+            $newProject -> setName($request->get('title'));
+            if($request->get('isPro')){
+                $isPro = 1;
+            }else{
+                $isPro = 0;
+            }
+            $newProject -> setIsPro($isPro);
+            if($request->get('isInternal')){
+                $isInternal = 1;
+            }else{
+                $isInternal = 0;
+            }
+            $newProject -> setIsInternal($isInternal);
+            $newProject -> setImageName($request->get('imageName'));
+            $newProject -> setDescription($request->get('description'));
+            $newProject -> setState("STATE_REQUESTED");
+            $newProject -> setProjectManager($this->get('security.token_storage')->getToken()->getUser());
 
-        //Création du nouveau projet
-        $newProject = new Project();
-        $newProject -> setName((urldecode($param['title'])));
-        if($param['isPro']){
-            $isPro = 1;
-        }else{
-            $isPro = 0;
+            //Création de la demande pour l'admin
+            $desire = new Desire();
+            $desire -> setLinkedProject($newProject);
+            $desire -> setRequester($newProject->getProjectManager());
+            $desire ->setType("TYPE_PROJECT_REQUEST");
+
+            $em = $this -> getDoctrine() -> getManager();
+
+            //On dit au manager de prendre en compte nos nouvelles entités
+            $em -> persist($newProject);
+            $em -> persist($desire);
+
+            //On valide l'insertion en base de donnée.
+            $em -> flush();
+
+            return new JsonResponse(array('data' => 'ok'));
         }
-        $newProject -> setIsPro($isPro);
-        if($param['isInternal']){
-            $isInternal = 1;
-        }else{
-            $isInternal = 0;
-        }
-        $newProject -> setIsInternal($isInternal);
-        $newProject -> setImageName(urldecode($param['imageName']));
-        $newProject -> setDescription(urldecode($param['description']));
-        $newProject -> setState("STATE_REQUESTED");
-        $newProject -> setProjectManager($this->get('security.token_storage')->getToken()->getUser());
-
-        //Création de la demande pour l'admin
-        $desire = new Desire();
-        $desire -> setLinkedProject($newProject);
-        $desire -> setRequester($newProject->getProjectManager());
-        $desire ->setType("TYPE_PROJECT_REQUEST");
-
-        $em = $this -> getDoctrine() -> getManager();
-
-        //On dit au manager de prendre en compte nos nouvelles entités
-        $em -> persist($newProject);
-        $em -> persist($desire);
-
-        //On valide l'insertion en base de donnée.
-        $em -> flush();
-
-        return $this->render('ProjetYdaysManagerBundle:YdaysManager:accueil.html.twig');
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
     }
 
     /**
@@ -189,6 +192,32 @@ class ProjectController extends Controller
             $em = $this -> getDoctrine()->getManager();
             $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
             $projectToUpdate->setDescription($request->get('newDescription'));
+
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
+     * UpdateImageName
+     *
+     * @Route("/ficheProjet/updateImageName", options={"expose"=true}, name="projet_ydays_manager_project_update_image_name")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function updateImageNameAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+            $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
+            $projectToUpdate->setImageName($request->get('newImageName'));
 
             $em->flush();
 

@@ -65,48 +65,63 @@ $('.mButtonProposerProjet').click(function(){
     //image
     //préparation à l'upload
     var imageDatas = new Array();
+
+    //dossier d'upload
+    imageDatas.push(['uploadDirectory', "../uploads/project/img/"]);
+
+    //l'image en elle même
     imageDatas.push(['image', imageBase64]);
-    //récupération du nom pour la base de donnée.
+
+    //nom de l'image
     var imageName = makeid()+$('#mMidDashboardInputFileProposerProjet')[0].files[0]['name'];
     imageDatas.push(['imageName', imageName]);
 
     if(numOfError===0){
+        var imageIsCorrectlyUpload = false;
         //Upload de l'image
         $.ajax({
             type : "POST",
-            url: "../php/proposerProjectFileUpload.php",
+            url: "../php/imageFileUpload.php",
             data: {imageDatas:imageDatas},
             beforeSend: function(xhr){
                 $('.mButtonProposerProjet').css("background-color", "grey");
                 $('.mButtonProposerProjet').val('Upload..');
                 $('.mButtonProposerProjet').prop('disabled', true);
             },
-            error: function(data){
-                console.log(data.status);
-                if(data.status === '200'){
+            success: function( data ) {
+                imageIsCorrectlyUpload = true;
+                $('.mButtonProposerProjet').val('Proposition projet ...');
 
-                }else{
-                }
+            },
+            error: function(xhr, status, error) {
+                $('.mButtonProposerProjet').val('Erreur : Upload Image');
+                $('.mButtonProposerProjet').css("background-color", "#EC4747");
+                alert(error);
+            }
+        }).done(function(){//Quand l'upload est terminée
+            if(imageIsCorrectlyUpload){
+                //Appel de la route du Project controller pour modifier le nom de l'image
+                var route = Routing.generate('projet_ydays_manager_push_project_in_db');
+
+                //Requete ajax pour éxecuter l'ajout du projet en arrière plan
+                $.ajax({
+                    url: route,
+                    method:"post",
+                    data: {title:title, isPro:isPro, isInternal:isInternal, imageName: imageName, description: description},
+                    success: function( data ) {
+                        $('.mButtonProposerProjet').val('Projet Proposé !');
+                    },
+                    error: function(xhr, status, error) {
+                        $('.mButtonProposerProjet').val('Erreur : Proposer Projet');
+                        $('.mButtonProposerProjet').css("background-color", "#EC4747");
+                    }
+                });
             }
         });
-
-        //Appel de la méthode du ProjectController pour entrer en base de données le projet
-        window.location.href = Routing.generate('projet_ydays_manager_project_update_title', {
-            'title': title,
-            'isPro': isPro,
-            'isInternal': isInternal,
-            'imageName': imageName,
-            'description': description
-        });
     }
-
-    $( document ).ajaxComplete(function() {
-        console.log( "Triggered ajaxComplete handler." );
-        $('.mButtonProposerProjet').val('Projet proposé.');
-    });
-
 });
 
+//Retourne un texte aléatoire de 10 careactères
 function makeid() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
