@@ -31,7 +31,10 @@ class ProjectController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
+        //WARNING : les lignes de code qui vont suivre sont susceptibles de choquer les âmes les plus sensibles.
+
         $projectss = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
+
         $projects = [];
         foreach($projectss as $project){
             $projectUsers = $project -> getMembers();
