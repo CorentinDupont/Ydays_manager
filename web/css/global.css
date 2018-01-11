@@ -575,8 +575,8 @@
 }
 
 .mSearchBarAddMember svg{
-    height:1.2vw;
-    width:1.2vw;
+    height:1.3vw;
+    width:1.3vw;
     margin-right:1vw;
 }
 
@@ -584,14 +584,14 @@
     width:100%;
     border-width: 0 0 1px 0;
     border-color:#A8A8A8;
-    font-size:0.9vw;
+    font-size:1vw;
 }
 
 .user-select { display: flex; flex-direction: column; }
 
 .user-name
 { 
-	padding: 3px 15px;
+	padding: 0;
 	display: flex;
 	flex-direction: row;
 }
@@ -599,8 +599,8 @@
 .icoUser img{
     display: flex;
 	flex-direction: row;
-    height: 10%;
-    width: 10%;
+    height: 25%;
+    width: 20%;
 }
 
 .user-name div:first-child { padding-right: 30px; }
