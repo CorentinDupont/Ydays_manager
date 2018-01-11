@@ -9,12 +9,14 @@ use Projet\YdaysManagerBundle\Entity\AnswerComment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Project controller.
  *
- * @Route("project")
+ *@Route("project")
  */
 class ProjectController extends Controller
 {
@@ -141,19 +143,53 @@ class ProjectController extends Controller
     /**
      * UpdateTitle
      *
-     * @Route("/ficheProjet/{idProject}/updateTitle", options={"expose"=true}, name="projet_ydays_manager_project_update_title")
-     * @Method("GET")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/ficheProjet/updateTitle", options={"expose"=true}, name="projet_ydays_manager_project_update_title")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
      */
-    public function updateTitleAction($idProject){
-        $request = Request::createFromGlobals();
-        $param = $request->query->all();
+    public function updateTitleAction(Request $request){
+        if($request->isXmlHttpRequest()){
 
-        $em = $this -> getDoctrine()->getManager();
-        $projectToUpdate = $em->getRepository(Project::class)->find($idProject);
-        $projectToUpdate->setTitle($param['newTitle']);
+            $em = $this -> getDoctrine()->getManager();
+            $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
+            $projectToUpdate->setName($request->get('newTitle'));
 
-        $em->flush();
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
+     * UpdateDesription
+     *
+     * @Route("/ficheProjet/updateDescription", options={"expose"=true}, name="projet_ydays_manager_project_update_description")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function updateDescriptionAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+            $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
+            $projectToUpdate->setDescription($request->get('newDescription'));
+
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
     }
 
     /**
@@ -258,4 +294,5 @@ class ProjectController extends Controller
             ->getForm()
         ;
     }
+
 }
