@@ -18,11 +18,18 @@
         <link rel="stylesheet" href="{{ asset('css/global.css') }}">
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
     {% endblock %}
 </head>
 
 <body>
+    <!-- Block invisible pour récupérer les paramètres twig dans le js -->
+    <div class="cJavascriptParameterBlock">
+        <p>{{ project.id }}</p>
+    </div>
+
     {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
     <!-- Div global de la fiche de projet-->
     <div id="cDashboardContainerProjectDashboard">
@@ -51,16 +58,15 @@
                 <h1>{{project.getName()}}</h1>
                 {% if project.state != "STATE_REQUESTED" and (is_granted('ROLE_ADMIN') or app.user.id == project.projectManager.id) %}
                 <!-- Bouton modif -->
-                <div class="cRoundButton cEditRoundButton cYnovPurple cShadowed cRoundButtonTopRight" id="cTitleEditRoundButtonProjectDashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
-                    <g>
-                        <g id="create">
-                            <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                    <div class="cRoundButton cEditRoundButton cYnovPurple cShadowed cRoundButtonTopRight" id="cTitleEditRoundButtonProjectDashboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+                        <g>
+                            <g id="create">
+                                <path d="M0,362.1V459h96.9l280.5-283.05l-96.9-96.9L0,362.1z M451.35,102c10.2-10.2,10.2-25.5,0-35.7L392.7,7.649    c-10.2-10.2-25.5-10.2-35.7,0l-45.9,45.9l96.9,96.9L451.35,102z" fill="#FFFFFF"/>
+                            </g>
                         </g>
-                    </g>
-
-                    </svg>
-                </div>
+                        </svg>
+                    </div>
                 {% endif %}
             </div>
 
