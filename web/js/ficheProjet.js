@@ -23,21 +23,23 @@ $('#cTitleEditRoundButtonProjectDashboard').click(function(){
         titleInput.css("height",titleHeight);
     }else{
         titleIsInEdition = false;
-        var newTitle = projectTitleP.text($(this).parent().find('input').val());
-        $(this).parent().find('input').replaceWith(newTitle);
+        var newTitle = $(this).parent().find('input').val();
+        projectTitleP.text($(this).parent().find('input').val());
+        $(this).parent().find('input').replaceWith(projectTitleP);
         $(this).find('svg').replaceWith(currentTitleEditButtonSvg);
 
         //Appel de la route du Project controller pour modifier le titre
-        var route = Routing.generate('projet_ydays_manager_project_update_title', {
-            'idProject': idProject,
-            'newTitle': newTitle
-        });
+        var route = Routing.generate('projet_ydays_manager_project_update_title');
 
         $.ajax({
             url: route,
-            method : "POST",
-            data: []
+            method:"post",
+            data: {idProject:idProject, newTitle:newTitle}
+        }).done(function(msg){
+            alert("Titre modifié avec succès")
         });
+
+
     }
 
 });
@@ -101,8 +103,20 @@ $('#cEditRoundButtonDescProjectDashboard').click(function(){
         textArea.css("resize","vertical");
     }else{
         descIsInEdition = false;
+        var newDescription = $(this).parent().find('textarea').val();
         $(this).parent().find('textarea').replaceWith(projectDescriptionP.text($(this).parent().find('textarea').val()));
         $(this).find('svg').replaceWith(currentDescEditButtonSvg);
+
+        //Appel de la route du Project controller pour modifier le titre
+        var route = Routing.generate('projet_ydays_manager_project_update_description');
+
+        $.ajax({
+            url: route,
+            method:"post",
+            data: {idProject:idProject, newDescription:newDescription}
+        }).done(function(msg){
+            alert("Description modifié avec succès")
+        });
     }
 
 });
