@@ -87,7 +87,6 @@ $('.mButtonProposerProjet').click(function(){
 
                 }else{
                 }
-
             }
         });
 

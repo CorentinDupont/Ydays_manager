@@ -139,13 +139,21 @@ class ProjectController extends Controller
     }
 
     /**
-     * Upload Image
+     * UpdateTitle
      *
-     * @Route("/uploadProjectImage", options={"expose"=true}, name="projet_ydays_manager_upload_project_image")
-     * @Method("POST")
+     * @Route("/ficheProjet/{idProject}/updateTitle", options={"expose"=true}, name="projet_ydays_manager_project_update_title")
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function uploadProjectImage(){
+    public function updateTitleAction($idProject){
+        $request = Request::createFromGlobals();
+        $param = $request->query->all();
 
+        $em = $this -> getDoctrine()->getManager();
+        $projectToUpdate = $em->getRepository(Project::class)->find($idProject);
+        $projectToUpdate->setTitle($param['newTitle']);
+
+        $em->flush();
     }
 
     /**
