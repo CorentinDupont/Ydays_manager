@@ -189,17 +189,8 @@
                                         <input id="mSearchBarUserModalFicheProjet" type="text" placeholder="Rechercher..." name="srch-name">
                                     </section>
                                     <div class="user-select">
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Pierre <span>Chene</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Alexis <span>Vivier</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Nathan <span>Hervouet</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Dany <span>Corbineau</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Lukas <span>Presencia</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Mathis <span>Aubry</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Corentin <span>Dupont</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Maxime <span>Grand</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Jérémy <span>Nunes</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Charles <span>Huet</span> </p> </div>
-                                        <div class="user-name"> <img src="{{ asset('img/model_name.png') }}"> <p> Guillaume <span>Hecht</span> </p> </div>
+                                        {% for stud in student %} <a class="user-name"><img src="{{ asset('img/model_name.png') }}"><p> {{ stud.username }} <span>{{ stud.lastName }}</span> </p></a> {% endfor %}
+
                                     </div>
                                 </div>
                             </div>
