@@ -24,30 +24,30 @@ class ProjectController extends Controller
      * @Route("/", name="myProjects")
      * @Method("GET")
      */
-    /*public function myProjectsAction()
+    public function myProjectsAction()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $userId = $user -> getId();
 
         $em = $this->getDoctrine()->getManager();
 
-        $projects = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
-
-        foreach($projects as $project){
+        $projectss = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
+        $projects = [];
+        foreach($projectss as $project){
             $projectUsers = $project -> getMembers();
             foreach($projectUsers as $projectUser){
                 if($userId == $projectUser->getId()){
-                    $UserProjects = $project;  
+                    array_push($projects, $project);
                 }
 
             }
         }
         
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:lesProjets.html.twig', array(
-            'userProjects' => $userProjects
+            'projects' => $projects
             )
         );
-    }*/
+    }
 
      /**
      * Lists all project entities.
