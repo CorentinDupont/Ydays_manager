@@ -28,6 +28,7 @@ class ReportController extends Controller
 
         $reports = $em->getRepository('ProjetYdaysManagerBundle:Report')->findByProject($id);
         intval($id);
+
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:affichageCr.html.twig', array(
             'reports' => $reports, 'projectId' => $id,
         ));
@@ -61,9 +62,10 @@ class ReportController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $report = $em->getRepository('ProjetYdaysManagerBundle:Report')->find($idProject);
+        $project = $em->getRepository('ProjetYdaysManagerBundle:Project')->find($idProject);
 
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:AjoutCompteRendu.html.twig', array(
-            'report' => $report, 'projectId' => $idProject,
+            'report' => $report, 'projectId' => $idProject, 'project' => $project,
         ));
     }
 

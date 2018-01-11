@@ -1,3 +1,5 @@
+var idProject = $('.cJavascriptParameterBlock').text();
+idProject = parseInt(idProject);
 
 /*-----------------------------------  TITRE ----------------------------------------*/
 
@@ -21,8 +23,21 @@ $('#cTitleEditRoundButtonProjectDashboard').click(function(){
         titleInput.css("height",titleHeight);
     }else{
         titleIsInEdition = false;
-        $(this).parent().find('input').replaceWith(projectTitleP.text($(this).parent().find('input').val()));
+        var newTitle = projectTitleP.text($(this).parent().find('input').val());
+        $(this).parent().find('input').replaceWith(newTitle);
         $(this).find('svg').replaceWith(currentTitleEditButtonSvg);
+
+        //Appel de la route du Project controller pour modifier le titre
+        var route = Routing.generate('projet_ydays_manager_project_update_title', {
+            'idProject': idProject,
+            'newTitle': newTitle
+        });
+
+        $.ajax({
+            url: route,
+            method : "POST",
+            data: []
+        });
     }
 
 });

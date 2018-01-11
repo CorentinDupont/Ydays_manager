@@ -1,3 +1,8 @@
+projet_ydays_manager_my_projects:
+    path: /myProjects
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Project:myProjects
+
 projet_ydays_manager_project:
   path:      /projects
   defaults:

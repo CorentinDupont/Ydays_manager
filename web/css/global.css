@@ -2,6 +2,10 @@
 /*------------------             AUTRE (Corentin)             --------------------*/
 /*--------------------------------------------------------------------------------*/
 /*------------------Global-----------------------*/
+.cJavascriptParameterBlock{
+    display:none;
+}
+
 .cShadowed{
     box-shadow: 0px 3px 6px 0px #00000022;
 }
@@ -77,10 +81,18 @@
     height:30%;
 }
 
+/*Bouton rond placé en haut à droite du parent*/
 .cRoundButtonTopRight{
     position:absolute;
     top:-1.5vw;
     right:-1.5vw;
+}
+
+/*Bouton rond ajout +*/
+.cPlusAddButton{
+    position:fixed;
+    right:2vw;
+    bottom:2vw;
 }
 
 @media all and (max-width: 768px){
@@ -2591,14 +2603,19 @@ cPaddingAffichageCr{
     margin-left: 5%;
     border-radius: 17px;
     border-width: 2px;
-    overflow: hidden;
     padding: 0;
     background-color: #FFFFFF;
     -webkit-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
     -moz-box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
     box-shadow: 11px 10px 24px -9px rgba(0,0,0,0.51);
-
 }
+
+.cListentrepriseProject {
+    position:relative;
+    z-index: 1;
+    background-color:white;
+}
+
 .ctitleDescListentreprise{
     flex-direction: column;
     align-items: center;
@@ -2632,16 +2649,16 @@ cPaddingAffichageCr{
 }
 
 .gCentrImg{
-    width:12.5%;
     height:100%;
     display:flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center; 
     overflow: hidden;
 }
 
 .gCentrImg>img{
     height:100%;
+    border-top-left-radius: 17px; border-bottom-left-radius: 17px;
 }
 
 /**

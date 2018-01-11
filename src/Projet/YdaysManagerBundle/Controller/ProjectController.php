@@ -18,6 +18,40 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProjectController extends Controller
 {
+    /**
+     * Lists all project entities by current user id.
+     *
+     * @Route("/", name="myProjects")
+     * @Method("GET")
+     */
+    public function myProjectsAction()
+    {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user -> getId();
+
+        $em = $this->getDoctrine()->getManager();
+
+        //WARNING : les lignes de code qui vont suivre sont susceptibles de choquer les âmes les plus sensibles.
+
+        $projectss = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
+
+        $projects = [];
+        foreach($projectss as $project){
+            $projectUsers = $project -> getMembers();
+            foreach($projectUsers as $projectUser){
+                if($userId == $projectUser->getId()){
+                    array_push($projects, $project);
+                }
+
+            }
+        }
+        
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:lesProjets.html.twig', array(
+            'projects' => $projects
+            )
+        );
+    }
+
      /**
      * Lists all project entities.
      *
@@ -105,13 +139,21 @@ class ProjectController extends Controller
     }
 
     /**
-     * Upload Image
+     * UpdateTitle
      *
-     * @Route("/uploadProjectImage", options={"expose"=true}, name="projet_ydays_manager_upload_project_image")
-     * @Method("POST")
+     * @Route("/ficheProjet/{idProject}/updateTitle", options={"expose"=true}, name="projet_ydays_manager_project_update_title")
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function uploadProjectImage(){
+    public function updateTitleAction($idProject){
+        $request = Request::createFromGlobals();
+        $param = $request->query->all();
 
+        $em = $this -> getDoctrine()->getManager();
+        $projectToUpdate = $em->getRepository(Project::class)->find($idProject);
+        $projectToUpdate->setTitle($param['newTitle']);
+
+        $em->flush();
     }
 
     /**
