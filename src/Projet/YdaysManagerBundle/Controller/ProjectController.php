@@ -6,15 +6,20 @@ use Projet\YdaysManagerBundle\Entity\Desire;
 use Projet\YdaysManagerBundle\Entity\Project;
 use Projet\YdaysManagerBundle\Entity\Comment;
 use Projet\YdaysManagerBundle\Entity\AnswerComment;
+use Projet\YdaysManagerUserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Projet\YdaysManagerBundle\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Project controller.
  *
- * @Route("project")
+ *@Route("project")
  */
 class ProjectController extends Controller
 {
@@ -71,6 +76,10 @@ class ProjectController extends Controller
 
     public function ficheProjetAction($id){
         $em = $this->getDoctrine()->getManager();
+        
+        $student = $this->getDoctrine()
+            -> getRepository(User::class)
+            -> searchStudent();
 
         $projectRepository = $em->getRepository(Project::class);
         $project = $projectRepository->find($id);
@@ -81,7 +90,7 @@ class ProjectController extends Controller
         $answerCommentRepository = $em->getRepository(AnswerComment::class);
         $answerComments = $answerCommentRepository->findByComment($comments);
 
-        return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments ));
+        return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments, 'student'=>$student));
     }
 
     public function proposerProjetAction()
@@ -93,67 +102,130 @@ class ProjectController extends Controller
      * Push New Project in DataBase
      *
      * @Route("/pushProjectInDb", options={"expose"=true}, name="projet_ydays_manager_push_project_in_db")
-     * @Method("GET")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse_
      */
-    public function pushProjectInDbAction(){
-        $request = Request::createFromGlobals();
-        $param = $request->query->all();
+    public function pushProjectInDbAction(Request $request){
+        if($request->isXmlHttpRequest()){
+            //Création du nouveau projet
+            $newProject = new Project();
+            $newProject -> setName($request->get('title'));
+            if($request->get('isPro')){
+                $isPro = 1;
+            }else{
+                $isPro = 0;
+            }
+            $newProject -> setIsPro($isPro);
+            if($request->get('isInternal')){
+                $isInternal = 1;
+            }else{
+                $isInternal = 0;
+            }
+            $newProject -> setIsInternal($isInternal);
+            $newProject -> setImageName($request->get('imageName'));
+            $newProject -> setDescription($request->get('description'));
+            $newProject -> setState("STATE_REQUESTED");
+            $newProject -> setProjectManager($this->get('security.token_storage')->getToken()->getUser());
 
-        //Création du nouveau projet
-        $newProject = new Project();
-        $newProject -> setName((urldecode($param['title'])));
-        if($param['isPro']){
-            $isPro = 1;
-        }else{
-            $isPro = 0;
+            //Création de la demande pour l'admin
+            $desire = new Desire();
+            $desire -> setLinkedProject($newProject);
+            $desire -> setRequester($newProject->getProjectManager());
+            $desire ->setType("TYPE_PROJECT_REQUEST");
+
+            $em = $this -> getDoctrine() -> getManager();
+
+            //On dit au manager de prendre en compte nos nouvelles entités
+            $em -> persist($newProject);
+            $em -> persist($desire);
+
+            //On valide l'insertion en base de donnée.
+            $em -> flush();
+
+            return new JsonResponse(array('data' => 'ok'));
         }
-        $newProject -> setIsPro($isPro);
-        if($param['isInternal']){
-            $isInternal = 1;
-        }else{
-            $isInternal = 0;
-        }
-        $newProject -> setIsInternal($isInternal);
-        $newProject -> setImageName(urldecode($param['imageName']));
-        $newProject -> setDescription(urldecode($param['description']));
-        $newProject -> setState("STATE_REQUESTED");
-        $newProject -> setProjectManager($this->get('security.token_storage')->getToken()->getUser());
-
-        //Création de la demande pour l'admin
-        $desire = new Desire();
-        $desire -> setLinkedProject($newProject);
-        $desire -> setRequester($newProject->getProjectManager());
-        $desire ->setType("TYPE_PROJECT_REQUEST");
-
-        $em = $this -> getDoctrine() -> getManager();
-
-        //On dit au manager de prendre en compte nos nouvelles entités
-        $em -> persist($newProject);
-        $em -> persist($desire);
-
-        //On valide l'insertion en base de donnée.
-        $em -> flush();
-
-        return $this->render('ProjetYdaysManagerBundle:YdaysManager:accueil.html.twig');
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
     }
 
     /**
      * UpdateTitle
      *
-     * @Route("/ficheProjet/{idProject}/updateTitle", options={"expose"=true}, name="projet_ydays_manager_project_update_title")
-     * @Method("GET")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/ficheProjet/updateTitle", options={"expose"=true}, name="projet_ydays_manager_project_update_title")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
      */
-    public function updateTitleAction($idProject){
-        $request = Request::createFromGlobals();
-        $param = $request->query->all();
+    public function updateTitleAction(Request $request){
+        if($request->isXmlHttpRequest()){
 
-        $em = $this -> getDoctrine()->getManager();
-        $projectToUpdate = $em->getRepository(Project::class)->find($idProject);
-        $projectToUpdate->setTitle($param['newTitle']);
+            $em = $this -> getDoctrine()->getManager();
+            $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
+            $projectToUpdate->setName($request->get('newTitle'));
 
-        $em->flush();
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
+     * UpdateDesription
+     *
+     * @Route("/ficheProjet/updateDescription", options={"expose"=true}, name="projet_ydays_manager_project_update_description")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function updateDescriptionAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+            $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
+            $projectToUpdate->setDescription($request->get('newDescription'));
+
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
+     * UpdateImageName
+     *
+     * @Route("/ficheProjet/updateImageName", options={"expose"=true}, name="projet_ydays_manager_project_update_image_name")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function updateImageNameAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+            $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
+            $projectToUpdate->setImageName($request->get('newImageName'));
+
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
     }
 
     /**
@@ -258,4 +330,5 @@ class ProjectController extends Controller
             ->getForm()
         ;
     }
+
 }

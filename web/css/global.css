@@ -569,6 +569,16 @@
 }
 .close:focus { outline: none; }
 
+/* Bouton AddMembers */
+.buttonAdd {
+    position: relative;
+    top: 2px;
+    color: #aaaaaa;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 /*************************************************/
 /*                  BODY MODAL                   */
 /*************************************************/
@@ -583,12 +593,12 @@
     border-radius:0 0 17px 17px;
     background-color:white;
     padding:1vw;
-    margin-bottom:3vw;
+    margin-bottom:0.8vw;
 }
 
 .mSearchBarAddMember svg{
-    height:1.2vw;
-    width:1.2vw;
+    height:1.3vw;
+    width:1.3vw;
     margin-right:1vw;
 }
 
@@ -596,23 +606,22 @@
     width:100%;
     border-width: 0 0 1px 0;
     border-color:#A8A8A8;
-    font-size:0.9vw;
+    font-size:1vw;
 }
 
 .user-select { display: flex; flex-direction: column; }
 
 .user-name
 { 
-	padding: 3px 15px;
+	padding: 0;
 	display: flex;
 	flex-direction: row;
 }
 
-.icoUser img{
-    display: flex;
-	flex-direction: row;
-    height: 10%;
-    width: 10%;
+.user-name img{
+    height: 7%;
+    width: 7%;
+    margin: 0 7px 0 7px;
 }
 
 .user-name div:first-child { padding-right: 30px; }
