@@ -12,11 +12,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-<<<<<<< HEAD
 use Projet\YdaysManagerBundle\Repository\UserRepository;
-=======
 use Symfony\Component\HttpFoundation\Response;
->>>>>>> d0817aacd9c06956c14ae1dbc660d4cecf01655d
+
 
 /**
  * Project controller.
@@ -106,7 +104,7 @@ class ProjectController extends Controller
      * @Route("/pushProjectInDb", options={"expose"=true}, name="projet_ydays_manager_push_project_in_db")
      * @Method("POST")
      * @return Response
-     * @return JsonResponse
+     * @return JsonResponse_
      */
     public function pushProjectInDbAction(Request $request){
         if($request->isXmlHttpRequest()){

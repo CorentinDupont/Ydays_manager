@@ -1,3 +1,5 @@
+
+//Id du projet utilisé partout
 var idProject = $('.cJavascriptParameterBlock').text();
 idProject = parseInt(idProject);
 
@@ -62,57 +64,57 @@ $('.cHamMenuProjectDashboard>svg').click(function(){
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*--------------------------------------  IMAGE -------------------------------------------*/
-var imageBase64 = "";
+
+
 //Au clique du bouton d'édition de l'image
 $('#cImageInputProjectDashboard').change(function(){
     //Affichage de la nouvelle image dans la fiche
-    previewImage($(this), $(this).parent().find('img'));
-
-    //Récupération des données nécessaires pour l'upload de l'image
-    var imageDatas = [];
-
-    //Dossier d'upload de l'image
-    imageDatas.push(['uploadDirectory', "../uploads/project/img/"]);
-
-    //L'image en elle même
-    imageDatas.push(['image', imageBase64]);
-
-    //Nom de l'image
-    var newImageName =  makeid()+$(this)[0].files[0]['name'];
-    imageDatas.push(['imageName', newImageName]);
-
-
-    //Requete pour upload l'image
-    $.ajax({
-        type : "POST",
-        url: "../php/imageFileUpload.php",
-        data: {imageDatas:imageDatas}
-    }).done(function(msg){
-        //Appel de la route du Project controller pour modifier le nom de l'image
-        var route = Routing.generate('projet_ydays_manager_project_update_image_name');
-
-        //Requete ajax pour éxecuter l'update en arrière plan
-        $.ajax({
-            url: route,
-            method:"post",
-            data: {idProject:idProject, newImageName:newImageName}
-        }).done(function(msg){
-            alert("Image modifié avec succès")
-        });
-    });
-
-
+    changeImage($(this), $(this).parent().find('img'));
 });
 
-function previewImage(input, image) {
+function changeImage(input, image) {
     var oFReader = new FileReader();
     oFReader.readAsDataURL(input.get(0).files[0]);
 
     oFReader.onload = function (oFREvent) {
         //changement de l'attribut src de l'image avec l'image en Base64
         image.attr('src', oFREvent.target.result);
-        imageBase64 = oFREvent.target.result;
+        var imageBase64 = oFREvent.target.result;
+
+        //Récupération des données nécessaires pour l'upload de l'image
+        var imageDatas = [];
+
+        //Dossier d'upload de l'image
+        imageDatas.push(['uploadDirectory', "../uploads/project/img/"]);
+
+        //L'image en elle même
+        imageDatas.push(['image', imageBase64]);
+
+        //Nom de l'image
+        var newImageName =  makeid()+input[0].files[0]['name'];
+        imageDatas.push(['imageName', newImageName]);
+
+
+        //Requete pour upload l'image
+        $.ajax({
+            type : "POST",
+            url: "../php/imageFileUpload.php",
+            data: {imageDatas:imageDatas}
+        }).done(function(msg){
+            //Appel de la route du Project controller pour modifier le nom de l'image
+            var route = Routing.generate('projet_ydays_manager_project_update_image_name');
+
+            //Requete ajax pour éxecuter l'update en arrière plan
+            $.ajax({
+                url: route,
+                method:"post",
+                data: {idProject:idProject, newImageName:newImageName}
+            }).done(function(msg){
+                alert("Image modifié avec succès")
+            });
+        });
     };
+
 }
 
 //Génère un texte aléatoire de 10 caractère

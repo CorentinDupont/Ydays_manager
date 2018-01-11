@@ -83,17 +83,17 @@ $('.mButtonProposerProjet').click(function(){
             type : "POST",
             url: "../php/imageFileUpload.php",
             data: {imageDatas:imageDatas},
-            beforeSend: function(xhr){
+            beforeSend: function(xhr){//Avant d'envoyer la requête
                 $('.mButtonProposerProjet').css("background-color", "grey");
                 $('.mButtonProposerProjet').val('Upload..');
                 $('.mButtonProposerProjet').prop('disabled', true);
             },
-            success: function( data ) {
+            success: function( data ) {//Si la requête à fonctionnée
                 imageIsCorrectlyUpload = true;
                 $('.mButtonProposerProjet').val('Proposition projet ...');
 
             },
-            error: function(xhr, status, error) {
+            error: function(xhr, status, error) {//sinon
                 $('.mButtonProposerProjet').val('Erreur : Upload Image');
                 $('.mButtonProposerProjet').css("background-color", "#EC4747");
                 alert(error);
