@@ -91,6 +91,14 @@ projet_ydays_manager_project_update_checkbox_state:
     defaults:
         _controller: ProjetYdaysManagerBundle:Objective:updateObjectiveInDb
 
+projet_ydays_manager_helpers:
+    path:     /helpers
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Helper:listHelper
+projet_ydays_manager_list_Helpers:
+    path:     /helpers
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Helper:listHelper
 
 #projet_ydays_manager_login:
 #    path:     /login
