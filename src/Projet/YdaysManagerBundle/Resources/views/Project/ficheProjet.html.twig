@@ -163,10 +163,11 @@
                                             <a data-dismiss="modal" href="#" class="buttonAdd" data-toggle="modal" data-target="#PopUp_addMember" id="mButtonOpenPopupAddFicheProjet">+</a>
                                         </div>
                                     </a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Charles HUET </p> <p><a href="#">x</a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Maxime GRAND </p> <p><a href="#">x</a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Guillaume HECHT </p> <p><a href="#">x</a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Jérémy NUNES </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres">
+                                        {% for member in project.members %}
+                                            <p class="user-modal-membre">{{ member.username|capitalize }} {{ member.lastName|upper }}</p><p><a href="{{path('suppression_members',{'id': project.id , 'idUser': member.id})}}">x</a></p>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +191,7 @@
                                         <input id="mSearchBarUserModalFicheProjet" type="text" placeholder="Rechercher..." name="srch-name">
                                     </section>
                                     <div class="user-select">
-                                        {% for stud in student %} <a class="user-name"><img src="{{ asset('img/model_name.png') }}"><p> {{ stud.username }} <span>{{ stud.lastName }}</span> </p></a> {% endfor %}
+                                        {% for stud in student %} <a href="{{path('ajout_members',{'id': project.id , 'idUser': stud.id})}}" class="user-name"><img src="{{ asset('img/model_name.png') }}"><p> {{ stud.username }} <span>{{ stud.lastName }}</span> </p></a> {% endfor %}
 
                                     </div>
                                 </div>
