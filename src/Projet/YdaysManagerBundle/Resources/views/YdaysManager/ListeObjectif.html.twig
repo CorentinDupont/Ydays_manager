@@ -38,8 +38,10 @@
                 {% elseif objective.checked == 1 %}
                     <input type="checkbox" class="cCheckBoxCheckList" checked="checked" id="cCheckBox{{objective.id}}CheckList"/>
                  {% endif %}
-                    <label for="cCheckBox{{objective.id}}CheckList" class="cShadowed">{{objective.textObjective}}</label>
-                   
+                    <label for="cCheckBox{{objective.id}}CheckList" class="cShadowed cItemObjective">{{objective.textObjective}}</label>
+                    <div class="cJavascriptParameterBlock">
+                        <p class="objectiveIdAjoutObjective">{{objective.id}}</p>
+                    </div>
                 </div>
             {% endfor %}
             </section>
@@ -69,7 +71,9 @@
                 </svg>
             </div>
         </div>
-        <p id="projectIdAjoutObjective">{{projectId}}</p>
+        <div class="cJavascriptParameterBlock">
+            <p id="projectIdAjoutObjective">{{projectId}}</p>
+        </div>
     </body>
 
     <script src="{{ asset('js/scriptHeader.js') }}"></script>
