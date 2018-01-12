@@ -1831,7 +1831,7 @@
 /*------------------------------------------------------------------------------------------*/
 body, html {
     height: 100%;
-    background-color: #D1D1D1;
+    background-color: #F6F6F6;
 
 }
 .fontLogin{
@@ -3421,3 +3421,4 @@ html { height: 100%; } /* Pour permettre au contenu de se centrer au milieu de l
 {
 	.gWrapperAjoutCompteRendu { margin: 0 30px; } /* Redéfinition du margin appliqué au wrapper quand la navbar disparaît */
 }
+

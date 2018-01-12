@@ -283,10 +283,10 @@ class Entreprise
     }
 
     /**
-     * Remove project
-     *
-     * @param \Projet\YdaysManagerBundle\Entity\Project $project
-     */
+    * Remove project
+    *
+    * @param \Projet\YdaysManagerBundle\Entity\Project $project
+    */
     public function removeProject(\Projet\YdaysManagerBundle\Entity\Project $project)
     {
         $this->projects->removeElement($project);
@@ -301,4 +301,5 @@ class Entreprise
     {
         return $this->projects;
     }
+
 }

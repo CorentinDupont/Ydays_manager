@@ -36,13 +36,13 @@ class EntrepriseController extends Controller
     }
 
     /**
-     * Push New Entreprise in DataBase
-     *
-     * @Route("/pushEntrepriseInDb", options={"expose"=true}, name="projet_ydays_manager_push_entreprise_in_db")
-     * @Method("POST")
-     * @return Response
-     * @return JsonResponse_
-     */
+    * Push New Entreprise in DataBase
+    *
+    * @Route("/pushEntrepriseInDb", options={"expose"=true}, name="projet_ydays_manager_push_entreprise_in_db")
+    * @Method("POST")
+    * @return Response
+    * @return JsonResponse_
+    */
     public function pushEntrepriseInDbAction(Request $request){
         if($request->isXmlHttpRequest()){
            
@@ -77,6 +77,32 @@ class EntrepriseController extends Controller
         }
         return new Response(
             "Erreur"
+        );
+    }
+
+    /**
+    * Suppression entreprise
+    *
+    * @Route("/ListEntreprises/deleteEntreprise", options={"expose"=true}, name="projet_ydays_manager_entreprise_delete_comment")
+    * @Method("POST")
+    * @return Response
+    * @return JsonResponse
+    */
+    public function deleteEntrepriseAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+
+            $entrepriseToDelete = $em->getRepository(Entreprise::class)->find($request->get('deletedEntrepriseId'));
+
+            $em->remove($entrepriseToDelete);
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
         );
     }
 

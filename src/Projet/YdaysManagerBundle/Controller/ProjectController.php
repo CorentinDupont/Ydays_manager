@@ -268,7 +268,7 @@ class ProjectController extends Controller
      * Suppression commentaire
      *
      * @Route("/ficheProjet/deleteComment", options={"expose"=true}, name="projet_ydays_manager_project_delete_comment")
-     * @Method("POST")
+     * @Method("GET")
      * @return Response
      * @return JsonResponse
      */

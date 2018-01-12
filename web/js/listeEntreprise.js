@@ -161,3 +161,27 @@ function makeid() {
 
     return text;
 }
+
+//Suppression de l'entreprise
+$('.cDeleteRoundButton').click(function(){
+    deleteEntreprise($(this));
+});
+
+function deleteEntreprise(clickedElement){
+    if (clickedElement.parents('.cButtonRowContainer').length) {
+        clickedElement.closest('.cListentrepriseProject').remove();
+    }else{
+        var deletedEntrepriseId = clickedElement.parents('.cListentrepriseProject');
+        console.log(deletedEntrepriseId);
+        var route = Routing.generate('projet_ydays_manager_entreprise_delete_comment');
+        console.log(route);
+
+        $.ajax({
+            url: route,
+            method:"post",
+            data: {idEntreprise:idEntreprise, deletedEntrepriseId:deletedEntrepriseId}
+        }).done(function(msg){
+            clickedElement.closest('.cListentrepriseProject').remove();
+        });
+    }
+}
