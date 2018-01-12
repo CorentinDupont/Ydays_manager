@@ -10,4 +10,12 @@ namespace Projet\YdaysManagerUserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function searchStudent(){
+    $qb = $this->createQueryBuilder('u');
+    $qb->where('u.promotion != :identifier')
+       ->setParameter('identifier', 'null');
+
+    return $qb->getQuery()
+          ->getResult();
+    }
 }
