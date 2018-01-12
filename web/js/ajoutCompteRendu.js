@@ -17,7 +17,7 @@ function previewImage(input, image) {
         $imageBase64 = oFREvent.target.result;
     };
 };*/
-//clique bouton proposer projet
+//clique bouton proposer compte rendu
 $('#inputValidAjoutCompteRendu').click(function(){
     var numOfError = 0;
 
@@ -77,7 +77,7 @@ $('#inputValidAjoutCompteRendu').click(function(){
     console.log(projectId);
     if(numOfError===0){
 
-        //Appel de la méthode du ReportController pour entrer en base de données le projet
+        //Appel de la méthode du ReportController pour entrer en base de données le compte rendu
         window.location.href = Routing.generate('projet_ydays_manager_push_report_in_db', {
             'globalReport': globalReport,
             'individualReport': individualReport,

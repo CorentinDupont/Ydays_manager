@@ -38,16 +38,18 @@ class ProjectController extends Controller
 
         //WARNING : les lignes de code qui vont suivre sont susceptibles de choquer les âmes les plus sensibles.
 
-        $projectss = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
+        $projectsQuery = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
 
         $projects = [];
-        foreach($projectss as $project){
+        foreach($projectsQuery as $project){
             $projectUsers = $project -> getMembers();
+            $projectManagers = $project -> getProjectManager();
             foreach($projectUsers as $projectUser){
-                if($userId == $projectUser->getId()){
-                    array_push($projects, $project);
+                foreach( $projectManagers as $projectManager){
+                    if($userId == $projectUser->getId() || $userId == $projectManager->getId()){
+                        array_push($projects, $project);
+                    }
                 }
-
             }
         }
         
@@ -73,6 +75,7 @@ class ProjectController extends Controller
             'projects' => $projects,
         ));
     }
+
 
     public function ficheProjetAction($id){
         $em = $this->getDoctrine()->getManager();
@@ -229,6 +232,98 @@ class ProjectController extends Controller
     }
 
     /**
+     * AjoutCommentaire
+     *
+     * @Route("/ficheProjet/addComment", options={"expose"=true}, name="projet_ydays_manager_project_add_comment")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function addCommentAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+
+            $projectToUpdate = $em->getRepository(Project::class)->find($request->get('idProject'));
+            $author = $em->getRepository(User::class)->find($request->get('idUser'));
+
+            $comment = new Comment();
+            $comment->setText($request->get('newCommentText'));
+            $comment->setAuthor($author);
+            $comment->setProject($projectToUpdate);
+
+            $em->persist($comment);
+            $em->flush();
+
+            return new JsonResponse(array('idComment' => $comment->getId()));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
+     * Suppression commentaire
+     *
+     * @Route("/ficheProjet/deleteComment", options={"expose"=true}, name="projet_ydays_manager_project_delete_comment")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function deleteCommentAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+
+            $commentToDelete = $em->getRepository(Comment::class)->find($request->get('deletedCommentId'));
+
+            $em->remove($commentToDelete);
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
+     * Ajout Réponse
+     *
+     * @Route("/ficheProjet/addAnswer", options={"expose"=true}, name="projet_ydays_manager_project_add_answer")
+     * @Method("POST")
+     * @param Request $request
+     * @return Response
+     */
+    public function addAnswerAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+
+            $commentToUpdate = $em->getRepository(Comment::class)->find($request->get('idComment'));
+            $author = $this->get('security.token_storage')->getToken()->getUser();
+
+            $answer = new AnswerComment();
+            $answer->setText($request->get('newAnswerText'));
+            $answer->setAuthor($author);
+            $answer->setComment($commentToUpdate);
+
+            $em->persist($answer);
+            $em->flush();
+
+            return new JsonResponse(array("idAnswer"=>$answer->getId()));
+        }
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
      * Creates a new project entity.
      *
      * @Route("/new", name="project_new")
@@ -329,6 +424,31 @@ class ProjectController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * @Route("/deleteMember/{id}/{idUser}/", name="suppression_members")
+     */
+    public function deleteUser($id,$idUser) {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($idUser);
+        $em->getRepository(Project::class)->find($id)->removeMember($user);
+
+        $em->flush();
+        return $this->redirect('http://localhost/ydays_manager/web/app_dev.php/ficheProjet/'.$id);
+    }
+    /**
+     * @Route("/addMember/{id}/{idUser}/", name="ajout_members")
+     */
+    public function addUser($id,$idUser) {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($idUser);
+        $em->getRepository(Project::class)->find($id)->addMember($user);
+
+        $em->flush();
+        return $this->redirect('http://localhost/ydays_manager/web/app_dev.php/ficheProjet/'.$id);
     }
 
 }

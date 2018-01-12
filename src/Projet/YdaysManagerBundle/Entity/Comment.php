@@ -41,7 +41,7 @@ class Comment
      */
     private $project;
 
-  /**
+    /**
      * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\AnswerComment", mappedBy="comment")
      */
     private $answers;
@@ -150,7 +150,7 @@ class Comment
     /**
      * Remove answer
      *
-     * @param \Projet\YdaysManagerBundle\Entity\AnswerComment $user
+     * @param \Projet\YdaysManagerBundle\Entity\AnswerComment $answer
      */
     public function removeAnswer(\Projet\YdaysManagerBundle\Entity\AnswerComment $answer)
     {

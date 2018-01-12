@@ -11,6 +11,8 @@
             <link rel="stylesheet" href="{{ asset('css/global.css') }}">
             <script src="{{ asset('js/jquery.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+		    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
         {% endblock %}
     </head>
@@ -29,18 +31,19 @@
             </a>
             <h1>Liste d'Objectifs</h1>
             <section id="cCheckListContainerCheckList" class="cRounded cShadowed">
+            {% for objective in objectives %}
                 <div class="cOneGoalBlockCheckList">
-                    <input type="checkbox" class="cCheckBoxCheckList" id="cCheckBox1CheckList"/>
-                    <label for="cCheckBox1CheckList" class="cShadowed">Maquette</label>
+                {% if objective.checked == 0 %}
+                    <input type="checkbox" class="cCheckBoxCheckList" id="cCheckBox{{objective.id}}CheckList"/>
+                {% elseif objective.checked == 1 %}
+                    <input type="checkbox" class="cCheckBoxCheckList" checked="checked" id="cCheckBox{{objective.id}}CheckList"/>
+                 {% endif %}
+                    <label for="cCheckBox{{objective.id}}CheckList" class="cShadowed cItemObjective">{{objective.textObjective}}</label>
+                    <div class="cJavascriptParameterBlock">
+                        <p class="objectiveIdAjoutObjective">{{objective.id}}</p>
+                    </div>
                 </div>
-                <div class="cOneGoalBlockCheckList">
-                    <input type="checkbox" class="cCheckBoxCheckList" id="cCheckBox2CheckList"/>
-                    <label for="cCheckBox2CheckList" class="cShadowed">Mockup</label>
-                </div>
-                <div class="cOneGoalBlockCheckList">
-                    <input type="checkbox" class="cCheckBoxCheckList" id="cCheckBox3CheckList"/>
-                    <label for="cCheckBox3CheckList" class="cShadowed">Intégration</label>
-                </div>
+            {% endfor %}
             </section>
         </div>
         <div id="cAddGoalBlockCheckList">
@@ -68,7 +71,9 @@
                 </svg>
             </div>
         </div>
-
+        <div class="cJavascriptParameterBlock">
+            <p id="projectIdAjoutObjective">{{projectId}}</p>
+        </div>
     </body>
 
     <script src="{{ asset('js/scriptHeader.js') }}"></script>

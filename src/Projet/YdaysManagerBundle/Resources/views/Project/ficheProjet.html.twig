@@ -27,8 +27,9 @@
 
 <body>
     <!-- Block invisible pour récupérer les paramètres twig dans le js -->
-    <div class="cJavascriptParameterBlock">
+    <div class="cJavascriptParameterBlock cGlobalParamatersProjectDashboard">
         <p>{{ project.id }}</p>
+        <p>{{ app.user.id }}</p>
     </div>
 
     {% include('@ProjetYdaysManager/YdaysManager/Header.html.twig') %}
@@ -81,7 +82,7 @@
                 <!-- menu déroulant caché -->
                 <div class="cDropdownMenuProjectDashboard">
                     <a href="{{path('projet_ydays_manager_display_cr', {'id': project.id })}}" class="cYnovGreen">Comptes rendu</a>
-                    <a href="#" class="cYnovGreen">Checklist</a>
+                    <a href="{{path('projet_ydays_manager_display_checklist', {'id': project.id })}}" class="cYnovGreen">Checklist</a>
                 </div>
             </div>
         </div>
@@ -129,6 +130,8 @@
                     {% endfor %}
                 </div>
                 {% if project.state != "STATE_REQUESTED" and (is_granted('ROLE_ADMIN') or app.user.id == project.projectManager.id) %}
+                
+                
                 <!-- Bouton modif -->
                 <div class="container">
                     <!-- Modal Pop-Up adminDashModifMemb -->
@@ -154,19 +157,24 @@
                                 <!-- Body du modal -->
                                 <div class="modal-body">
                                     <h4 class="modal-title"> Chef de projet </h4>
-                                    <p class="user-modal-membre"> Corentin DUPONT </p>
+                                    {% if not project.projectManager is null %}
+                                        <p class="user-modal-membre">{{ project.projectManager.username|capitalize }} {{ project.projectManager.lastName|upper }}</p>
+                                    {% endif %}
                                     <h4 class="modal-title"> Helper </h4>
-                                    <p class="user-modal-membre"> Killian Delorme </p>
+                                    {% if not project.helper is null %}
+                                        <p class="user-modal-membre">{{ project.helper.username|capitalize }} {{ project.helper.lastName|upper }}</p>
+                                    {% endif %}
                                     <div class="wrapper-title-membres"> <h4 class="modal-title"> Membres </h4> <p><a href="#">
                                         <div class="container">
                                             <!-- Modal Pop-Up addMember -->
                                             <a data-dismiss="modal" href="#" class="buttonAdd" data-toggle="modal" data-target="#PopUp_addMember" id="mButtonOpenPopupAddFicheProjet">+</a>
                                         </div>
                                     </a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Charles HUET </p> <p><a href="#">x</a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Maxime GRAND </p> <p><a href="#">x</a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Guillaume HECHT </p> <p><a href="#">x</a></p> </div>
-                                    <div class="container-title-membres"> <p class="user-modal-membre"> Jérémy NUNES </p> <p><a href="#">x</a></p> </div>
+                                    <div class="container-title-membres">
+                                        {% for member in project.members %}
+                                            <p class="user-modal-membre">{{ member.username|capitalize }} {{ member.lastName|upper }}</p><p><a href="{{path('suppression_members',{'id': project.id , 'idUser': member.id})}}">x</a></p>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +198,7 @@
                                         <input id="mSearchBarUserModalFicheProjet" type="text" placeholder="Rechercher..." name="srch-name">
                                     </section>
                                     <div class="user-select">
-                                        {% for stud in student %} <a class="user-name"><img src="{{ asset('img/model_name.png') }}"><p> {{ stud.username }} <span>{{ stud.lastName }}</span> </p></a> {% endfor %}
+                                        {% for stud in student %} <a href="{{path('ajout_members',{'id': project.id , 'idUser': stud.id})}}" class="user-name"><img src="{{ asset('img/model_name.png') }}"><p> {{ stud.username|capitalize }} <span>{{ stud.lastName|upper }}</span> </p></a> {% endfor %}
 
                                     </div>
                                 </div>
@@ -200,6 +208,8 @@
                 </div>
                 {% endif %}
             </div>
+            
+            
             <div id="cDescProjetDashboard" class="cShadowed cRounded">
                 <p>{{ project.description }}</p>
                 {% if project.state != "STATE_REQUESTED" and (is_granted('ROLE_ADMIN') or app.user.id == project.projectManager.id) %}
@@ -227,26 +237,30 @@
 
         <!-- Block tous les commentaires -->
         <div id="cAllCommentsProjectDashboard">
-            {% for comment in comments %}
-                <!-- Input commentaire caché, affichier avec bouton "rédiger un commentaire" -->
-                <div id="cBlockHiddenInputAddCommentProjectDashboard" class="cOneCommentProjectDashboard cBlockHiddenInputCommentProjectDashboard">
-                    <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
-                    <div class="cInputAddCommentProjectDashboard cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
-                        <!-- <div class="cArrowCommentProjectDashboard"></div>-->
-                        <textarea class="cTextAreaAddCommentProjectDashboard" title="cTextAreaAddCommentProjectDashboard"></textarea>
-                        <!-- Conteneur Bouton-->
-                        <div class="cButtonRowContainer">
-                            <!-- Bouton annuler -->
-                            <button class="cCancelCommentButtonProjectDashboard cRounded cTomatoRed cShadowed cButton">Annuler</button>
-                            <!-- Bouton poster -->
-                            <button class="cPostCommentButtonProjectDashboard cRounded cYnovGreen cShadowed cButton">Poster</button>
-                        </div>
 
+            <!-- Input commentaire caché, affichier avec bouton "rédiger un commentaire" -->
+            <div id="cBlockHiddenInputAddCommentProjectDashboard" class="cOneCommentProjectDashboard cBlockHiddenInputCommentProjectDashboard">
+                <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
+                <div class="cInputAddCommentProjectDashboard cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
+                    <!-- <div class="cArrowCommentProjectDashboard"></div>-->
+                    <textarea class="cTextAreaAddCommentProjectDashboard" title="cTextAreaAddCommentProjectDashboard"></textarea>
+                    <!-- Conteneur Bouton-->
+                    <div class="cButtonRowContainer">
+                        <!-- Bouton annuler -->
+                        <button class="cCancelCommentButtonProjectDashboard cRounded cTomatoRed cShadowed cButton">Annuler</button>
+                        <!-- Bouton poster -->
+                        <button class="cPostCommentButtonProjectDashboard cRounded cYnovGreen cShadowed cButton">Poster</button>
                     </div>
-                </div>
 
+                </div>
+            </div>
+
+            {% for comment in comments|reverse %}
                 <!-- Bloc d'un commentaire et ses réponses -->
                 <div class="cBlockOneCommentProjectDashboard">
+                    <div class="cJavascriptParameterBlock cCommentJsParamaterBlock">
+                        <p>{{ comment.id }}</p>
+                    </div>
                     <!-- Un commentaire -->
                     <div class="cOneCommentProjectDashboard">
                         <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
@@ -272,7 +286,6 @@
                                             <path d="M149.333,117.333V32L0,181.333l149.333,149.333V243.2C256,243.2,330.667,277.333,384,352    C362.667,245.333,298.667,138.667,149.333,117.333z" fill="#FFFFFF"/>
                                         </g>
                                     </g>
-
                                     </svg>
                                 </div>
                             </div>
@@ -289,7 +302,7 @@
 
                             <!-- Input commentaire caché, affichier avec bouton "rédiger un commentaire" -->
                             <div class="cOneCommentProjectDashboard cBlockHiddenInputCommentProjectDashboard">
-                                <img src="{{ asset('img/image3.png') }}" class="cProfilImageProjectDashboard cShadowed">
+                                <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
                                 <div class="cInputAddCommentProjectDashboard cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
                                     <!-- <div class="cArrowCommentProjectDashboard"></div>-->
                                     <textarea class="cTextAreaAddCommentProjectDashboard" title="cTextAreaAnswerCommentProjectDashboard"></textarea>
@@ -304,9 +317,12 @@
                                 </div>
                             </div>
 
-                                <!-- une réponse -->
-                                {% for answerText in comment.answers %}
+                            <!-- une réponse -->
+                            {% for answerText in comment.answers|reverse %}
                                 <div class="cOneCommentProjectDashboard">
+                                    <div class="cJavascriptParameterBlock cCommentJsParamaterBlock">
+                                        <p>{{ answerText.id }}</p>
+                                    </div>
                                     <img src="{{ asset('uploads/user/profilePics/defpic.png') }}" class="cProfilImageProjectDashboard cShadowed">
                                     <div class="cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">
                                         <!-- <div class="cArrowCommentProjectDashboard"></div>-->
