@@ -106,7 +106,7 @@ class AnswerComment
      *
      * @return AnswerComment
      */
-    public function setComment(\Projet\YdaysManagerBundle\Entity\Comment $comment = null)
+    public function setComment(\Projet\YdaysManagerUserBundle\Entity\User $comment = null)
     {
         $this->comment = $comment;
 
@@ -124,3 +124,4 @@ class AnswerComment
     }
 
 }
+
