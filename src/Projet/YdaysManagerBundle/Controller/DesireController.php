@@ -129,6 +129,59 @@ class DesireController extends Controller
     }
 
     /**
+     * Validation d'affectation par l'administrateur
+     *
+     * @Route("/Desire/setAffectAvailable/project={idProject}&desire={idDesire}", options={"expose"=true}, name="projet_ydays_manager_desire_set_affect_available")
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function affectUserAction($idProject, $idDesire){
+
+        $em = $this->getDoctrine()->getManager();
+        $desireRepository = $em->getRepository(Desire::class);
+        $projectRepository = $em->getRepository(Project::class);
+        $userRepository = $em->getRepository(User::class);
+        $user = $userRepository->findById($this->get('security.token_storage')->getToken()->getUser());
+
+        //Rajout d'un membre dans le projet
+        $projectToUpdate = $projectRepository->find($idProject);
+        $projectToUpdate->getMembers($user);
+
+        //suppression de la demande
+        $desireToDelete = $desireRepository->find($idDesire);
+        $em->remove($desireToDelete);
+
+        $em->flush();
+
+        $allDesires = $desireRepository->findAll();
+
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:adminDemande.html.twig', array('desires'=>$allDesires));
+    }
+
+    /**
+     * Refus d'affectation par l'administrateur
+     *
+     * @Route("/Desire/refuseAffectProject/project={idProject}&desire={idDesire}", options={"expose"=true}, name="projet_ydays_manager_refuse_affect_project")
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function refuseAffectAction($idProject, $idDesire){
+        $em = $this->getDoctrine()->getManager();
+        $desireRepository = $em->getRepository(Desire::class);
+        $projectRepository = $em->getRepository(Project::class);
+
+        //suppression de la demande
+        $desireToDelete = $desireRepository->find($idDesire);
+        $em->remove($desireToDelete);
+
+        $em->flush();
+
+        $allDesires = $desireRepository->findAll();
+
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:AdminDemande.html.twig', array('desires'=>$allDesires));
+    }
+
+    /**
      * Demande de suppression d'un projet de la part d'un utilisateur
      *
      *
@@ -164,5 +217,55 @@ class DesireController extends Controller
         $answerComments = $answerCommentRepository->findByComment($comments);
 
         return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments, 'student'=>$student));
+    }
+
+    /**
+     * Validation de suppression par l'administrateur
+     *
+     * @Route("/Desire/supprProjectAvailable/project={idProject}&desire={idDesire}", options={"expose"=true}, name="projet_ydays_manager_suppr_project_available")
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function supprProjectAvailableAction($idProject, $idDesire){
+        $em = $this->getDoctrine()->getManager();
+        $desireRepository = $em->getRepository(Desire::class);
+        $projectRepository = $em->getRepository(Project::class);
+
+        //suppression de la demande
+        $desireToDelete = $desireRepository->find($idDesire);
+        $em->remove($desireToDelete);
+
+        //Changement d'état du projet
+        $projectToUpdate = $projectRepository->find($idProject);
+        $projectToUpdate->setState("STATE_DELETED");
+
+        $em->flush();
+
+        $allDesires = $desireRepository->findAll();
+
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:AdminDemande.html.twig', array('desires'=>$allDesires));
+    }
+
+    /**
+     * Refus de suppression par l'administrateur
+     *
+     * @Route("/Desire/refuseSupprProject/project={idProject}&desire={idDesire}", options={"expose"=true}, name="projet_ydays_manager_refuse_suppr_project")
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function refuseSupprProjectAction($idProject, $idDesire){
+        $em = $this->getDoctrine()->getManager();
+        $desireRepository = $em->getRepository(Desire::class);
+        $projectRepository = $em->getRepository(Project::class);
+
+        //suppression de la demande
+        $desireToDelete = $desireRepository->find($idDesire);
+        $em->remove($desireToDelete);
+
+        $em->flush();
+
+        $allDesires = $desireRepository->findAll();
+
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:AdminDemande.html.twig', array('desires'=>$allDesires));
     }
 }

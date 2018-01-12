@@ -79,8 +79,8 @@
                                     <p> Demande de suppression du projet {{ desire.linkedProject.name }} </p>
                                     <!-- SVG -->
                                     <div class="jSVG_ContainerDemandeAdmin">
-                                        <div class="jBlockSVG1_DemandeAdmin"><a href="#"><img src="{{ asset('svg/check1.svg') }}" alt=""/></a></div>
-                                        <div class="jBlockSVG2_DemandeAdmin"><a href="#"><img src="{{ asset('svg/check2.svg') }}" alt=""/></a></div>
+                                        <div class="jBlockSVG1_DemandeAdmin"><a href="{{ path('projet_ydays_manager_suppr_project_available', {'idProject':desire.linkedProject.id, 'idDesire':desire.id}) }}"><img src="{{ asset('svg/check1.svg') }}" alt=""/></a></div>
+                                        <div class="jBlockSVG2_DemandeAdmin"><a href="{{ path('projet_ydays_manager_refuse_suppr_project', {'idProject':desire.linkedProject.id, 'idDesire':desire.id}) }}"><img src="{{ asset('svg/check2.svg') }}" alt=""/></a></div>
                                         <div class="jBlockSVG3_DemandeAdmin"><a href="{{ path('projet_ydays_manager_fiche_projet', {'id' : desire.linkedProject.id}) }}"><img src="{{ asset('svg/eye.svg') }}" alt="" class="jSVG_EyeDemandeAdmin"/></a></div>
                                     </div>
                                     <!-- Date -->
@@ -101,8 +101,8 @@
                                 <p> Demande d'affectation au projet {{ desire.linkedProject.name }} </p>
                                 <!-- SVG -->
                                 <div class="jSVG_ContainerDemandeAdmin">
-                                    <div class="jBlockSVG1_DemandeAdmin"><a href="#"><img src="{{ asset('svg/check1.svg') }}" alt=""/></a></div>
-                                    <div class="jBlockSVG2_DemandeAdmin"><a href="#"><img src="{{ asset('svg/check2.svg') }}" alt=""/></a></div>
+                                    <div class="jBlockSVG1_DemandeAdmin"><a href="{{ path('projet_ydays_manager_desire_set_affect_available', {'idProject':desire.linkedProject.id, 'idDesire':desire.id}) }}"><img src="{{ asset('svg/check1.svg') }}" alt=""/></a></div>
+                                    <div class="jBlockSVG2_DemandeAdmin"><a href="{{ path('projet_ydays_manager_refuse_affect_project', {'idProject':desire.linkedProject.id, 'idDesire':desire.id}) }}"><img src="{{ asset('svg/check2.svg') }}" alt=""/></a></div>
                                     <div class="jBlockSVG3_DemandeAdmin"><a href="{{ path('projet_ydays_manager_fiche_projet', {'id' : desire.linkedProject.id}) }}"><img src="{{ asset('svg/eye.svg') }}" alt="" class="jSVG_EyeDemandeAdmin"/></a></div>
                                 </div>
                                 <!-- Date -->
