@@ -95,10 +95,26 @@ projet_ydays_manager_helpers:
     path:     /helpers
     defaults:
         _controller: ProjetYdaysManagerBundle:Helper:listHelper
+
 projet_ydays_manager_list_Helpers:
     path:     /helpers
     defaults:
         _controller: ProjetYdaysManagerBundle:Helper:listHelper
+
+
+projet_ydays_manager_ask_affect_proj:
+    path:     /Desire/askAffectProj/{idProject}
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Desire:askAffectProj
+    requirements:
+        idProject: \d+
+
+projet_ydays_manager_ask_suppr_proj:
+    path:     /Desire/askSupprProj/{idProject}
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Desire:askSupprProj
+    requirements:
+        idProject: \d+
 
 #projet_ydays_manager_login:
 #    path:     /login

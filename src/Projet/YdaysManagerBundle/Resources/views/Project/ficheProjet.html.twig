@@ -83,6 +83,8 @@
                 <div class="cDropdownMenuProjectDashboard">
                     <a href="{{path('projet_ydays_manager_display_cr', {'id': project.id })}}" class="cYnovGreen">Comptes rendu</a>
                     <a href="{{path('projet_ydays_manager_display_checklist', {'id': project.id })}}" class="cYnovGreen">Checklist</a>
+                    <a href="{{path('projet_ydays_manager_ask_affect_proj', {'idProject': project.id })}}" class="cYnovGreen askAffectProj" onclick="this.value ='';">Affectation au projet</a>
+                    <a href="{{path('projet_ydays_manager_ask_suppr_proj', {'idProject': project.id })}}" class="cYnovGreen askSupprProj" onclick="this.value ='';">Suppression du projet </a>
                 </div>
             </div>
         </div>
