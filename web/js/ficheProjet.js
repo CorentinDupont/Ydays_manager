@@ -1,7 +1,13 @@
 
-//Id du projet utilisé partout
-var idProject = $('.cJavascriptParameterBlock').text();
+//Id du projet utilisé partout et id utilisateur, utilisé dans les commentaires
+var idProject = $('.cGlobalParamatersProjectDashboard p:nth-child(1)').text();
+var idUser = $('.cGlobalParamatersProjectDashboard p:nth-child(2)').text();
+
 idProject = parseInt(idProject);
+idUser = parseInt(idUser);
+
+console.log(idProject);
+console.log(idUser);
 
 /*-----------------------------------  TITRE ----------------------------------------*/
 
@@ -190,9 +196,6 @@ function drawLineAnswerBlockOneComment(){
     });
 }
 
-
-
-
 //Suppression de commentaire
 $('.cDeleteRoundButton').click(function(){
     deleteComment($(this));
@@ -203,7 +206,18 @@ function deleteComment(clickedElement){
         clickedElement.closest('.cOneCommentProjectDashboard').remove();
         drawLineAnswerBlockOneComment();
     }else{
-        clickedElement.closest('.cBlockOneCommentProjectDashboard').remove();
+        var deletedCommentId = clickedElement.parents('.cBlockOneCommentProjectDashboard:first').find('.cCommentJsParamaterBlock').find('p').text();
+        console.log(deletedCommentId);
+        var route = Routing.generate('projet_ydays_manager_project_delete_comment');
+        console.log(route);
+
+        $.ajax({
+            url: route,
+            method:"post",
+            data: {idProject:idProject, deletedCommentId:deletedCommentId}
+        }).done(function(msg){
+            clickedElement.closest('.cBlockOneCommentProjectDashboard').remove();
+        });
     }
 }
 
@@ -239,34 +253,77 @@ $('.cPostCommentButtonProjectDashboard').click(function(){
 function postComment(clickedElement){
     //Si le bouton de post cliqué appartient à l'input caché des réponses d'un commentaire
     if(clickedElement.parents('.cAllAnswersToOneCommentProjectDashboard').length){
-        //Insertion de la nouvelle réponse en haut des autres, mais en dessous de l'input caché.
-        $(getCommentHTML(clickedElement.closest('.cAllAnswersToOneCommentProjectDashboard').find('textarea').val(), true)).insertAfter(clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard'));
-        //Ajout des fonctionnalités de clique sur le bouton supprimé de la nouvelle réponse.
-        clickedElement.closest('.cAllAnswersToOneCommentProjectDashboard:nth-child(2)').find('.cDeleteRoundButton').click(function() {
-            deleteComment($(this));
+        var newAnswerText = clickedElement.closest('.cAllAnswersToOneCommentProjectDashboard').find('textarea').val();
+        var idComment = clickedElement.parents('.cBlockOneCommentProjectDashboard:first').find('.cCommentJsParamaterBlock').find('p').text();
+        console.log(idComment);
+        console.log(newAnswerText);
+        var routeToAddAnswer = Routing.generate('projet_ydays_manager_project_add_answer');
+
+        $.ajax({
+            url: routeToAddAnswer,
+            method:"post",
+            data:{idComment:idComment, newAnswerText:newAnswerText},
+            error:function(xhr, status, error){
+                console.log(error);
+                console.log(status);
+
+            }
+        }).done(function(msg){
+            //Insertion de la nouvelle réponse en haut des autres, mais en dessous de l'input caché.
+            var newAnswerHTML = $(getCommentHTML(newAnswerText, true)).insertAfter(clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard'));
+
+            //Ajout de l'id dans le block de paramètre pour le récupérer plustard
+            newAnswerHTML.find('.cCommentJsParamaterBlock').append('<p>'+msg['idAnswer']+'Bonjour</p>');
+
+            //Ajout des fonctionnalités de clique sur le bouton supprimé de la nouvelle réponse.
+            clickedElement.closest('.cAllAnswersToOneCommentProjectDashboard:nth-child(2)').find('.cDeleteRoundButton').click(function() {
+                deleteComment($(this));
+            });
+            //Disparition de l'input
+            clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard').css("display", "none");
+            drawLineAnswerBlockOneComment();
         });
-        //Disparition de l'input
-        clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard').css("display", "none");
-        drawLineAnswerBlockOneComment();
+
+
     }else{
-        $(getCommentHTML(clickedElement.closest('.cContainerSquareAndTextCommentProjectDashboard').find('textarea').val(), false)).insertAfter(clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard'));
-        //Ajout événement de clique sur le bouton post du nouvel input caché
-        $('.cPostCommentButtonProjectDashboard').click(function(){
-            postComment($(this));
+        //Texte du commentaire
+        var newCommentText = clickedElement.closest('.cContainerSquareAndTextCommentProjectDashboard').find('textarea').val();
+
+        console.log("Ajout commentaire");
+
+        //Requête ajout commentaire au projet, en arrière plan
+        var route = Routing.generate('projet_ydays_manager_project_add_comment');
+
+        $.ajax({
+            url: route,
+            method:"post",
+            data: {idProject:idProject, idUser:idUser, newCommentText:newCommentText}
+        }).done(function(msg){
+            //Affichage du commentaire
+            var newCommentHTML = $(getCommentHTML(newCommentText, false)).insertAfter(clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard'));
+
+            //Ajout de l'id dans le block de paramètre pour le récupérer plustard
+            newCommentHTML.find('.cCommentJsParamaterBlock').append('<p>'+msg['idComment']+'</p>');
+
+            //Ajout événement de clique sur le bouton post du nouvel input caché
+            $('.cPostCommentButtonProjectDashboard').click(function(){
+                postComment($(this));
+            });
+            //Ajout événement clique sur bouton annuler du nouvel input caché
+            $('.cCancelCommentButtonProjectDashboard').click(function(){
+                cancelPostComment($(this));
+            });
+            //Ajout événement clique sur bouton supprimé du commentaire posté
+            $('.cDeleteRoundButton').click(function(){
+                deleteComment($(this));
+            });
+            //Ajout événement clique sur bouton répondre du commentaire posté
+            $('.cAnswerRoundButton').click(function(){
+                replyComment($(this));
+            });
+            clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard').css("display", "none");
         });
-        //Ajout événement clique sur bouton annuler du nouvel input caché
-        $('.cCancelCommentButtonProjectDashboard').click(function(){
-            cancelPostComment($(this));
-        });
-        //Ajout événement clique sur bouton supprimé du commentaire posté
-        $('.cDeleteRoundButton').click(function(){
-            deleteComment($(this));
-        });
-        //Ajout événement clique sur bouton répondre du commentaire posté
-        $('.cAnswerRoundButton').click(function(){
-            replyComment($(this));
-        });
-        clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard').css("display", "none");
+
     }
 }
 
@@ -277,7 +334,9 @@ function getCommentHTML(commentText, isAnswer){
             '            <div class="cBlockOneCommentProjectDashboard">';
     }
     newHTMLComment += '<div class="cOneCommentProjectDashboard">\n' +
-        '                     <img src="/ydays_manager/web/img/image3.png" class="cProfilImageProjectDashboard cShadowed">\n' +
+        '                     <div class="cJavascriptParameterBlock cCommentJsParamaterBlock">'+
+        '                     </div>'+
+        '                     <img src="../uploads/user/profilePics/defpic.png" class="cProfilImageProjectDashboard cShadowed">\n' +
         '                     <div class="cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">\n' +
         '                         <!-- <div class=\"cArrowCommentProjectDashboard\"></div>-->\n' +
         '                         <p>'+commentText+'</p>\n' +
@@ -312,7 +371,7 @@ function getCommentHTML(commentText, isAnswer){
             '\n' +
             '                        <!-- Input commentaire caché, affichier avec bouton "rédiger un commentaire" -->\n' +
             '                        <div class="cOneCommentProjectDashboard cBlockHiddenInputCommentProjectDashboard">\n' +
-            '                            <img src="/ydays_manager/web/img/image3.png" class="cProfilImageProjectDashboard cShadowed">\n' +
+            '                            <img src="../uploads/user/profilePics/defpic.png" class="cProfilImageProjectDashboard cShadowed">\n' +
             '                            <div class="cInputAddCommentProjectDashboard cContainerSquareAndTextCommentProjectDashboard cShadowed cRounded">\n' +
             '                                <!-- <div class="cArrowCommentProjectDashboard"></div>-->\n' +
             '                                <textarea class="cTextAreaAddCommentProjectDashboard" title="cTextAreaAnswerCommentProjectDashboard"></textarea>\n' +
