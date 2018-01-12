@@ -173,7 +173,7 @@ function deleteEntreprise(clickedElement){
     }else{
         var deletedEntrepriseId = clickedElement.parents('.cListentrepriseProject');
         console.log(deletedEntrepriseId);
-        var route = Routing.generate('projet_ydays_manager_entreprise_delete_comment');
+        var route = Routing.generate('projet_ydays_manager_entreprise_delete');
         console.log(route);
 
         $.ajax({
