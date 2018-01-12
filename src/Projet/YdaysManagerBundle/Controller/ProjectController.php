@@ -35,16 +35,18 @@ class ProjectController extends Controller
 
         //WARNING : les lignes de code qui vont suivre sont susceptibles de choquer les âmes les plus sensibles.
 
-        $projectss = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
+        $projectsQuery = $em->getRepository('ProjetYdaysManagerBundle:Project')->findAll();
 
         $projects = [];
-        foreach($projectss as $project){
+        foreach($projectsQuery as $project){
             $projectUsers = $project -> getMembers();
+            $projectManagers = $project -> getProjectManager();
             foreach($projectUsers as $projectUser){
-                if($userId == $projectUser->getId()){
-                    array_push($projects, $project);
+                foreach( $projectManagers as $projectManager){
+                    if($userId == $projectUser->getId() || $userId == $projectManager->getId()){
+                        array_push($projects, $project);
+                    }
                 }
-
             }
         }
         

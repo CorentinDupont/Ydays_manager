@@ -855,7 +855,9 @@
 #cBodyCheckList{
     background-color:#F6F6F6;
 }
-
+#projectIdAjoutObjective{
+    display: none;
+}
 /*Conteneur du contenu de la page*/
 #cGlobalContainerCheckList{
     margin-left:200px;

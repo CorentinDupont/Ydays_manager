@@ -99,9 +99,16 @@ class Project
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Projet\YdaysManagerBundle\Entity\Objective", mappedBy="project")
+     */
+    private $objectives;
+
     public function __construct()
     {
         $this->members = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->objectives = new ArrayCollection();
     }
 
     /**
@@ -421,5 +428,39 @@ class Project
     public function getEntreprise()
     {
         return $this->entreprise;
+    }
+
+    /**
+     * Add objective
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Objective $objective
+     *
+     * @return Project
+     */
+    public function addObjective(\Projet\YdaysManagerBundle\Entity\Objective $objective)
+    {
+        $this->objectives[] = $objective;
+
+        return $this;
+    }
+
+    /**
+     * Remove objective
+     *
+     * @param \Projet\YdaysManagerBundle\Entity\Objective $objective
+     */
+    public function removeObjective(\Projet\YdaysManagerBundle\Entity\Objective $objective)
+    {
+        $this->objectives->removeElement($objective);
+    }
+
+    /**
+     * Get objectives
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObjectives()
+    {
+        return $this->objectives;
     }
 }

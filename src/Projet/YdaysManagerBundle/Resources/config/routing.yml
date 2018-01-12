@@ -28,7 +28,7 @@ projet_ydays_manager_liste_etudiant:
 projet_ydays_manager_liste_objectif:
     path:     /listeObjectif
     defaults:
-        _controller: ProjetYdaysManagerBundle:YdaysManager:listeObjectif
+        _controller: ProjetYdaysManagerBundle:Objective:displayChecklist
 
 projet_ydays_manager_list_Entreprise:
     path:     /listEntreprises
@@ -39,6 +39,13 @@ projet_ydays_manager_display_cr:
     path:     ficheProjet/allReports/{id}
     defaults:
         _controller: ProjetYdaysManagerBundle:Report:displayReport
+    requirements:
+       id: \d+
+
+projet_ydays_manager_display_checklist:
+    path:     ficheProjet/checklist/{id}
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Objective:displayChecklist
     requirements:
        id: \d+
 
@@ -73,6 +80,10 @@ projet_ydays_manager_test_login:
         _controller: ProjetYdaysManagerBundle:YdaysManager:testLogin
 
 
+projet_ydays_manager_push_objective_in_db:
+    path: /newObjective
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Objective:pushObjectiveInDb
 
 
 
