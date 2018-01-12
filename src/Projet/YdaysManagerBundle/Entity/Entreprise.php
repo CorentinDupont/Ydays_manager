@@ -3,6 +3,7 @@
 namespace Projet\YdaysManagerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Projet\YdaysManagerBundle\Entity\Project;
 
 /**
  * Entreprise
@@ -24,49 +25,49 @@ class Entreprise
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_entreprise", type="string", length=191, unique=true)
+     * @ORM\Column(name="nom_entreprise", type="string", length=191, unique=true,nullable=true)
      */
     private $nomEntreprise;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse_entreprise", type="string", length=191)
+     * @ORM\Column(name="adresse_entreprise", type="string", length=191,nullable=true)
      */
     private $adresseEntreprise;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="cp_entreprise", type="integer")
+     * @ORM\Column(name="cp_entreprise", type="integer",nullable=true)
      */
     private $cpEntreprise;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="siret_entreprise", type="string",length=191, unique=true)
+     * @ORM\Column(name="siret_entreprise", type="string",length=191, unique=true,nullable=true)
      */
     private $siretEntreprise;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="img_entreprise", type="string", length=191)
+     * @ORM\Column(name="img_entreprise", type="string", length=191,nullable=true)
      */
     private $imgEntreprise;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ville_entreprise", type="string", length=191)
+     * @ORM\Column(name="ville_entreprise", type="string", length=191,nullable=true)
      */
     private $villeEntreprise;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="info_entreprise", type="string", length=165)
+     * @ORM\Column(name="info_entreprise", type="string", length=165,nullable=true)
      */
     private $infoEntreprise;
 

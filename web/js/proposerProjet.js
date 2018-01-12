@@ -113,6 +113,8 @@ $('.mButtonProposerProjet').click(function(){
                     },
                     error: function(xhr, status, error) {
                         $('.mButtonProposerProjet').val('Erreur : Proposer Projet');
+                        console.log(status)
+                        console.log(error)
                         $('.mButtonProposerProjet').css("background-color", "#EC4747");
                     }
                 });

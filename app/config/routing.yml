@@ -22,6 +22,10 @@ projet_ydays_manager_desire:
     resource: "@ProjetYdaysManagerBundle/Controller/DesireController.php"
     type:     annotation
 
+projet_ydays_manager_entreprise:
+    resource: "@ProjetYdaysManagerBundle/Controller/EntrepriseController.php"
+    type:     annotation
+
 projet_core:
     resource: "@ProjetCoreBundle/Resources/config/routing.yml"
     prefix:   /

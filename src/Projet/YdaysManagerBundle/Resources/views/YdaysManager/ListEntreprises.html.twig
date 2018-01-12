@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="{{ asset('css/global.css') }}">
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+		<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
     {% endblock %}
 </head>
@@ -81,12 +83,12 @@
                     <div class="modal-body">
                         <form>
                             <div class="jModalFormAddEntreprise">
-                                <input type="text" name="societyName" placeholder="Nom de l'entreprise">
-                                <input type="text" name="societyInfos" placeholder="Informations sur l'entreprise">
-                                <input type="text" name="societySiret" placeholder="Siret">
-                                <input type="text" name="societyAddress" placeholder="Adresse"> 
-                                <input type="text" name="societyCP" placeholder="Code postal">
-                                <input type="text" name="societyCity" placeholder="Ville">
+                                <input type="text" name="societyName" placeholder="Nom de l'entreprise" class="jNameAddEntreprise">
+                                <input type="text" name="societyInfos" placeholder="Informations sur l'entreprise" class="jInfosAddEntreprise">
+                                <input type="text" name="societySiret" placeholder="Siret" class="jSiretAddEntreprise">
+                                <input type="text" name="societyAddress" placeholder="Adresse" class="jAddressAddEntreprise"> 
+                                <input type="number" name="societyCP" placeholder="Code postal" class="jCPAddEntreprise">
+                                <input type="text" name="societyCity" placeholder="Ville" class="jCityAddEntreprise">
                                 <!-- Envoi de l'image -->
                                 <div class="jModalFormImgAddEntreprise"> <!-- Div pour le choix d'image -->
                                     <input type="file" name="societyImg" placeholder="Ville" id="jProjetImageContainerAddEntreprise">
@@ -106,7 +108,7 @@
                                 </div>
                                 <!-- Bouton submit -->
                                 <div class="jModalFormSubmitAddEntreprise">
-                                    <input type="submit" value="Envoyer la demande" class="jButtonAddEntreprise">
+                                    <input type="button" value="Envoyer la demande" class="jButtonAddEntreprise">
                                 </div>
                             </div>
                         </form>	

@@ -3,9 +3,13 @@
 namespace Projet\YdaysManagerBundle\Controller;
 
 use Projet\YdaysManagerBundle\Entity\Entreprise;
+use Projet\YdaysManagerBundle\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Entreprise controller.
@@ -31,6 +35,50 @@ class EntrepriseController extends Controller
         ));
     }
 
+    /**
+     * Push New Entreprise in DataBase
+     *
+     * @Route("/pushEntrepriseInDb", options={"expose"=true}, name="projet_ydays_manager_push_entreprise_in_db")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse_
+     */
+    public function pushEntrepriseInDbAction(Request $request){
+        if($request->isXmlHttpRequest()){
+           
+            //Création d'une entreprise
+            $newEntreprise = new Entreprise();
+            $newEntreprise -> setNomEntreprise($request->get('nameEts'));
+            $newEntreprise -> setInfoEntreprise($request->get('infosEts'));
+            $newEntreprise -> setSiretEntreprise($request->get('siretEts'));
+            $newEntreprise -> setAdresseEntreprise($request->get('addressEts'));
+            $newEntreprise -> setCpEntreprise($request->get('cpEts'));
+            $newEntreprise -> setVilleEntreprise($request->get('cityEts'));
+            $newEntreprise -> setImgEntreprise($request->get('imgEts'));
+
+            $tab[]=$newEntreprise->getNomEntreprise();
+            $tab[]=$newEntreprise->getAdresseEntreprise();
+            $tab[]=$newEntreprise->getCpEntreprise();
+            $tab[]=$newEntreprise->getSiretEntreprise();
+            $tab[]=$newEntreprise->getImgEntreprise();
+            $tab[]=$newEntreprise->getVilleEntreprise();
+            $tab[]=$newEntreprise->getInfoEntreprise();
+
+            
+            $em = $this -> getDoctrine() -> getManager();
+
+            //On dit au manager de prendre en compte nos nouvelles entités
+            $em -> persist($newEntreprise);
+
+            //On valide l'insertion en base de donnée.
+            $em -> flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+        return new Response(
+            "Erreur"
+        );
+    }
 
     /**
      * Creates a new entreprise entity.

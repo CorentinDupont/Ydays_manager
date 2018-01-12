@@ -22,7 +22,6 @@ class Project
      */
     private $id;
 
-
     /**
      * @var string
      *
@@ -66,7 +65,7 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="Classroom", type="string", length=191)
+     * @ORM\Column(name="Classroom", type="string", length=191, nullable=true)
      */
     private $classroom;
 
@@ -80,7 +79,7 @@ class Project
     /**
     *
     * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Entreprise", inversedBy="projects")
-    * @ORM\JoinColumn(name="Entreprise_Id", referencedColumnName="id")
+    * @ORM\JoinColumn(name="Entreprise_Id", referencedColumnName="id", nullable=true)
     */
     private $entreprise;
     /** 

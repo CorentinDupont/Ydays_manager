@@ -79,7 +79,7 @@ class Project
     /**
     *
     * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Entreprise", inversedBy="projects")
-    * @ORM\JoinColumn(name="Entreprise_Id", referencedColumnName="id")
+    * @ORM\JoinColumn(name="Entreprise_Id", referencedColumnName="id", nullable=true)
     */
     private $entreprise;
     /** 
