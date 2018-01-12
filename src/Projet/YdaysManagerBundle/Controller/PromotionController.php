@@ -135,14 +135,16 @@ class PromotionController extends Controller
         ;
     }
     /**
-     * @Route("/deleteUser/{id}/", name="delete_utilisateur")
+     * @Route("/deleteUser/{id}/", name="projet_ydays_manager_delete_student")
      */
     public function deleteUser($id) {
-
+        
         $em = $this->getDoctrine()->getManager();
+        $promotionRepository = $em->getRepository(Promotion::class);
         $user = $em->getRepository(User::class)->find($id);
         $em->remove($user);
         $em->flush();
-        return $this->redirectToRoute('promotion_index');
+        
+        return $this->render('ProjetYdaysManagerBundle:YdaysManager:ListeEtudiant.html.twig', array('promotions' => $promotionRepository->findAll()));
     }
 }
