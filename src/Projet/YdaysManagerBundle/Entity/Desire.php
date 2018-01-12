@@ -35,7 +35,7 @@ class Desire
     private $requester;
 
     /**
-     * @ORM\OneToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="Projet\YdaysManagerBundle\Entity\Project")
      * @ORM\JoinColumn(name="Project_Id", referencedColumnName="id", nullable=true)
      */
     private $linkedProject;

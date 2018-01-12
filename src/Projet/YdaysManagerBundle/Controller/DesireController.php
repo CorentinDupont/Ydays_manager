@@ -9,8 +9,11 @@
 namespace Projet\YdaysManagerBundle\Controller;
 
 
+use Projet\YdaysManagerBundle\Entity\AnswerComment;
+use Projet\YdaysManagerBundle\Entity\Comment;
 use Projet\YdaysManagerBundle\Entity\Desire;
 use Projet\YdaysManagerBundle\Entity\Project;
+use Projet\YdaysManagerUserBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -84,5 +87,82 @@ class DesireController extends Controller
         $allDesires = $desireRepository->findAll();
 
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:AdminDemande.html.twig', array('desires'=>$allDesires));
+    }
+
+
+    /**
+     * Demande d'affectation d'un utilisateur à un projet
+     *
+     *
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function askAffectProjAction($idProject){
+
+        $em = $this->getDoctrine()->getManager();
+        $projectRepository = $em->getRepository(Project::class);
+
+        $desire = new Desire();
+        $desire->setType("TYPE_AFFECTATION_REQUEST");
+        $desire->setRequester($this->get('security.token_storage')->getToken()->getUser());
+        $desire->setLinkedProject($projectRepository->find($idProject));
+
+        $em->persist($desire);
+
+        $em->flush();
+
+
+        $student = $this->getDoctrine()
+            -> getRepository(User::class)
+            -> searchStudent();
+
+        $projectRepository = $em->getRepository(Project::class);
+        $project = $projectRepository->find($idProject);
+
+        $commentRepository = $em->getRepository(Comment::class);
+        $comments = $commentRepository->findByProject($project);
+
+        $answerCommentRepository = $em->getRepository(AnswerComment::class);
+        $answerComments = $answerCommentRepository->findByComment($comments);
+
+        return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments, 'student'=>$student));
+    }
+
+    /**
+     * Demande de suppression d'un projet de la part d'un utilisateur
+     *
+     *
+     * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function askSupprProjAction($idProject){
+
+        $em = $this->getDoctrine()->getManager();
+        $projectRepository = $em->getRepository(Project::class);
+
+        $desire = new Desire();
+        $desire->setType("TYPE_DELETE_PROJECT");
+        $desire->setRequester($this->get('security.token_storage')->getToken()->getUser());
+        $desire->setLinkedProject($projectRepository->find($idProject));
+
+        $em->persist($desire);
+
+        $em->flush();
+
+
+        $student = $this->getDoctrine()
+            -> getRepository(User::class)
+            -> searchStudent();
+
+        $projectRepository = $em->getRepository(Project::class);
+        $project = $projectRepository->find($idProject);
+
+        $commentRepository = $em->getRepository(Comment::class);
+        $comments = $commentRepository->findByProject($project);
+
+        $answerCommentRepository = $em->getRepository(AnswerComment::class);
+        $answerComments = $answerCommentRepository->findByComment($comments);
+
+        return $this->render("ProjetYdaysManagerBundle:Project:ficheProjet.html.twig", array('project' => $project, 'comments' => $comments,'answerComments' => $answerComments, 'student'=>$student));
     }
 }

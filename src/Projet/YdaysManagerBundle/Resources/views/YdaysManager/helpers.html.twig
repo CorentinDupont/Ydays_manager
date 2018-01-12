@@ -10,7 +10,7 @@
 <html>
 
 <head>
-    <title>Liste des étudiants</title>
+    <title>Liste des helpers</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheets %}
@@ -52,34 +52,69 @@
                     <!-- Conteneur des étudiants de cette promo -->
                     <div class="cClassStudentListContainerStudentList">
                         <!-- Pour chaque utilisateurs de la promo -->
-                        {% for userOfPromo in promotion.users %}
-                             {% if is_granted('ROLE_HELPER') %}
+                        {% for user in users %}
+                             
                             <!-- Un étudiant-->
-                            <div class="cOneStudentItemStudentList cRounded cShadowed">
-                                <div class="cImageContainerOneStudentStudentList">
-                                    <img src="{{ asset('img/' ~ userOfPromo.imageName) }}"/>
-                                </div>
-                                <div class="cInfoStudentStudentList">
-                                    <div class="cOneInfoBlockStudentList">
-                                        <h3>{{ userOfPromo.username|capitalize ~ ' ' ~ userOfPromo.lastName|upper }} </h3>
-                                        <div class="cListInfoOneInfoBlockStudentList">
-                                            <p>{{ userOfPromo.email }}</p>
-                                            <p>0504080645</p>
+                            <a href="#" data-toggle="modal" data-target="#PopUp_adminDashModifMemb">
+                                <div class="cOneStudentItemStudentList cRounded cShadowed">
+                                    <div class="cImageContainerOneStudentStudentList">
+                                        <img src="{{ asset('img/' ~ user.imageName) }}"/>
+                                    </div>
+                                    <div class="cInfoStudentStudentList">
+                                        <div class="cOneInfoBlockStudentList">
+                                            <h3>{{ user.username|capitalize ~ ' ' ~ user.lastName|upper }} </h3>
+                                            <div class="cListInfoOneInfoBlockStudentList">
+                                                <p>mail</p>
+                                                <p>0504080645</p>
+                                            </div>
+                                        </div>
+                                        <div class="cOneInfoBlockStudentList">
+                                            <p>Projet</p>
+                                            <div class="cListInfoOneInfoBlockStudentList">
+                                                
+                                                    <p>projet</p>
+                                            </div>
+                                        </div>
+                                        <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
+                                            <p>Indisponible</p>
+                                            <div class="cAvailabilityDotStudentList"></div>
                                         </div>
                                     </div>
-                                    <div class="cOneInfoBlockStudentList">
-                                        <p>Projet</p>
-                                        <div class="cListInfoOneInfoBlockStudentList">
-                                            {% for project in userOfPromo.projects %}
-                                                <p>{{ project.name }}</p>
+                                </a>
+                                <div class="modal fade" id="PopUp_adminDashModifMemb">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Header du modal -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" id="mCrossClosePopupModifMemberFicheProjet"> x </button>
+                                                <h3 class="modal-title"> Membres du projet </h3>
+                                            </div>
+                                            <!-- Body du modal -->
+                                            <div class="modal-body">
+                                                <h4 class="modal-title"> Chef de projet </h4>
+                                                <p class="user-modal-membre"> Corentin DUPONT </p>
+                                                <h4 class="modal-title"> Helper </h4>
+                                                <p class="user-modal-membre"> Killian Delorme </p>
+                                                <div class="wrapper-title-membres"> <h4 class="modal-title"> Membres </h4> <p><a href="#">
+                                                    <div class="container">
+                                                        <!-- Modal Pop-Up addMember -->
+                                                        <a data-dismiss="modal" href="#" class="buttonAdd" data-toggle="modal" data-target="#PopUp_addMember" id="mButtonOpenPopupAddFicheProjet">+</a>
+                                                    </div>
+                                                </a></p> </div>
+                                                <div class="container-title-membres">
+                                                    {% for member in project.members %}
+                                                        <p class="user-modal-membre">{{ member.username|capitalize }} {{ member.lastName|upper }}</p><p><a href="{{path('suppression_members',{'id': project.id , 'idUser': member.id})}}">x</a></p>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="cOneInfoBlockStudentList cAvailabilityStudentList">
-                                        <p>Indisponible</p>
-                                        <div class="cAvailabilityDotStudentList"></div>
-                                    </div>
                                 </div>
-                                {% endif %}
+                                
+
+                                
+                                {% endfor %}
+                                
                                 <!-- Conteneur Bouton-->
                                 <div class="cButtonRowContainer">
                                     {% if is_granted('ROLE_ADMIN') %}
