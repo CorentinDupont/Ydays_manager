@@ -86,7 +86,10 @@ projet_ydays_manager_push_objective_in_db:
         _controller: ProjetYdaysManagerBundle:Objective:pushObjectiveInDb
 
 
-
+projet_ydays_manager_project_update_checkbox_state:
+    path: /checklist/updateCheckState
+    defaults:
+        _controller: ProjetYdaysManagerBundle:Objective:updateObjectiveInDb
 
 
 #projet_ydays_manager_login:

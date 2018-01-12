@@ -66,5 +66,33 @@ class ObjectiveController extends Controller
 
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:ListeObjectif.html.twig',  array('projectId'=>$projectId, 'objectives'=> $objectives));
     }
+    
+
+
+/**
+     * UpdateCheckState
+     *
+     * @Route("/checklist/updateCheckState", options={"expose"=true}, name="projet_ydays_manager_project_update_checkbox_state")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function updateObjectiveInDbAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+            $objectiveToUpdate = $em->getRepository(Objective::class)->find($request->get('projectId'));
+            $objectiveToUpdate->setChecked($request->get('checkedState'));
+
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
 
 }
