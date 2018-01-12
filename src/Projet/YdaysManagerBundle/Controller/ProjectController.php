@@ -76,6 +76,7 @@ class ProjectController extends Controller
         ));
     }
 
+
     public function ficheProjetAction($id){
         $em = $this->getDoctrine()->getManager();
         
@@ -331,6 +332,31 @@ class ProjectController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * @Route("/deleteMember/{id}/{idUser}/", name="suppression_members")
+     */
+    public function deleteUser($id,$idUser) {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($idUser);
+        $em->getRepository(Project::class)->find($id)->removeMember($user);
+
+        $em->flush();
+        return $this->redirect('http://localhost/ydays_manager/web/app_dev.php/ficheProjet/'.$id);
+    }
+    /**
+     * @Route("/addMember/{id}/{idUser}/", name="ajout_members")
+     */
+    public function addUser($id,$idUser) {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($idUser);
+        $em->getRepository(Project::class)->find($id)->addMember($user);
+
+        $em->flush();
+        return $this->redirect('http://localhost/ydays_manager/web/app_dev.php/ficheProjet/'.$id);
     }
 
 }
