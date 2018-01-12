@@ -3,6 +3,7 @@
 namespace Projet\YdaysManagerBundle\Controller;
 
 use Projet\YdaysManagerBundle\Entity\Promotion;
+use Projet\YdaysManagerUserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -132,5 +133,16 @@ class PromotionController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    /**
+     * @Route("/deleteUser/{id}/", name="delete_utilisateur")
+     */
+    public function deleteUser($id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($id);
+        $em->remove($user);
+        $em->flush();
+        return $this->redirectToRoute('promotion_index');
     }
 }

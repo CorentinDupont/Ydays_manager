@@ -61,7 +61,7 @@
 }
 
 /*------------------Bouton rond------------------*/
-.cRoundButton{
+.cRoundButton a svg{
     display:flex;
     align-items: center;
     justify-content: center;

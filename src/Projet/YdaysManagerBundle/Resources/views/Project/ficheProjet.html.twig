@@ -129,6 +129,8 @@
                     {% endfor %}
                 </div>
                 {% if project.state != "STATE_REQUESTED" and (is_granted('ROLE_ADMIN') or app.user.id == project.projectManager.id) %}
+                
+                
                 <!-- Bouton modif -->
                 <div class="container">
                     <!-- Modal Pop-Up adminDashModifMemb -->
@@ -154,9 +156,13 @@
                                 <!-- Body du modal -->
                                 <div class="modal-body">
                                     <h4 class="modal-title"> Chef de projet </h4>
-                                    <p class="user-modal-membre"> Corentin DUPONT </p>
+                                    {% if not project.projectManager is null %}
+                                        <p class="user-modal-membre">{{ project.projectManager.username|capitalize }} {{ project.projectManager.lastName|upper }}</p>
+                                    {% endif %}
                                     <h4 class="modal-title"> Helper </h4>
-                                    <p class="user-modal-membre"> Killian Delorme </p>
+                                    {% if not project.helper is null %}
+                                        <p class="user-modal-membre">{{ project.helper.username|capitalize }} {{ project.helper.lastName|upper }}</p>
+                                    {% endif %}
                                     <div class="wrapper-title-membres"> <h4 class="modal-title"> Membres </h4> <p><a href="#">
                                         <div class="container">
                                             <!-- Modal Pop-Up addMember -->
@@ -191,7 +197,7 @@
                                         <input id="mSearchBarUserModalFicheProjet" type="text" placeholder="Rechercher..." name="srch-name">
                                     </section>
                                     <div class="user-select">
-                                        {% for stud in student %} <a href="{{path('ajout_members',{'id': project.id , 'idUser': stud.id})}}" class="user-name"><img src="{{ asset('img/model_name.png') }}"><p> {{ stud.username }} <span>{{ stud.lastName }}</span> </p></a> {% endfor %}
+                                        {% for stud in student %} <a href="{{path('ajout_members',{'id': project.id , 'idUser': stud.id})}}" class="user-name"><img src="{{ asset('img/model_name.png') }}"><p> {{ stud.username|capitalize }} <span>{{ stud.lastName|upper }}</span> </p></a> {% endfor %}
 
                                     </div>
                                 </div>
@@ -201,6 +207,8 @@
                 </div>
                 {% endif %}
             </div>
+            
+            
             <div id="cDescProjetDashboard" class="cShadowed cRounded">
                 <p>{{ project.description }}</p>
                 {% if project.state != "STATE_REQUESTED" and (is_granted('ROLE_ADMIN') or app.user.id == project.projectManager.id) %}
