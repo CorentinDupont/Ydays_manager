@@ -75,7 +75,7 @@
                     <!-- Header du modal -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"> x </button>
-                        <h3 class="modal-title"> Ajouter son entreprise </h3>
+                        <h3 class="modal-title"> Ajouter mon entreprise </h3>
                     </div>
                     <!-- Body du modal -->
                     <div class="modal-body">
@@ -101,12 +101,12 @@
                                             </svg>
 					                        <p>Cliquez pour ajouter une image</p>
 				                        </label>
-				                        <img class="img-fluid h-100" src="#"/>
+				                        <img class="img-fluid h-100 img-responsive" src="#"/>
 			                        </div>
                                 </div>
                                 <!-- Bouton submit -->
                                 <div class="jModalFormSubmitAddEntreprise">
-                                    <input type="submit" value="Envoyer la demande">
+                                    <input type="submit" value="Envoyer la demande" class="jButtonAddEntreprise">
                                 </div>
                             </div>
                         </form>	
@@ -116,7 +116,9 @@
         </div>
     </div>
 
+<script src="{{ asset('js/scriptHeader.js') }}"></script>
+<script src="{{ asset('js/listeEntreprise.js') }}"></script>
 
 </body>
-<script src="{{ asset('js/scriptHeader.js') }}"></script>
+
 </html>

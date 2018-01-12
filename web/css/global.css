@@ -2672,7 +2672,22 @@ cPaddingAffichageCr{
     }
 }
 
-/* Modal pop-up ajout d'entreprise */
+/**
+  *
+  * @ Auteur : Jérémy Nunes <jeremy.nunes@ynov.com>
+  * @ Copyright 2017 Jérémy Nunes
+  * @ Level : Ingésup B2
+  * @ Version : 1.0
+  *
+  */
+
+/**************************************************
+***************************************************
+********* MODAL POP UP AJOUT ENTREPRISE ***********
+***************************************************
+**************************************************/
+
+/* Mise en colonne du formulaire */
 .jModalFormAddEntreprise
 {
     display: flex;
@@ -2699,7 +2714,6 @@ cPaddingAffichageCr{
     border-radius: 12px;
     overflow:hidden;
     position:relative;
-    
 }
 
 .jModalFormImgAddEntreprise input
@@ -2719,7 +2733,6 @@ cPaddingAffichageCr{
     position:absolute;
     font-weight: normal;
     display:flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -2754,7 +2767,6 @@ cPaddingAffichageCr{
 .jModalFormAddEntreprise input:focus { border: 1px solid #00b298; outline: none; }
 
 @media all and (max-width: 420px) { .jModalFormAddEntreprise .jModalFormSubmitAddEntreprise input:last-child { width: 65%;} }
-
 
 /**
   *
