@@ -54,6 +54,9 @@ class YdaysManagerController extends Controller
         return $this->render('ProjetYdaysManagerBundle:YdaysManager:lesProjets.html.twig');
     }
 
+    /**
+     * @Route("/listeEtudiant", name="projet_ydays_manager_liste_etudiant")
+     */    
     public function listeEtudiantAction(){
         $em = $this->getDoctrine()->getManager();
         $userRepository = $em->getRepository(User::class);
