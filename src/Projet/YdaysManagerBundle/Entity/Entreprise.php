@@ -301,5 +301,4 @@ class Entreprise
     {
         return $this->projects;
     }
-
 }

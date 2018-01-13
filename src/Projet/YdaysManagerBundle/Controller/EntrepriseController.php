@@ -83,8 +83,8 @@ class EntrepriseController extends Controller
     /**
     * Suppression entreprise
     *
-    * @Route("/ListEntreprises/deleteEntreprise", options={"expose"=true}, name="projet_ydays_manager_entreprise_delete_comment")
-    * @Method("GET")
+    * @Route("/ListEntreprises/deleteEntreprise", options={"expose"=true}, name="projet_ydays_manager_entreprise_delete")
+    * @Method("POST")
     * @return Response
     * @return JsonResponse
     */
