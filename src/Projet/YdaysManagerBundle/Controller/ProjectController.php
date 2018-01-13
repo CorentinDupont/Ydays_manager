@@ -278,6 +278,12 @@ class ProjectController extends Controller
             $em = $this -> getDoctrine()->getManager();
 
             $commentToDelete = $em->getRepository(Comment::class)->find($request->get('deletedCommentId'));
+            $answersToDelete = $commentToDelete->getAnswers();
+
+            foreach ($answersToDelete as $answerToDelete){
+                //$commentToDelete->removeAnswer($answersToDelete);
+                $em->remove($answerToDelete);
+            }
 
             $em->remove($commentToDelete);
             $em->flush();
@@ -317,6 +323,33 @@ class ProjectController extends Controller
 
             return new JsonResponse(array("idAnswer"=>$answer->getId()));
         }
+
+        return new Response(
+            'Erreur : Page appelée avec une autre méthode que ajax.'
+        );
+    }
+
+    /**
+     * Suppression réponse
+     *
+     * @Route("/ficheProjet/deleteAnswer", options={"expose"=true}, name="projet_ydays_manager_project_delete_answer")
+     * @Method("POST")
+     * @return Response
+     * @return JsonResponse
+     */
+    public function deleteAnswerAction(Request $request){
+        if($request->isXmlHttpRequest()){
+
+            $em = $this -> getDoctrine()->getManager();
+
+            $answerToDelete = $em->getRepository(AnswerComment::class)->find($request->get('deletedAnswerId'));
+
+            $em->remove($answerToDelete);
+            $em->flush();
+
+            return new JsonResponse(array('data' => 'ok'));
+        }
+
 
         return new Response(
             'Erreur : Page appelée avec une autre méthode que ajax.'

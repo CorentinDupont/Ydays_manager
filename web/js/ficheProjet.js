@@ -203,10 +203,25 @@ $('.cDeleteRoundButton').click(function(){
 
 function deleteComment(clickedElement){
     if (clickedElement.parents('.cAllAnswersToOneCommentProjectDashboard').length) {
-        clickedElement.closest('.cOneCommentProjectDashboard').remove();
-        drawLineAnswerBlockOneComment();
+        //Id de la réponse
+        var deletedAnswerId = clickedElement.parents('.cOneCommentProjectDashboard:first').find('.cCommentJsParamaterBlock:first').find('p').text();
+
+        //Route pour supprimer une réponse dans le ProjectController
+        var deleteAnswerRoute = Routing.generate('projet_ydays_manager_project_delete_answer');
+        console.log(deleteAnswerRoute);
+        console.log(deletedAnswerId);
+        $.ajax({
+            url: deleteAnswerRoute,
+            method:"post",
+            data: {deletedAnswerId:deletedAnswerId}
+        }).done(function(msg){
+            clickedElement.closest('.cOneCommentProjectDashboard').remove();
+            drawLineAnswerBlockOneComment();
+        });
+
+
     }else{
-        var deletedCommentId = clickedElement.parents('.cBlockOneCommentProjectDashboard:first').find('.cCommentJsParamaterBlock').find('p').text();
+        var deletedCommentId = clickedElement.parents('.cBlockOneCommentProjectDashboard:first').find('.cCommentJsParamaterBlock:first').find('p').text();
         console.log(deletedCommentId);
         var route = Routing.generate('projet_ydays_manager_project_delete_comment');
         console.log(route);
@@ -229,6 +244,7 @@ $('#cAddCommentButtonProjectDashboard').click(function(){
 //Annuler répondre ou faire commentaire
 $('.cCancelCommentButtonProjectDashboard').click(function(){
     cancelPostComment($(this));
+    drawLineAnswerBlockOneComment();
 });
 
 function cancelPostComment(clickedElement){
@@ -253,10 +269,19 @@ $('.cPostCommentButtonProjectDashboard').click(function(){
 function postComment(clickedElement){
     //Si le bouton de post cliqué appartient à l'input caché des réponses d'un commentaire
     if(clickedElement.parents('.cAllAnswersToOneCommentProjectDashboard').length){
-        var newAnswerText = clickedElement.closest('.cAllAnswersToOneCommentProjectDashboard').find('textarea').val();
-        var idComment = clickedElement.parents('.cBlockOneCommentProjectDashboard:first').find('.cCommentJsParamaterBlock').find('p').text();
+        console.log("Ajout de reponse");
+        //Récupération du texte de la réponse
+        var newAnswerText = clickedElement.parents('.cAllAnswersToOneCommentProjectDashboard:first').find('textarea').val();
+
+        //On efface le message dans l'input
+        clickedElement.closest('.cAllAnswersToOneCommentProjectDashboard').find('textarea').val('');
+
+        //Id du commentaire
+        var idComment = clickedElement.parents('.cBlockOneCommentProjectDashboard:first').find('.cCommentJsParamaterBlock:first').find('p').text();
         console.log(idComment);
         console.log(newAnswerText);
+
+        //Route pour la méthode d'ajout de la réponse du ProjectController
         var routeToAddAnswer = Routing.generate('projet_ydays_manager_project_add_answer');
 
         $.ajax({
@@ -270,10 +295,10 @@ function postComment(clickedElement){
             }
         }).done(function(msg){
             //Insertion de la nouvelle réponse en haut des autres, mais en dessous de l'input caché.
-            var newAnswerHTML = $(getCommentHTML(newAnswerText, true)).insertAfter(clickedElement.closest('.cBlockHiddenInputCommentProjectDashboard'));
+            var newAnswerHTML = $(getCommentHTML(newAnswerText, true)).insertAfter(clickedElement.parents('.cBlockHiddenInputCommentProjectDashboard:first'));
 
             //Ajout de l'id dans le block de paramètre pour le récupérer plustard
-            newAnswerHTML.find('.cCommentJsParamaterBlock').append('<p>'+msg['idAnswer']+'Bonjour</p>');
+            newAnswerHTML.find('.cCommentJsParamaterBlock').append('<p>'+msg['idAnswer']+'</p>');
 
             //Ajout des fonctionnalités de clique sur le bouton supprimé de la nouvelle réponse.
             clickedElement.closest('.cAllAnswersToOneCommentProjectDashboard:nth-child(2)').find('.cDeleteRoundButton').click(function() {
@@ -289,7 +314,8 @@ function postComment(clickedElement){
         //Texte du commentaire
         var newCommentText = clickedElement.closest('.cContainerSquareAndTextCommentProjectDashboard').find('textarea').val();
 
-        console.log("Ajout commentaire");
+        //On efface le message dans l'input
+        clickedElement.closest('.cContainerSquareAndTextCommentProjectDashboard').find('textarea').val('');
 
         //Requête ajout commentaire au projet, en arrière plan
         var route = Routing.generate('projet_ydays_manager_project_add_comment');
