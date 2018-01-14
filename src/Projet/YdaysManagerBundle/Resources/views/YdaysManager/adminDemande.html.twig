@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="jTextSvgDemandeAdmin">
                                     <!-- Contenu texte -->
-                                    <p> {{ app.user.username|capitalize }} <span> {{ app.user.lastName|upper }} </span> </p>
+                                    <p> {{ desire.requester.username|capitalize }} <span> {{ desire.requester.lastName|upper }} </span> </p>
                                     <p> Demande de nouveau projet </p>
                                     <!-- SVG -->
                                     <div class="jSVG_ContainerDemandeAdmin">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="jTextSvgDemandeAdmin">
                                     <!-- Contenu texte -->
-                                    <p> {{ app.user.username|capitalize }} <span> {{ app.user.lastName|upper }} </span> </p>
+                                    <p> {{ desire.requester.username|capitalize }} <span> {{ desire.requester.lastName|upper }} </span> </p>
                                     <p> Demande de suppression du projet {{ desire.linkedProject.name }} </p>
                                     <!-- SVG -->
                                     <div class="jSVG_ContainerDemandeAdmin">
@@ -97,7 +97,7 @@
                             </div>
                             <div class="jTextSvgDemandeAdmin">
                                 <!-- Contenu texte -->
-                                <p> {{ app.user.username|capitalize }} <span> {{ app.user.lastName|upper }} </span> </p>
+                                <p> {{ desire.requester.username|capitalize }} <span> {{ desire.requester.lastName|upper }} </span> </p>
                                 <p> Demande d'affectation au projet {{ desire.linkedProject.name }} </p>
                                 <!-- SVG -->
                                 <div class="jSVG_ContainerDemandeAdmin">

@@ -18,7 +18,7 @@ class LoadProject implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         // Liste des noms de catégorie à ajouter
-        $names = array(
+        /*$names = array(
             'The Legend Of Zelda - The Dark Side Of Dimension',
             'Domotique',
             'Maison sous l\'eau',
@@ -44,6 +44,6 @@ class LoadProject implements FixtureInterface
         }
 
         // On déclenche l'enregistrement de toutes les catégories
-        $manager->flush();
+        $manager->flush();*/
     }
 }
