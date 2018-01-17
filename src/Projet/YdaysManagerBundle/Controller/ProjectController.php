@@ -31,8 +31,10 @@ class ProjectController extends Controller
      */
     public function myProjectsAction()
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $userId = $user -> getId();
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $userId = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+        }
 
         $em = $this->getDoctrine()->getManager();
 
@@ -43,12 +45,10 @@ class ProjectController extends Controller
         $projects = [];
         foreach($projectsQuery as $project){
             $projectUsers = $project -> getMembers();
-            $projectManagers = $project -> getProjectManager();
+            $projectManager = $project -> getProjectManager();
             foreach($projectUsers as $projectUser){
-                foreach( $projectManagers as $projectManager){
                     if($userId == $projectUser->getId() || $userId == $projectManager->getId()){
                         array_push($projects, $project);
-                    }
                 }
             }
         }
